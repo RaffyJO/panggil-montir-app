@@ -40,6 +40,7 @@ dependencies:
   carousel_slider: ^4.2.1
   flutter_sticky_widgets: ^0.0.3
   flutter_sticky_header: ^0.6.5
+  date_field: ^5.2.1
 
 dev_dependencies:
   flutter_test:

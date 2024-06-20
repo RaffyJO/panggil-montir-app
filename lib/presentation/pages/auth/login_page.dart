@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
+import 'package:panggil_montir_app/presentation/pages/main_page.dart';
 import 'package:panggil_montir_app/presentation/widgets/text_field.dart';
 
 class LoginPage extends StatelessWidget {
@@ -64,6 +65,12 @@ class LoginPage extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MainPage(),
+                        ),
+                      );
                       // if (validateEmailPassword()) {
                       //   context.read<AuthBloc>().add(
                       //         AuthLogin(

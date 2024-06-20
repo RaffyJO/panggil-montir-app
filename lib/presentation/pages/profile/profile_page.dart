@@ -23,7 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               userInfo(
                 name: "Raffy Jamil Octavialdy",
-                email: "rafiteguh6@gmail.com",
+                email: "raffy24@gmail.com",
                 noHp: "+681287459843",
                 profilePicture: "",
                 points: '0',

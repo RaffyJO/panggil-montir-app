@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
+import 'package:panggil_montir_app/presentation/pages/panggil_service/booking_detail/booking_detail.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_service/detail_bengkel/methods/detail_item.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_service/detail_bengkel/methods/layanan_item.dart';
 
@@ -20,6 +21,7 @@ class _DetailBengkelState extends State<DetailBengkel> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: whiteColor,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: orangeColor,
         title: Text(
@@ -198,50 +200,76 @@ class _DetailBengkelState extends State<DetailBengkel> {
                   ),
                 ),
               ),
+              SliverStickyHeader(
+                header: Container(
+                  height: 80,
+                ),
+              )
             ],
           ),
           Positioned(
-            bottom: 12,
+            bottom: 0,
             left: 0,
             right: 0,
-            child: GestureDetector(
-              onTap: () {},
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 12),
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                width: MediaQuery.of(context).size.width,
-                height: 56,
-                decoration: BoxDecoration(
-                  color: orangeColor,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Estimasi Biaya",
-                          style: blackTextStyle,
-                        ),
-                        Text(
-                          "Rp100.000",
-                          style: blackTextStyle.copyWith(
-                            fontWeight: semiBold,
-                            fontSize: 15,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              width: double.infinity,
+              height: 80,
+              decoration: BoxDecoration(
+                color: whiteColor,
+                boxShadow: [
+                  BoxShadow(
+                    color: greyColor.withOpacity(0.1),
+                    spreadRadius: 1,
+                    blurRadius: 5,
+                    offset: const Offset(0, -2),
+                  ),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Estimasi Biaya",
+                        style: blackTextStyle,
+                      ),
+                      verticalSpace(2),
+                      Text(
+                        "Rp100.000",
+                        style: blackTextStyle.copyWith(fontWeight: semiBold),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    height: 36,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      color: orangeColor,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const BookingDetail(),
                           ),
+                        );
+                      },
+                      child: Text(
+                        "Lanjut",
+                        style: blackTextStyle.copyWith(
+                          fontWeight: semiBold,
                         ),
-                      ],
+                      ),
                     ),
-                    Icon(
-                      Icons.arrow_forward_ios_rounded,
-                      color: blackColor,
-                    ),
-                  ],
-                ),
+                  )
+                ],
               ),
             ),
           ),
