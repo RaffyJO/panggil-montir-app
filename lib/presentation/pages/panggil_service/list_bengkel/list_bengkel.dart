@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:panggil_montir_app/presentation/blocs/garage/garage_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_service/detail_bengkel/detail_bengkel.dart';
@@ -27,124 +29,156 @@ class _ListBengkelState extends State<ListBengkel> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: whiteColor,
-        body: CustomScrollView(
-          controller: _controller,
-          slivers: [
-            SliverToBoxAdapter(
-              child: Stack(
-                children: [
-                  CarouselSlider.builder(
-                    itemCount: promotionsImageFileNames.length,
-                    itemBuilder: (BuildContext context, int itemIndex,
-                            int pageViewIndex) =>
-                        Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(5),
-                        child: Image.network(
-                          promotionsImageFileNames[itemIndex],
-                          width: double.infinity,
-                          height: 100.0,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    options: CarouselOptions(
-                      height: 200,
-                      autoPlay: true,
-                      enlargeCenterPage: false,
-                      viewportFraction: 1,
-                      aspectRatio: 2.0,
-                      initialPage: 2,
-                      autoPlayInterval: const Duration(seconds: 4),
-                    ),
+        body: BlocBuilder<GarageBloc, GarageState>(
+          builder: (context, state) {
+            return state.maybeWhen(
+              orElse: () {
+                return const Center(
+                  child: Text('No data'),
+                );
+              },
+              loading: () {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+              failure: (message) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(message),
+                    backgroundColor: Colors.red,
                   ),
-                  Positioned(
-                    top: 12.0,
-                    left: 16.0,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            blurRadius: 4.0,
-                            offset: Offset(2, 2),
+                );
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+              success: (data) {
+                return CustomScrollView(
+                  controller: _controller,
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: Stack(
+                        children: [
+                          CarouselSlider.builder(
+                            itemCount: promotionsImageFileNames.length,
+                            itemBuilder: (BuildContext context, int itemIndex,
+                                    int pageViewIndex) =>
+                                Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(5),
+                                child: Image.network(
+                                  promotionsImageFileNames[itemIndex],
+                                  width: double.infinity,
+                                  height: 100.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            options: CarouselOptions(
+                              height: 200,
+                              autoPlay: true,
+                              enlargeCenterPage: false,
+                              viewportFraction: 1,
+                              aspectRatio: 2.0,
+                              initialPage: 2,
+                              autoPlayInterval: const Duration(seconds: 4),
+                            ),
+                          ),
+                          Positioned(
+                            top: 12.0,
+                            left: 16.0,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 4.0,
+                                    offset: Offset(2, 2),
+                                  ),
+                                ],
+                              ),
+                              child: IconButton(
+                                icon: const Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.black,
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ),
                           ),
                         ],
                       ),
-                      child: IconButton(
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color: Colors.black,
+                    ),
+                    SliverStickyHeader(
+                      header: Material(
+                        elevation: 2.0,
+                        shadowColor: Colors.black54,
+                        child: Container(
+                          height: 52.0,
+                          color: whiteColor,
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          alignment: Alignment.centerLeft,
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.location_on,
+                                color: blueColor,
+                              ),
+                              horizontalSpace(8),
+                              Expanded(
+                                child: Text(
+                                  'Lokasi Saya : Jl. Borobudur Agung Barat No.8',
+                                  style: blackTextStyle.copyWith(
+                                    fontWeight: medium,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                color: blueColor,
+                              ),
+                            ],
+                          ),
                         ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
+                      ),
+                      sliver: SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, i) => bengkelItem(
+                            data[i].name!,
+                            data[i].address!,
+                            data[i].distance!,
+                            data[i].startPrice!,
+                            promotionsImageFileNames[0],
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DetailBengkel(
+                                    garage: data[i],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          childCount: data.length,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            SliverStickyHeader(
-              header: Material(
-                elevation: 2.0,
-                shadowColor: Colors.black54,
-                child: Container(
-                  height: 52.0,
-                  color: whiteColor,
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.location_on,
-                        color: blueColor,
-                      ),
-                      horizontalSpace(8),
-                      Expanded(
-                        child: Text(
-                          'Lokasi Saya : Jl. Borobudur Agung Barat No.8',
-                          style: blackTextStyle.copyWith(
-                            fontWeight: medium,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                        ),
-                      ),
-                      Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        color: blueColor,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, i) => bengkelItem(
-                    "MARGORAGA MOTOR",
-                    "Lowokwaru, Kota Malang",
-                    "1",
-                    "50.000",
-                    promotionsImageFileNames[0],
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const DetailBengkel(),
-                        ),
-                      );
-                    },
-                  ),
-                  childCount: 10,
-                ),
-              ),
-            ),
-            // Add more SliverStickyHeader or other slivers as needed
-          ],
+                    // Add more SliverStickyHeader or other slivers as needed
+                  ],
+                );
+              },
+            );
+          },
         ),
       ),
     );

@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/auth/auth_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
-import 'package:panggil_montir_app/presentation/pages/main_page.dart';
 import 'package:panggil_montir_app/presentation/widgets/text_field.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  bool validateEmailPassword() {
+    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+      return false;
+    }
+
+    return true;
+  }
+
   LoginPage({super.key});
 
   @override
@@ -61,45 +71,67 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 verticalSpace(32),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const MainPage(),
-                        ),
-                      );
-                      // if (validateEmailPassword()) {
-                      //   context.read<AuthBloc>().add(
-                      //         AuthLogin(
-                      //           LoginModel(
-                      //             email: emailController.text,
-                      //             password: passwordController.text,
-                      //           ),
-                      //         ),
-                      //       );
-                      // } else {
-                      //   showCustomSnackbar(
-                      //     context,
-                      //     "Email and Password cannot be empty",
-                      //   );
-                      // }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: whiteColor,
-                      backgroundColor: orangeColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: Text(
-                      'Sign In',
-                      style: blackTextStyle.copyWith(
-                          fontSize: 14, fontWeight: semiBold),
-                    ),
-                  ),
+                BlocConsumer<AuthBloc, AuthState>(
+                  listener: (context, state) {
+                    state.maybeWhen(
+                      loginSuccess: (data) {
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, '/home', (route) => false);
+                      },
+                      error: (message) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(message),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                      },
+                      orElse: () {},
+                    );
+                  },
+                  builder: (context, state) {
+                    return state.maybeWhen(
+                      orElse: () {
+                        return SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (validateEmailPassword()) {
+                                context.read<AuthBloc>().add(
+                                      AuthEvent.login(
+                                        emailController.text,
+                                        passwordController.text,
+                                      ),
+                                    );
+                              } else {
+                                showCustomSnackbar(
+                                  context,
+                                  "Email dan Password tidak boleh kosong",
+                                );
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: whiteColor,
+                              backgroundColor: orangeColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            child: Text(
+                              'Sign In',
+                              style: blackTextStyle.copyWith(
+                                  fontSize: 14, fontWeight: semiBold),
+                            ),
+                          ),
+                        );
+                      },
+                      loading: () {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                    );
+                  },
                 ),
                 verticalSpace(32),
                 Stack(

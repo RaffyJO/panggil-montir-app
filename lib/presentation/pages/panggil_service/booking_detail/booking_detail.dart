@@ -1,12 +1,21 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
+import 'package:panggil_montir_app/data/dto/order_panggil_servis_model.dart';
+import 'package:panggil_montir_app/domain/entities/garage.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_service/booking_detail/methods/detail_layanan.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_service/panggil_service_success_page.dart';
 
 class BookingDetail extends StatefulWidget {
-  const BookingDetail({super.key});
+  Garage garage;
+  OrderPanggilServisModel order;
+  BookingDetail({
+    super.key,
+    required this.garage,
+    required this.order,
+  });
 
   @override
   State<BookingDetail> createState() => _BookingDetailState();
@@ -14,7 +23,7 @@ class BookingDetail extends StatefulWidget {
 
 class _BookingDetailState extends State<BookingDetail> {
   DateTime? selectedDate;
-  TextEditingController detailAddressController = TextEditingController();
+  TextEditingController detailIssueController = TextEditingController();
   TextEditingController notesController = TextEditingController();
 
   @override
@@ -52,33 +61,39 @@ class _BookingDetailState extends State<BookingDetail> {
                         height: 70,
                       ),
                       horizontalSpace(12),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'MARGORAGA MOTOR',
-                            style: blackTextStyle.copyWith(
-                              fontWeight: semiBold,
-                              fontSize: 16,
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.garage.name!,
+                              style: blackTextStyle.copyWith(
+                                fontWeight: semiBold,
+                                fontSize: 16,
+                              ),
                             ),
-                          ),
-                          verticalSpace(2),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.location_on,
-                                color: blueColor,
-                                size: 16,
-                              ),
-                              horizontalSpace(4),
-                              Text(
-                                "Lowokwaru, Kota Malang",
-                                style: blackTextStyle,
-                              ),
-                            ],
-                          ),
-                        ],
+                            verticalSpace(2),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.location_on,
+                                  color: blueColor,
+                                  size: 16,
+                                ),
+                                horizontalSpace(4),
+                                Expanded(
+                                  child: Text(
+                                    widget.garage.address!,
+                                    style: blackTextStyle,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -134,6 +149,51 @@ class _BookingDetailState extends State<BookingDetail> {
                   height: 8,
                 ),
                 verticalSpace(16),
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 12),
+                    padding: const EdgeInsets.only(left: 12, right: 8),
+                    height: 52,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: greyColor,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              color: blueColor,
+                              size: 24,
+                            ),
+                            horizontalSpace(8),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width - 120,
+                              child: Text(
+                                "Jl. Borobudur Agung Barat No.8",
+                                style: blackTextStyle,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          color: blueColor,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                verticalSpace(16),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 12),
                   padding: const EdgeInsets.all(12),
@@ -176,7 +236,7 @@ class _BookingDetailState extends State<BookingDetail> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 12),
                   padding: const EdgeInsets.all(12),
-                  height: 210,
+                  height: 182,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     border: Border.all(
@@ -189,32 +249,17 @@ class _BookingDetailState extends State<BookingDetail> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Alamat',
+                        'Keluhan',
                         style: blackTextStyle.copyWith(
                           fontWeight: semiBold,
                         ),
                       ),
-                      verticalSpace(8),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: blueColor,
-                            size: 20,
-                          ),
-                          horizontalSpace(4),
-                          Text(
-                            "Jl. Borobudur Agung Barat No.8",
-                            style: blackTextStyle,
-                          ),
-                        ],
-                      ),
                       verticalSpace(4),
                       TextField(
-                        controller: detailAddressController,
+                        controller: detailIssueController,
                         decoration: const InputDecoration(
-                          label: Text("Detail alamat"),
-                          hintText: "Cth: Rumah sebelah warung",
+                          label: Text("Detail keluhan"),
+                          hintText: "Cth: Kadang suka mogok",
                           contentPadding: EdgeInsets.all(12),
                         ),
                         cursorColor: orangeColor,
@@ -252,16 +297,20 @@ class _BookingDetailState extends State<BookingDetail> {
                         ),
                       ),
                       ListView.builder(
-                        itemCount: 3,
+                        itemCount: widget.order.services!.length,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
-                          return detailLayanan(
-                            "Service Berkala",
-                            "Servis rutin tiap bulannya dengan pengecekan rem, oli, aki, dll",
-                            "50.000",
-                            onTap: () {},
-                          );
+                          if (widget.order.services![index] ==
+                              widget.garage.services![index].id) {
+                            return detailLayanan(
+                              widget.garage.services![index].name!,
+                              widget.garage.services![index].description!,
+                              formatCurrency(
+                                  widget.garage.services![index].price!),
+                            );
+                          }
+                          return null;
                         },
                       ),
                     ],
@@ -298,12 +347,12 @@ class _BookingDetailState extends State<BookingDetail> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Estimasi Biaya",
+                        "Biaya Servis",
                         style: blackTextStyle,
                       ),
                       verticalSpace(2),
                       Text(
-                        "Rp100.000",
+                        formatCurrency(widget.order.serviceFee!),
                         style: blackTextStyle.copyWith(fontWeight: semiBold),
                       ),
                     ],

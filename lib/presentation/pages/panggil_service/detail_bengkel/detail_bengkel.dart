@@ -1,5 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:panggil_montir_app/data/dto/order_panggil_servis_model.dart';
+import 'package:panggil_montir_app/domain/entities/garage.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_service/booking_detail/booking_detail.dart';
@@ -7,7 +10,11 @@ import 'package:panggil_montir_app/presentation/pages/panggil_service/detail_ben
 import 'package:panggil_montir_app/presentation/pages/panggil_service/detail_bengkel/methods/layanan_item.dart';
 
 class DetailBengkel extends StatefulWidget {
-  const DetailBengkel({super.key});
+  Garage garage;
+  DetailBengkel({
+    super.key,
+    required this.garage,
+  });
 
   @override
   State<DetailBengkel> createState() => _DetailBengkelState();
@@ -16,6 +23,7 @@ class DetailBengkel extends StatefulWidget {
 class _DetailBengkelState extends State<DetailBengkel> {
   final _controller = ScrollController();
   bool isFavorite = false;
+  OrderPanggilServisModel order = OrderPanggilServisModel(services: []);
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +72,7 @@ class _DetailBengkelState extends State<DetailBengkel> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'MARGORAGA MOTOR',
+                                        widget.garage.name!,
                                         style: blackTextStyle.copyWith(
                                           fontWeight: semiBold,
                                           fontSize: 16,
@@ -80,7 +88,7 @@ class _DetailBengkelState extends State<DetailBengkel> {
                                           ),
                                           horizontalSpace(4),
                                           Text(
-                                            "Buka hingga 22:00 hari ini",
+                                            "Buka hingga ${formatEndHours(widget.garage.operasionalHours!)} hari ini",
                                             style: blackTextStyle,
                                           ),
                                         ],
@@ -129,7 +137,7 @@ class _DetailBengkelState extends State<DetailBengkel> {
                               size: 20,
                               color: Colors.yellow[700],
                             ),
-                            "4.9",
+                            widget.garage.avarageRating!.toString(),
                             onTap: () {},
                           ),
                           detailItem(
@@ -139,7 +147,7 @@ class _DetailBengkelState extends State<DetailBengkel> {
                               size: 20,
                               color: blueColor,
                             ),
-                            "1.27 km",
+                            "${widget.garage.distance!.toStringAsFixed(2)} km",
                             onTap: () {},
                           ),
                           detailItem(
@@ -149,7 +157,7 @@ class _DetailBengkelState extends State<DetailBengkel> {
                               size: 22,
                               color: blueColor,
                             ),
-                            "50rb+",
+                            formatPrice(widget.garage.startPrice!),
                             onTap: () {},
                           ),
                           detailItem(
@@ -159,7 +167,9 @@ class _DetailBengkelState extends State<DetailBengkel> {
                               size: 20,
                               color: blueColor,
                             ),
-                            "07:00 - 22:00",
+                            formatOperasionalHours(
+                              widget.garage.operasionalHours!,
+                            ),
                             width: 115,
                             isDivider: false,
                             onTap: () {},
@@ -192,11 +202,14 @@ class _DetailBengkelState extends State<DetailBengkel> {
                 sliver: SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (context, i) => layananItem(
-                      "Service Berkala",
-                      "Servis rutin tiap bulanya dengan pengecekan rem, oli, aki, dll",
-                      "50.000",
+                      widget.garage.services![i].name!,
+                      widget.garage.services![i].description!,
+                      formatCurrency(widget.garage.services![i].price!),
+                      isAdded: order.services!
+                          .contains(widget.garage.services![i].id!),
+                      onTap: () => onServiceTap(widget.garage.services![i].id!),
                     ),
-                    childCount: 10,
+                    childCount: widget.garage.services!.length,
                   ),
                 ),
               ),
@@ -239,36 +252,58 @@ class _DetailBengkelState extends State<DetailBengkel> {
                       ),
                       verticalSpace(2),
                       Text(
-                        "Rp100.000",
+                        formatCurrency(getTotalPrice()),
                         style: blackTextStyle.copyWith(fontWeight: semiBold),
                       ),
                     ],
                   ),
-                  Container(
-                    height: 36,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      color: orangeColor,
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const BookingDetail(),
+                  order.services!.isNotEmpty
+                      ? Container(
+                          height: 36,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            color: orangeColor,
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                        );
-                      },
-                      child: Text(
-                        "Lanjut",
-                        style: blackTextStyle.copyWith(
-                          fontWeight: semiBold,
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => BookingDetail(
+                                    garage: widget.garage,
+                                    order: order,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              "Lanjut",
+                              style: blackTextStyle.copyWith(
+                                fontWeight: semiBold,
+                              ),
+                            ),
+                          ),
+                        )
+                      : Container(
+                          height: 36,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: TextButton(
+                            onPressed: null,
+                            child: Text(
+                              "Lanjut",
+                              style: greyTextStyle.copyWith(
+                                fontWeight: semiBold,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),
@@ -276,5 +311,26 @@ class _DetailBengkelState extends State<DetailBengkel> {
         ],
       ),
     );
+  }
+
+  void onServiceTap(int serviceId) {
+    setState(() {
+      if (order.services!.contains(serviceId)) {
+        order.services!.remove(serviceId);
+      } else {
+        order.services!.add(serviceId);
+      }
+      order.serviceFee = getTotalPrice();
+    });
+  }
+
+  int getTotalPrice() {
+    int total = 0;
+    for (var serviceId in order.services!) {
+      var service = widget.garage.services!
+          .firstWhere((service) => service.id == serviceId);
+      total += service.price!;
+    }
+    return total;
   }
 }

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 
-Widget bengkelItem(String name, String location, String distance, String price,
-        String image,
+Widget bengkelItem(
+        String name, String location, double distance, int price, String image,
         {bool isDivider = true, VoidCallback? onTap}) =>
     Container(
       padding: const EdgeInsets.all(12),
       color: whiteColor,
-      height: 132,
+      height: 140,
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -18,37 +18,47 @@ Widget bengkelItem(String name, String location, String distance, String price,
               Image.network(
                 image,
                 width: 90,
-                height: 50,
+                height: 60,
               ),
               horizontalSpace(8),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: blackTextStyle.copyWith(
-                      fontWeight: semiBold,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: blackTextStyle.copyWith(
+                        fontWeight: semiBold,
+                      ),
                     ),
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.location_on,
-                        color: blueColor,
-                        size: 16,
-                      ),
-                      horizontalSpace(2),
-                      Text(
-                        location,
-                        style: blackTextStyle,
-                      ),
-                      Text(
-                        " - $distance Km",
-                        style: blackTextStyle,
-                      ),
-                    ],
-                  ),
-                ],
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.location_on,
+                          color: blueColor,
+                          size: 16,
+                        ),
+                        horizontalSpace(2),
+                        Expanded(
+                          child: Text(
+                            location,
+                            style: blackTextStyle,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          " - $distance km",
+                          style: blackTextStyle,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               )
             ],
           ),
@@ -64,7 +74,7 @@ Widget bengkelItem(String name, String location, String distance, String price,
                     style: greyTextStyle,
                   ),
                   Text(
-                    "Rp$price",
+                    formatCurrency(price),
                     style: blueTextStyle.copyWith(
                       fontWeight: semiBold,
                     ),

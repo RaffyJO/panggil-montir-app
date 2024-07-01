@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/auth/auth_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/profile/methods/profile_item.dart';
@@ -21,12 +23,30 @@ class _ProfilePageState extends State<ProfilePage> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              userInfo(
-                name: "Raffy Jamil Octavialdy",
-                email: "raffy24@gmail.com",
-                noHp: "+681287459843",
-                profilePicture: "",
-                points: '0',
+              BlocBuilder<AuthBloc, AuthState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return const Center(
+                        child: Text('No data'),
+                      );
+                    },
+                    loading: () {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                    loginSuccess: (data) {
+                      return userInfo(
+                        name: data.user!.name!,
+                        email: data.user!.email!,
+                        noHp: data.user!.phone!,
+                        profilePicture: "",
+                        points: data.user!.point.toString(),
+                      );
+                    },
+                  );
+                },
               ),
               verticalSpace(4),
               Padding(
@@ -168,30 +188,80 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               verticalSpace(24),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: whiteColor,
-                    backgroundColor: whiteColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      side: const BorderSide(
-                        color: Colors.red,
-                        width: 1,
-                      ),
-                    ),
-                  ),
-                  child: Text(
-                    'Log Out',
-                    style: redTextStyle.copyWith(
-                      fontSize: 14,
-                      fontWeight: semiBold,
-                    ),
-                  ),
-                ),
+              BlocConsumer<AuthBloc, AuthState>(
+                listener: (context, state) {
+                  state.maybeWhen(
+                    logoutSuccess: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/login', (route) => false);
+                    },
+                    error: (message) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(message),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
+                    },
+                    orElse: () {},
+                  );
+                },
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            context.read<AuthBloc>().add(
+                                  const AuthEvent.logout(),
+                                );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: whiteColor,
+                            backgroundColor: whiteColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              side: const BorderSide(
+                                color: Colors.red,
+                                width: 1,
+                              ),
+                            ),
+                          ),
+                          child: Text(
+                            'Log Out',
+                            style: redTextStyle.copyWith(
+                              fontSize: 14,
+                              fontWeight: semiBold,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    loading: () {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: null,
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.grey[300],
+                            backgroundColor: Colors.grey[300],
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              side: BorderSide(
+                                color: Colors.grey[300]!,
+                                width: 1,
+                              ),
+                            ),
+                          ),
+                          child: const Text(''),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
               verticalSpace(20),
               Center(

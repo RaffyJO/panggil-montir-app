@@ -47,7 +47,7 @@ Widget layananItem(String title, String description, String price,
                     style: greyTextStyle,
                   ),
                   Text(
-                    "Rp$price",
+                    price,
                     style: blueTextStyle.copyWith(
                       fontWeight: semiBold,
                     ),
@@ -80,7 +80,7 @@ Widget layananItem(String title, String description, String price,
                       child: TextButton(
                         onPressed: onTap,
                         child: Text(
-                          "Tambahkan",
+                          "Tambah",
                           style: whiteTextStyle,
                         ),
                       ),

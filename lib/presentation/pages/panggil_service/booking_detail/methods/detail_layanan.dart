@@ -25,7 +25,7 @@ Widget detailLayanan(String title, String description, String price,
             title,
             style: blackTextStyle.copyWith(
               fontWeight: semiBold,
-              fontSize: 14,
+              fontSize: 15,
             ),
           ),
           Text(
@@ -44,33 +44,19 @@ Widget detailLayanan(String title, String description, String price,
                 children: [
                   Text(
                     "Harga",
-                    style: greyTextStyle,
+                    style: greyTextStyle.copyWith(
+                      fontWeight: semiBold,
+                    ),
                   ),
                   Text(
-                    "Rp$price",
+                    price,
                     style: blueTextStyle.copyWith(
+                      fontSize: 15,
                       fontWeight: semiBold,
                     ),
                   ),
                 ],
               ),
-              Container(
-                height: 36,
-                decoration: BoxDecoration(
-                  color: redColor,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: TextButton(
-                  onPressed: onTap,
-                  child: Text(
-                    "Hapus",
-                    style: whiteTextStyle.copyWith(
-                      fontWeight: semiBold,
-                    ),
-                  ),
-                ),
-              )
             ],
           ),
           const Divider(),
