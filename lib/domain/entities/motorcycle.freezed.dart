@@ -26,7 +26,7 @@ mixin _$Motorcycle {
   String? get type => throw _privateConstructorUsedError;
   String? get variant => throw _privateConstructorUsedError;
   String? get productionYear => throw _privateConstructorUsedError;
-  bool? get isSelected => throw _privateConstructorUsedError;
+  int? get isSelected => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +47,7 @@ abstract class $MotorcycleCopyWith<$Res> {
       String? type,
       String? variant,
       String? productionYear,
-      bool? isSelected});
+      int? isSelected});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class _$MotorcycleCopyWithImpl<$Res, $Val extends Motorcycle>
       isSelected: freezed == isSelected
           ? _value.isSelected
           : isSelected // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as int?,
     ) as $Val);
   }
 }
@@ -119,7 +119,7 @@ abstract class _$$MotorcycleImplCopyWith<$Res>
       String? type,
       String? variant,
       String? productionYear,
-      bool? isSelected});
+      int? isSelected});
 }
 
 /// @nodoc
@@ -169,7 +169,7 @@ class __$$MotorcycleImplCopyWithImpl<$Res>
       isSelected: freezed == isSelected
           ? _value.isSelected
           : isSelected // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as int?,
     ));
   }
 }
@@ -202,7 +202,7 @@ class _$MotorcycleImpl implements _Motorcycle {
   @override
   final String? productionYear;
   @override
-  final bool? isSelected;
+  final int? isSelected;
 
   @override
   String toString() {
@@ -253,7 +253,7 @@ abstract class _Motorcycle implements Motorcycle {
       final String? type,
       final String? variant,
       final String? productionYear,
-      final bool? isSelected}) = _$MotorcycleImpl;
+      final int? isSelected}) = _$MotorcycleImpl;
 
   factory _Motorcycle.fromJson(Map<String, dynamic> json) =
       _$MotorcycleImpl.fromJson;
@@ -271,7 +271,7 @@ abstract class _Motorcycle implements Motorcycle {
   @override
   String? get productionYear;
   @override
-  bool? get isSelected;
+  int? get isSelected;
   @override
   @JsonKey(ignore: true)
   _$$MotorcycleImplCopyWith<_$MotorcycleImpl> get copyWith =>

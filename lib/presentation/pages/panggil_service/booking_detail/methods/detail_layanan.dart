@@ -60,7 +60,6 @@ Widget detailLayanan(String title, String description, String price,
             ],
           ),
           const Divider(),
-          verticalSpace(height)
         ],
       ),
     );

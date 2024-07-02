@@ -26,7 +26,7 @@ mixin _$Address {
   String? get latitude => throw _privateConstructorUsedError;
   String? get longitude => throw _privateConstructorUsedError;
   String? get notes => throw _privateConstructorUsedError;
-  bool? get isSelected => throw _privateConstructorUsedError;
+  int? get isSelected => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +45,7 @@ abstract class $AddressCopyWith<$Res> {
       String? latitude,
       String? longitude,
       String? notes,
-      bool? isSelected});
+      int? isSelected});
 }
 
 /// @nodoc
@@ -97,7 +97,7 @@ class _$AddressCopyWithImpl<$Res, $Val extends Address>
       isSelected: freezed == isSelected
           ? _value.isSelected
           : isSelected // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as int?,
     ) as $Val);
   }
 }
@@ -116,7 +116,7 @@ abstract class _$$AddressImplCopyWith<$Res> implements $AddressCopyWith<$Res> {
       String? latitude,
       String? longitude,
       String? notes,
-      bool? isSelected});
+      int? isSelected});
 }
 
 /// @nodoc
@@ -166,7 +166,7 @@ class __$$AddressImplCopyWithImpl<$Res>
       isSelected: freezed == isSelected
           ? _value.isSelected
           : isSelected // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as int?,
     ));
   }
 }
@@ -199,7 +199,7 @@ class _$AddressImpl implements _Address {
   @override
   final String? notes;
   @override
-  final bool? isSelected;
+  final int? isSelected;
 
   @override
   String toString() {
@@ -251,7 +251,7 @@ abstract class _Address implements Address {
       final String? latitude,
       final String? longitude,
       final String? notes,
-      final bool? isSelected}) = _$AddressImpl;
+      final int? isSelected}) = _$AddressImpl;
 
   factory _Address.fromJson(Map<String, dynamic> json) = _$AddressImpl.fromJson;
 
@@ -268,7 +268,7 @@ abstract class _Address implements Address {
   @override
   String? get notes;
   @override
-  bool? get isSelected;
+  int? get isSelected;
   @override
   @JsonKey(ignore: true)
   _$$AddressImplCopyWith<_$AddressImpl> get copyWith =>

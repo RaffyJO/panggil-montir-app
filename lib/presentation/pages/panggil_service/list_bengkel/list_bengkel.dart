@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:panggil_montir_app/presentation/blocs/address/address_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/garage/garage_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
@@ -120,34 +121,65 @@ class _ListBengkelState extends State<ListBengkel> {
                       header: Material(
                         elevation: 2.0,
                         shadowColor: Colors.black54,
-                        child: Container(
-                          height: 52.0,
-                          color: whiteColor,
-                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          alignment: Alignment.centerLeft,
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.location_on,
-                                color: blueColor,
-                              ),
-                              horizontalSpace(8),
-                              Expanded(
-                                child: Text(
-                                  'Lokasi Saya : Jl. Borobudur Agung Barat No.8',
-                                  style: blackTextStyle.copyWith(
-                                    fontWeight: medium,
+                        child: BlocConsumer<AddressBloc, AddressState>(
+                          listener: (context, state) {
+                            // TODO: implement listener
+                          },
+                          builder: (context, state) {
+                            return state.maybeWhen(
+                              orElse: () {
+                                return const Text('No data');
+                              },
+                              loading: () {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              },
+                              failure: (message) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(message),
+                                    backgroundColor: Colors.red,
                                   ),
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                ),
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios_rounded,
-                                color: blueColor,
-                              ),
-                            ],
-                          ),
+                                );
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              },
+                              success: (data) {
+                                return Container(
+                                  height: 52.0,
+                                  color: whiteColor,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12.0),
+                                  alignment: Alignment.centerLeft,
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.location_on,
+                                        color: blueColor,
+                                      ),
+                                      horizontalSpace(8),
+                                      Expanded(
+                                        child: Text(
+                                          'Lokasi Saya : ${data.description}',
+                                          style: blackTextStyle.copyWith(
+                                            fontWeight: medium,
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.arrow_forward_ios_rounded,
+                                        color: blueColor,
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          },
                         ),
                       ),
                       sliver: SliverList(

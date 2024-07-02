@@ -3,14 +3,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl_standalone.dart'
     if (dart.library.html) 'package:intl/intl_browser.dart';
 import 'package:panggil_montir_app/data/datasources/local_datasources/auth_local_datasources.dart';
+import 'package:panggil_montir_app/data/datasources/remote_datasources/address_remote_datasource.dart';
 import 'package:panggil_montir_app/data/datasources/remote_datasources/auth_remote_datasource.dart';
 import 'package:panggil_montir_app/data/datasources/remote_datasources/garage_remote_datasource.dart';
+import 'package:panggil_montir_app/data/datasources/remote_datasources/motorcycle_remote_datasource.dart';
+import 'package:panggil_montir_app/data/datasources/remote_datasources/panggil_servis/order_remote_datasource.dart';
+import 'package:panggil_montir_app/presentation/blocs/address/address_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/auth/auth_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/garage/garage_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/motorcycle/motorcycle_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/order_servis/order_servis_bloc.dart';
+import 'package:panggil_montir_app/presentation/pages/address/address_page.dart';
 import 'package:panggil_montir_app/presentation/pages/auth/login_page.dart';
 import 'package:panggil_montir_app/presentation/pages/dashboard/dashboard_page.dart';
 import 'package:panggil_montir_app/presentation/pages/main_page.dart';
+import 'package:panggil_montir_app/presentation/pages/panggil_service/panggil_service_success_page.dart';
 import 'package:panggil_montir_app/presentation/pages/profile/profile_page.dart';
+import 'package:panggil_montir_app/presentation/pages/splash_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +42,17 @@ class MyApp extends StatelessWidget {
           create: (context) => GarageBloc(GarageRemoteDatasource())
             ..add(const GarageEvent.getGarages()),
         ),
+        BlocProvider(
+          create: (context) => AddressBloc(AddressRemoteDatasource())
+            ..add(const AddressEvent.getCurentAddress()),
+        ),
+        BlocProvider(
+          create: (context) => MotorcycleBloc(MotorcycleRemoteDatasource())
+            ..add(const MotorcycleEvent.getCurentMotorcycle()),
+        ),
+        BlocProvider(
+          create: (context) => OrderServisBloc(OrderServisRemoteDatasource()),
+        ),
       ],
       child: MaterialApp(
         title: 'PanggilMontir',
@@ -51,20 +71,22 @@ class MyApp extends StatelessWidget {
                 );
               }
               if (snapshot.hasData) {
-                return const MainPage();
+                return const SplashPage();
               }
               return LoginPage();
             }),
         debugShowCheckedModeBanner: false,
         routes: {
-          // '/': (context) => const SplashPage(),
+          '/r': (context) => const SplashPage(),
           // '/onboarding': (context) => const OnboardingPage(),
           '/login': (context) => LoginPage(),
           // '/register': (context) => RegisterPage(),
-          // '/register-success': (context) => const RegisterSuccsessPage(),
+          '/order-servis-success': (context) =>
+              const PanggilServiceSuccessPage(),
           '/dashboard': (context) => const DashboardPage(),
           '/home': (context) => const MainPage(),
           '/profile': (context) => const ProfilePage(),
+          '/address': (context) => const AddressPage(),
           // '/upcoming': (context) => const UpcomingPage(),
         },
       ),

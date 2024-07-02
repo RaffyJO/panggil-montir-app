@@ -12,7 +12,7 @@ class Motorcycle with _$Motorcycle {
     String? type,
     String? variant,
     String? productionYear,
-    bool? isSelected,
+    int? isSelected,
   }) = _Motorcycle;
 
   factory Motorcycle.fromJson(Map<String, dynamic> json) => Motorcycle(

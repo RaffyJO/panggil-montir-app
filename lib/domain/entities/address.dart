@@ -12,7 +12,7 @@ class Address with _$Address {
     String? latitude,
     String? longitude,
     String? notes,
-    bool? isSelected,
+    int? isSelected,
   }) = _Address;
 
   factory Address.fromJson(Map<String, dynamic> json) => Address(

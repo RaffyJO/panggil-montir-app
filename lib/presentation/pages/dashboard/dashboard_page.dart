@@ -93,7 +93,7 @@ class _DashboardPageState extends State<DashboardPage> {
               options: CarouselOptions(
                 height: 160,
                 autoPlay: true,
-                enlargeCenterPage: true,
+                enlargeCenterPage: false,
                 viewportFraction: 1,
                 aspectRatio: 2.0,
                 initialPage: 2,

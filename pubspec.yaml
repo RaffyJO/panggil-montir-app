@@ -48,6 +48,7 @@ dependencies:
   dartz: ^0.10.1
   another_flushbar: ^1.12.30
   json_annotation: ^4.9.0
+  lottie: ^3.1.2
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +77,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/lottie/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

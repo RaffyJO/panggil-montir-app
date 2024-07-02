@@ -84,16 +84,13 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     verticalSpace(5),
                     profileItem(
-                      'Rumahku',
+                      'Alamatku',
                       const Icon(
                         Icons.location_on_outlined,
                         size: 28,
                       ),
-                      onTap: () async {
-                        if (await Navigator.pushNamed(context, '/pin') ==
-                            true) {
-                          Navigator.pushNamed(context, '/profile-edit-pin');
-                        }
+                      onTap: () {
+                        Navigator.pushNamed(context, '/address');
                       },
                     ),
                     verticalSpace(5),

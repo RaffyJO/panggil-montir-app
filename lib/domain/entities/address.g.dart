@@ -14,7 +14,7 @@ _$AddressImpl _$$AddressImplFromJson(Map<String, dynamic> json) =>
       latitude: json['latitude'] as String?,
       longitude: json['longitude'] as String?,
       notes: json['notes'] as String?,
-      isSelected: json['isSelected'] as bool?,
+      isSelected: (json['isSelected'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$AddressImplToJson(_$AddressImpl instance) =>

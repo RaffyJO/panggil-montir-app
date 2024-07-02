@@ -25,7 +25,7 @@ class OrderPanggilServisModel {
       'service_fee': serviceFee,
       'issue': issue,
       'notes': notes,
-      'services': services,
+      'services': services?.map((service) => {'service_id': service}).toList(),
     };
   }
 }

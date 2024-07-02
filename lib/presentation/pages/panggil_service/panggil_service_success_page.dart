@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
-import 'package:panggil_montir_app/presentation/pages/main_page.dart';
 
 class PanggilServiceSuccessPage extends StatelessWidget {
   const PanggilServiceSuccessPage({super.key});
@@ -16,11 +16,10 @@ class PanggilServiceSuccessPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/images/img_success_green.png',
-                width: 150,
+              Lottie.asset(
+                'assets/lottie/success.json',
+                repeat: false,
               ),
-              verticalSpace(30),
               Text(
                 'Booking\n Telah Berhasil!',
                 style:
@@ -38,12 +37,8 @@ class PanggilServiceSuccessPage extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const MainPage(),
-                      ),
-                    );
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/home', (route) => false);
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: whiteColor,
@@ -54,7 +49,7 @@ class PanggilServiceSuccessPage extends StatelessWidget {
                   ),
                   child: Text(
                     'Kembali ke Dashboard',
-                    style: whiteTextStyle.copyWith(
+                    style: blackTextStyle.copyWith(
                       fontSize: 14,
                       fontWeight: semiBold,
                     ),

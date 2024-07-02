@@ -14,7 +14,7 @@ _$MotorcycleImpl _$$MotorcycleImplFromJson(Map<String, dynamic> json) =>
       type: json['type'] as String?,
       variant: json['variant'] as String?,
       productionYear: json['productionYear'] as String?,
-      isSelected: json['isSelected'] as bool?,
+      isSelected: (json['isSelected'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$MotorcycleImplToJson(_$MotorcycleImpl instance) =>
