@@ -1,5 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:panggil_montir_app/domain/entities/operasional_hour.dart';
 
@@ -100,4 +101,12 @@ String formatEndHours(List<OperasionalHour> hours) {
     }
   }
   return '';
+}
+
+// Select Profile Image
+Future<XFile?> selectImage() async {
+  XFile? selectedImage =
+      await ImagePicker().pickImage(source: ImageSource.gallery);
+
+  return selectedImage;
 }

@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/address/address_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_service/list_bengkel/list_bengkel.dart';
@@ -125,6 +127,9 @@ class _DashboardPageState extends State<DashboardPage> {
                 ),
                 GestureDetector(
                   onTap: () {
+                    context
+                        .read<AddressBloc>()
+                        .add(const AddressEvent.getCurentAddress());
                     Navigator.push(
                       context,
                       MaterialPageRoute(

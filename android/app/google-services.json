@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "748860800003",
+    "project_id": "panggilmontir-a8951",
+    "storage_bucket": "panggilmontir-a8951.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748860800003:android:3b023330d5ed364653e236",
+        "android_client_info": {
+          "package_name": "com.p.panggil_montir_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNUXfGkVn5Y58q8Rz-9XRmpBTxLVUU830"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

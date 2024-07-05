@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:panggil_montir_app/data/datasources/remote_datasources/auth_remote_datasource.dart';
+import 'package:panggil_montir_app/data/dto/register_model.dart';
 
 import '../../../data/dto/login_response.dart';
 
@@ -24,6 +25,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       );
     });
 
+    // Register
+    on<_Register>((event, emit) async {
+      emit(const _Loading());
+      final result = await _authRemoteDatasource.register(event.model);
+      result.fold(
+        (l) => emit(_Error(l)),
+        (r) => emit(_SuccessLogin(r)),
+      );
+    });
+
     // Logout
     on<_Logout>((event, emit) async {
       emit(const _Loading());
@@ -41,7 +52,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(const _Loading());
       final response = await _authRemoteDatasource.getCurrentUser();
       response.fold(
-        (l) => emit(_Error(l)),
+        (l) => emit(const _Error("Belum login")),
         (r) => emit(
           _SuccessLogin(r),
         ),

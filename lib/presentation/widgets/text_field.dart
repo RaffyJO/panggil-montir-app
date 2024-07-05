@@ -1,3 +1,4 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 
@@ -8,6 +9,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? textInputType;
   final bool isShowTitle;
+  final bool isPhoneNumber;
   final Function(String)? onFieldSubmitted;
   final Function(String)? onFieldChanged;
 
@@ -19,11 +21,25 @@ class CustomTextField extends StatelessWidget {
       this.textInputType,
       this.hintText = '',
       this.isShowTitle = true,
+      this.isPhoneNumber = false,
       this.onFieldSubmitted,
       this.onFieldChanged});
 
   @override
   Widget build(BuildContext context) {
+    Country country = Country(
+      name: 'Indonesia',
+      phoneCode: '+62',
+      e164Sc: 0,
+      geographic: true,
+      countryCode: "ID",
+      level: 1,
+      example: "Indonesia",
+      displayName: "Indonesia",
+      displayNameNoCountryCode: "ID",
+      e164Key: "",
+    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -50,6 +66,18 @@ class CustomTextField extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(color: orangeColor),
             ),
+            prefixIcon: isPhoneNumber == true
+                ? Container(
+                    padding: const EdgeInsets.fromLTRB(12, 13, 8, 10),
+                    child: Text(
+                      "${country.flagEmoji} ${country.phoneCode}",
+                      style: blackTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: semiBold,
+                      ),
+                    ),
+                  )
+                : null,
           ),
           cursorColor: orangeColor,
           onFieldSubmitted: onFieldSubmitted,

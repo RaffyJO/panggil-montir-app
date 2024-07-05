@@ -20,6 +20,7 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String email, String password) login,
+    required TResult Function(RegisterModel model) register,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -29,6 +30,7 @@ mixin _$AuthEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String email, String password)? login,
+    TResult? Function(RegisterModel model)? register,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -38,6 +40,7 @@ mixin _$AuthEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String email, String password)? login,
+    TResult Function(RegisterModel model)? register,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -48,6 +51,7 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Login value) login,
+    required TResult Function(_Register value) register,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -57,6 +61,7 @@ mixin _$AuthEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Login value)? login,
+    TResult? Function(_Register value)? register,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -66,6 +71,7 @@ mixin _$AuthEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Login value)? login,
+    TResult Function(_Register value)? register,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -131,6 +137,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String email, String password) login,
+    required TResult Function(RegisterModel model) register,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -143,6 +150,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String email, String password)? login,
+    TResult? Function(RegisterModel model)? register,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -155,6 +163,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String email, String password)? login,
+    TResult Function(RegisterModel model)? register,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -171,6 +180,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Login value) login,
+    required TResult Function(_Register value) register,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -183,6 +193,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Login value)? login,
+    TResult? Function(_Register value)? register,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -195,6 +206,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Login value)? login,
+    TResult Function(_Register value)? register,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -286,6 +298,7 @@ class _$LoginImpl implements _Login {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String email, String password) login,
+    required TResult Function(RegisterModel model) register,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -298,6 +311,7 @@ class _$LoginImpl implements _Login {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String email, String password)? login,
+    TResult? Function(RegisterModel model)? register,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -310,6 +324,7 @@ class _$LoginImpl implements _Login {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String email, String password)? login,
+    TResult Function(RegisterModel model)? register,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -326,6 +341,7 @@ class _$LoginImpl implements _Login {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Login value) login,
+    required TResult Function(_Register value) register,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -338,6 +354,7 @@ class _$LoginImpl implements _Login {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Login value)? login,
+    TResult? Function(_Register value)? register,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -350,6 +367,7 @@ class _$LoginImpl implements _Login {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Login value)? login,
+    TResult Function(_Register value)? register,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -369,6 +387,163 @@ abstract class _Login implements AuthEvent {
   String get password;
   @JsonKey(ignore: true)
   _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RegisterImplCopyWith<$Res> {
+  factory _$$RegisterImplCopyWith(
+          _$RegisterImpl value, $Res Function(_$RegisterImpl) then) =
+      __$$RegisterImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RegisterModel model});
+}
+
+/// @nodoc
+class __$$RegisterImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$RegisterImpl>
+    implements _$$RegisterImplCopyWith<$Res> {
+  __$$RegisterImplCopyWithImpl(
+      _$RegisterImpl _value, $Res Function(_$RegisterImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? model = null,
+  }) {
+    return _then(_$RegisterImpl(
+      null == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as RegisterModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RegisterImpl implements _Register {
+  const _$RegisterImpl(this.model);
+
+  @override
+  final RegisterModel model;
+
+  @override
+  String toString() {
+    return 'AuthEvent.register(model: $model)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RegisterImpl &&
+            (identical(other.model, model) || other.model == model));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, model);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
+      __$$RegisterImplCopyWithImpl<_$RegisterImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String email, String password) login,
+    required TResult Function(RegisterModel model) register,
+    required TResult Function() getCurrentUser,
+    required TResult Function() logout,
+    required TResult Function() checkUserSignIn,
+  }) {
+    return register(model);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String email, String password)? login,
+    TResult? Function(RegisterModel model)? register,
+    TResult? Function()? getCurrentUser,
+    TResult? Function()? logout,
+    TResult? Function()? checkUserSignIn,
+  }) {
+    return register?.call(model);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String email, String password)? login,
+    TResult Function(RegisterModel model)? register,
+    TResult Function()? getCurrentUser,
+    TResult Function()? logout,
+    TResult Function()? checkUserSignIn,
+    required TResult orElse(),
+  }) {
+    if (register != null) {
+      return register(model);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Login value) login,
+    required TResult Function(_Register value) register,
+    required TResult Function(_GetCurrentUser value) getCurrentUser,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_CheckUserSignIn value) checkUserSignIn,
+  }) {
+    return register(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_GetCurrentUser value)? getCurrentUser,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
+  }) {
+    return register?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Login value)? login,
+    TResult Function(_Register value)? register,
+    TResult Function(_GetCurrentUser value)? getCurrentUser,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_CheckUserSignIn value)? checkUserSignIn,
+    required TResult orElse(),
+  }) {
+    if (register != null) {
+      return register(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Register implements AuthEvent {
+  const factory _Register(final RegisterModel model) = _$RegisterImpl;
+
+  RegisterModel get model;
+  @JsonKey(ignore: true)
+  _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -412,6 +587,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String email, String password) login,
+    required TResult Function(RegisterModel model) register,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -424,6 +600,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String email, String password)? login,
+    TResult? Function(RegisterModel model)? register,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -436,6 +613,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String email, String password)? login,
+    TResult Function(RegisterModel model)? register,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -452,6 +630,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Login value) login,
+    required TResult Function(_Register value) register,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -464,6 +643,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Login value)? login,
+    TResult? Function(_Register value)? register,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -476,6 +656,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Login value)? login,
+    TResult Function(_Register value)? register,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -532,6 +713,7 @@ class _$LogoutImpl implements _Logout {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String email, String password) login,
+    required TResult Function(RegisterModel model) register,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -544,6 +726,7 @@ class _$LogoutImpl implements _Logout {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String email, String password)? login,
+    TResult? Function(RegisterModel model)? register,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -556,6 +739,7 @@ class _$LogoutImpl implements _Logout {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String email, String password)? login,
+    TResult Function(RegisterModel model)? register,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -572,6 +756,7 @@ class _$LogoutImpl implements _Logout {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Login value) login,
+    required TResult Function(_Register value) register,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -584,6 +769,7 @@ class _$LogoutImpl implements _Logout {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Login value)? login,
+    TResult? Function(_Register value)? register,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -596,6 +782,7 @@ class _$LogoutImpl implements _Logout {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Login value)? login,
+    TResult Function(_Register value)? register,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -652,6 +839,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String email, String password) login,
+    required TResult Function(RegisterModel model) register,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -664,6 +852,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String email, String password)? login,
+    TResult? Function(RegisterModel model)? register,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -676,6 +865,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String email, String password)? login,
+    TResult Function(RegisterModel model)? register,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -692,6 +882,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Login value) login,
+    required TResult Function(_Register value) register,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -704,6 +895,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Login value)? login,
+    TResult? Function(_Register value)? register,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -716,6 +908,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Login value)? login,
+    TResult Function(_Register value)? register,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,

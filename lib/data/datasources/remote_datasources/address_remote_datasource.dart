@@ -25,4 +25,44 @@ class AddressRemoteDatasource {
       return Left(response.body);
     }
   }
+
+  Future<Either<String, List<Address>>> getListAddress() async {
+    final authDataModel = await AuthLocalDataSource().getAuthData();
+    final url = Uri.parse('$baseUrl/api/user/get-list-address');
+    final response = await http.get(url, headers: {
+      'Authorization': 'Bearer ${authDataModel?.token}',
+      'Content-Type': 'application/json',
+    });
+
+    if (response.statusCode == 200) {
+      return Right(
+        List<Address>.from(
+          jsonDecode(response.body)['data'].map(
+            (address) => Address.fromJson(address),
+          ),
+        ).toList(),
+      );
+    } else {
+      return Left(response.body);
+    }
+  }
+
+  Future<Either<String, Address>> deleteAddress(String id) async {
+    final authDataModel = await AuthLocalDataSource().getAuthData();
+    final url = Uri.parse('$baseUrl/api/user/delete-address/$id');
+    final response = await http.delete(url, headers: {
+      'Authorization': 'Bearer ${authDataModel?.token}',
+      'Content-Type': 'application/json',
+    });
+
+    if (response.statusCode == 200) {
+      return Right(
+        Address.fromJson(
+          jsonDecode(response.body)['data'],
+        ),
+      );
+    } else {
+      return Left(response.body);
+    }
+  }
 }

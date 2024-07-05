@@ -20,18 +20,21 @@ mixin _$AddressEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getCurentAddress,
+    required TResult Function() getListAddress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getCurentAddress,
+    TResult? Function()? getListAddress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getCurentAddress,
+    TResult Function()? getListAddress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$AddressEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetCurentAddress value) getCurentAddress,
+    required TResult Function(_GetListAddress value) getListAddress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetCurentAddress value)? getCurentAddress,
+    TResult? Function(_GetListAddress value)? getListAddress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetCurentAddress value)? getCurentAddress,
+    TResult Function(_GetListAddress value)? getListAddress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getCurentAddress,
+    required TResult Function() getListAddress,
   }) {
     return started();
   }
@@ -123,6 +130,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getCurentAddress,
+    TResult? Function()? getListAddress,
   }) {
     return started?.call();
   }
@@ -132,6 +140,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getCurentAddress,
+    TResult Function()? getListAddress,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -145,6 +154,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetCurentAddress value) getCurentAddress,
+    required TResult Function(_GetListAddress value) getListAddress,
   }) {
     return started(this);
   }
@@ -154,6 +164,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetCurentAddress value)? getCurentAddress,
+    TResult? Function(_GetListAddress value)? getListAddress,
   }) {
     return started?.call(this);
   }
@@ -163,6 +174,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetCurentAddress value)? getCurentAddress,
+    TResult Function(_GetListAddress value)? getListAddress,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -216,6 +228,7 @@ class _$GetCurentAddressImpl implements _GetCurentAddress {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getCurentAddress,
+    required TResult Function() getListAddress,
   }) {
     return getCurentAddress();
   }
@@ -225,6 +238,7 @@ class _$GetCurentAddressImpl implements _GetCurentAddress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getCurentAddress,
+    TResult? Function()? getListAddress,
   }) {
     return getCurentAddress?.call();
   }
@@ -234,6 +248,7 @@ class _$GetCurentAddressImpl implements _GetCurentAddress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getCurentAddress,
+    TResult Function()? getListAddress,
     required TResult orElse(),
   }) {
     if (getCurentAddress != null) {
@@ -247,6 +262,7 @@ class _$GetCurentAddressImpl implements _GetCurentAddress {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetCurentAddress value) getCurentAddress,
+    required TResult Function(_GetListAddress value) getListAddress,
   }) {
     return getCurentAddress(this);
   }
@@ -256,6 +272,7 @@ class _$GetCurentAddressImpl implements _GetCurentAddress {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetCurentAddress value)? getCurentAddress,
+    TResult? Function(_GetListAddress value)? getListAddress,
   }) {
     return getCurentAddress?.call(this);
   }
@@ -265,6 +282,7 @@ class _$GetCurentAddressImpl implements _GetCurentAddress {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetCurentAddress value)? getCurentAddress,
+    TResult Function(_GetListAddress value)? getListAddress,
     required TResult orElse(),
   }) {
     if (getCurentAddress != null) {
@@ -279,6 +297,114 @@ abstract class _GetCurentAddress implements AddressEvent {
 }
 
 /// @nodoc
+abstract class _$$GetListAddressImplCopyWith<$Res> {
+  factory _$$GetListAddressImplCopyWith(_$GetListAddressImpl value,
+          $Res Function(_$GetListAddressImpl) then) =
+      __$$GetListAddressImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetListAddressImplCopyWithImpl<$Res>
+    extends _$AddressEventCopyWithImpl<$Res, _$GetListAddressImpl>
+    implements _$$GetListAddressImplCopyWith<$Res> {
+  __$$GetListAddressImplCopyWithImpl(
+      _$GetListAddressImpl _value, $Res Function(_$GetListAddressImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetListAddressImpl implements _GetListAddress {
+  const _$GetListAddressImpl();
+
+  @override
+  String toString() {
+    return 'AddressEvent.getListAddress()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetListAddressImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getCurentAddress,
+    required TResult Function() getListAddress,
+  }) {
+    return getListAddress();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getCurentAddress,
+    TResult? Function()? getListAddress,
+  }) {
+    return getListAddress?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getCurentAddress,
+    TResult Function()? getListAddress,
+    required TResult orElse(),
+  }) {
+    if (getListAddress != null) {
+      return getListAddress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetCurentAddress value) getCurentAddress,
+    required TResult Function(_GetListAddress value) getListAddress,
+  }) {
+    return getListAddress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetCurentAddress value)? getCurentAddress,
+    TResult? Function(_GetListAddress value)? getListAddress,
+  }) {
+    return getListAddress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetCurentAddress value)? getCurentAddress,
+    TResult Function(_GetListAddress value)? getListAddress,
+    required TResult orElse(),
+  }) {
+    if (getListAddress != null) {
+      return getListAddress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetListAddress implements AddressEvent {
+  const factory _GetListAddress() = _$GetListAddressImpl;
+}
+
+/// @nodoc
 mixin _$AddressState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -286,6 +412,7 @@ mixin _$AddressState {
     required TResult Function() loading,
     required TResult Function(String message) failure,
     required TResult Function(Address address) success,
+    required TResult Function(List<Address> addresses) successList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -294,6 +421,7 @@ mixin _$AddressState {
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
     TResult? Function(Address address)? success,
+    TResult? Function(List<Address> addresses)? successList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -302,6 +430,7 @@ mixin _$AddressState {
     TResult Function()? loading,
     TResult Function(String message)? failure,
     TResult Function(Address address)? success,
+    TResult Function(List<Address> addresses)? successList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -311,6 +440,7 @@ mixin _$AddressState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
+    required TResult Function(_SuccessList value) successList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -319,6 +449,7 @@ mixin _$AddressState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
+    TResult? Function(_SuccessList value)? successList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -327,6 +458,7 @@ mixin _$AddressState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessList value)? successList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -392,6 +524,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function(String message) failure,
     required TResult Function(Address address) success,
+    required TResult Function(List<Address> addresses) successList,
   }) {
     return initial();
   }
@@ -403,6 +536,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
     TResult? Function(Address address)? success,
+    TResult? Function(List<Address> addresses)? successList,
   }) {
     return initial?.call();
   }
@@ -414,6 +548,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function(String message)? failure,
     TResult Function(Address address)? success,
+    TResult Function(List<Address> addresses)? successList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -429,6 +564,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
+    required TResult Function(_SuccessList value) successList,
   }) {
     return initial(this);
   }
@@ -440,6 +576,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
+    TResult? Function(_SuccessList value)? successList,
   }) {
     return initial?.call(this);
   }
@@ -451,6 +588,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessList value)? successList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -506,6 +644,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function(String message) failure,
     required TResult Function(Address address) success,
+    required TResult Function(List<Address> addresses) successList,
   }) {
     return loading();
   }
@@ -517,6 +656,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
     TResult? Function(Address address)? success,
+    TResult? Function(List<Address> addresses)? successList,
   }) {
     return loading?.call();
   }
@@ -528,6 +668,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function(String message)? failure,
     TResult Function(Address address)? success,
+    TResult Function(List<Address> addresses)? successList,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -543,6 +684,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
+    required TResult Function(_SuccessList value) successList,
   }) {
     return loading(this);
   }
@@ -554,6 +696,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
+    TResult? Function(_SuccessList value)? successList,
   }) {
     return loading?.call(this);
   }
@@ -565,6 +708,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessList value)? successList,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -646,6 +790,7 @@ class _$FailureImpl implements _Failure {
     required TResult Function() loading,
     required TResult Function(String message) failure,
     required TResult Function(Address address) success,
+    required TResult Function(List<Address> addresses) successList,
   }) {
     return failure(message);
   }
@@ -657,6 +802,7 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
     TResult? Function(Address address)? success,
+    TResult? Function(List<Address> addresses)? successList,
   }) {
     return failure?.call(message);
   }
@@ -668,6 +814,7 @@ class _$FailureImpl implements _Failure {
     TResult Function()? loading,
     TResult Function(String message)? failure,
     TResult Function(Address address)? success,
+    TResult Function(List<Address> addresses)? successList,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -683,6 +830,7 @@ class _$FailureImpl implements _Failure {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
+    required TResult Function(_SuccessList value) successList,
   }) {
     return failure(this);
   }
@@ -694,6 +842,7 @@ class _$FailureImpl implements _Failure {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
+    TResult? Function(_SuccessList value)? successList,
   }) {
     return failure?.call(this);
   }
@@ -705,6 +854,7 @@ class _$FailureImpl implements _Failure {
     TResult Function(_Loading value)? loading,
     TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessList value)? successList,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -801,6 +951,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() loading,
     required TResult Function(String message) failure,
     required TResult Function(Address address) success,
+    required TResult Function(List<Address> addresses) successList,
   }) {
     return success(address);
   }
@@ -812,6 +963,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
     TResult? Function(Address address)? success,
+    TResult? Function(List<Address> addresses)? successList,
   }) {
     return success?.call(address);
   }
@@ -823,6 +975,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? loading,
     TResult Function(String message)? failure,
     TResult Function(Address address)? success,
+    TResult Function(List<Address> addresses)? successList,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -838,6 +991,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Failure value) failure,
     required TResult Function(_Success value) success,
+    required TResult Function(_SuccessList value) successList,
   }) {
     return success(this);
   }
@@ -849,6 +1003,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Failure value)? failure,
     TResult? Function(_Success value)? success,
+    TResult? Function(_SuccessList value)? successList,
   }) {
     return success?.call(this);
   }
@@ -860,6 +1015,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Loading value)? loading,
     TResult Function(_Failure value)? failure,
     TResult Function(_Success value)? success,
+    TResult Function(_SuccessList value)? successList,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -875,5 +1031,164 @@ abstract class _Success implements AddressState {
   Address get address;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SuccessListImplCopyWith<$Res> {
+  factory _$$SuccessListImplCopyWith(
+          _$SuccessListImpl value, $Res Function(_$SuccessListImpl) then) =
+      __$$SuccessListImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Address> addresses});
+}
+
+/// @nodoc
+class __$$SuccessListImplCopyWithImpl<$Res>
+    extends _$AddressStateCopyWithImpl<$Res, _$SuccessListImpl>
+    implements _$$SuccessListImplCopyWith<$Res> {
+  __$$SuccessListImplCopyWithImpl(
+      _$SuccessListImpl _value, $Res Function(_$SuccessListImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? addresses = null,
+  }) {
+    return _then(_$SuccessListImpl(
+      null == addresses
+          ? _value._addresses
+          : addresses // ignore: cast_nullable_to_non_nullable
+              as List<Address>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SuccessListImpl implements _SuccessList {
+  const _$SuccessListImpl(final List<Address> addresses)
+      : _addresses = addresses;
+
+  final List<Address> _addresses;
+  @override
+  List<Address> get addresses {
+    if (_addresses is EqualUnmodifiableListView) return _addresses;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_addresses);
+  }
+
+  @override
+  String toString() {
+    return 'AddressState.successList(addresses: $addresses)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessListImpl &&
+            const DeepCollectionEquality()
+                .equals(other._addresses, _addresses));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_addresses));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessListImplCopyWith<_$SuccessListImpl> get copyWith =>
+      __$$SuccessListImplCopyWithImpl<_$SuccessListImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) failure,
+    required TResult Function(Address address) success,
+    required TResult Function(List<Address> addresses) successList,
+  }) {
+    return successList(addresses);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? failure,
+    TResult? Function(Address address)? success,
+    TResult? Function(List<Address> addresses)? successList,
+  }) {
+    return successList?.call(addresses);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? failure,
+    TResult Function(Address address)? success,
+    TResult Function(List<Address> addresses)? successList,
+    required TResult orElse(),
+  }) {
+    if (successList != null) {
+      return successList(addresses);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_Success value) success,
+    required TResult Function(_SuccessList value) successList,
+  }) {
+    return successList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_SuccessList value)? successList,
+  }) {
+    return successList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_Success value)? success,
+    TResult Function(_SuccessList value)? successList,
+    required TResult orElse(),
+  }) {
+    if (successList != null) {
+      return successList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccessList implements AddressState {
+  const factory _SuccessList(final List<Address> addresses) = _$SuccessListImpl;
+
+  List<Address> get addresses;
+  @JsonKey(ignore: true)
+  _$$SuccessListImplCopyWith<_$SuccessListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

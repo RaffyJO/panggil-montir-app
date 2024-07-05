@@ -37,16 +37,16 @@ class LoginPage extends StatelessWidget {
                 ),
                 verticalSpace(12),
                 Text(
-                  "Welcome",
+                  "Selamat datang kembali",
                   style: blackTextStyle.copyWith(
                       fontWeight: semiBold, fontSize: 20),
                 ),
                 Text(
-                  "Enter your email and password to continue",
+                  "Masuk dengan email dan password untuk melanjutkan",
                   style:
                       greyTextStyle.copyWith(fontWeight: medium, fontSize: 14),
                 ),
-                verticalSpace(32),
+                verticalSpace(24),
                 CustomTextField(
                   title: 'Email',
                   hintText: 'name@gmail.com',
@@ -55,7 +55,7 @@ class LoginPage extends StatelessWidget {
                 verticalSpace(20),
                 CustomTextField(
                   title: 'Password',
-                  hintText: 'Enter password',
+                  hintText: 'Masukkan password',
                   obscureText: true,
                   controller: passwordController,
                 ),
@@ -65,7 +65,7 @@ class LoginPage extends StatelessWidget {
                   child: InkWell(
                     onTap: () {},
                     child: Text(
-                      'Forgot password?',
+                      'Lupa password?',
                       style: orangeTextStyle.copyWith(fontWeight: semiBold),
                     ),
                   ),
@@ -118,7 +118,7 @@ class LoginPage extends StatelessWidget {
                               ),
                             ),
                             child: Text(
-                              'Sign In',
+                              'Masuk',
                               style: blackTextStyle.copyWith(
                                   fontSize: 14, fontWeight: semiBold),
                             ),
@@ -174,7 +174,7 @@ class LoginPage extends StatelessWidget {
                         ),
                         horizontalSpace(10),
                         Text(
-                          'Sign In With Google',
+                          'Masuk dengan Google',
                           style: blackTextStyle.copyWith(fontWeight: semiBold),
                         )
                       ],
@@ -186,7 +186,7 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account? ",
+                      "Belum punya akun? ",
                       style: blackTextStyle.copyWith(fontWeight: semiBold),
                     ),
                     InkWell(
@@ -195,7 +195,7 @@ class LoginPage extends StatelessWidget {
                             context, '/register', (route) => false);
                       },
                       child: Text(
-                        'Sign Up',
+                        'Daftar',
                         style: orangeTextStyle.copyWith(fontWeight: semiBold),
                       ),
                     )

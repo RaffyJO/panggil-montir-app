@@ -9,12 +9,13 @@ import 'package:panggil_montir_app/presentation/blocs/motorcycle/motorcycle_bloc
 import 'package:panggil_montir_app/presentation/blocs/order_servis/order_servis_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
+import 'package:panggil_montir_app/presentation/pages/address/address_page.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_service/booking_detail/methods/detail_layanan.dart';
 
 class BookingDetail extends StatefulWidget {
-  Garage garage;
-  OrderPanggilServisModel order;
-  BookingDetail({
+  final Garage garage;
+  final OrderPanggilServisModel order;
+  const BookingDetail({
     super.key,
     required this.garage,
     required this.order,
@@ -34,6 +35,12 @@ class _BookingDetailState extends State<BookingDetail> {
       return true;
     }
     return false;
+  }
+
+  @override
+  void initState() {
+    context.read<AddressBloc>().add(const AddressEvent.getCurentAddress());
+    super.initState();
   }
 
   @override
@@ -204,7 +211,17 @@ class _BookingDetailState extends State<BookingDetail> {
                         ),
                         failure: (message) => Text(message),
                         success: (data) => GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            context.read<AddressBloc>().add(
+                                  const AddressEvent.getListAddress(),
+                                );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AddressPage(),
+                              ),
+                            );
+                          },
                           child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 12),
                             padding: const EdgeInsets.only(left: 12, right: 8),

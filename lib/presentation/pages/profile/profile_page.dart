@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/address/address_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/auth/auth_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
@@ -90,6 +91,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         size: 28,
                       ),
                       onTap: () {
+                        context
+                            .read<AddressBloc>()
+                            .add(const AddressEvent.getListAddress());
                         Navigator.pushNamed(context, '/address');
                       },
                     ),
@@ -271,7 +275,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ],
-          )
+          ),
+          verticalSpace(80),
         ],
       ),
     );

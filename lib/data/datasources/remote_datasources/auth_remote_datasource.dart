@@ -1,13 +1,34 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart' as http;
+import 'package:panggil_montir_app/data/dto/register_model.dart';
 import 'package:panggil_montir_app/presentation/extension/values.dart';
 
 import '../../dto/login_response.dart';
 import '../local_datasources/auth_local_datasources.dart';
 
 class AuthRemoteDatasource {
+  Future<Either<String, AuthResponseModel>> register(
+      RegisterModel model) async {
+    print(model.toJson());
+    final url = Uri.parse('$baseUrl/api/user/register');
+    final response = await http.post(
+      url,
+      body: model.toJson(),
+    );
+
+    if (response.statusCode == 201) {
+      final authResponseModel =
+          AuthResponseModel.fromJson(jsonDecode(response.body));
+      await AuthLocalDataSource().saveAuthData(authResponseModel);
+      return Right(authResponseModel);
+    } else {
+      return Left(response.body);
+    }
+  }
+
   Future<Either<String, AuthResponseModel>> login(
       String email, String password) async {
     final url = Uri.parse('$baseUrl/api/user/login');
@@ -26,6 +47,87 @@ class AuthRemoteDatasource {
       return Right(authResponseModel);
     } else {
       return const Left('Email atau password salah');
+    }
+  }
+
+  // final _auth = FirebaseAuth.instance;
+  // final String _verificationId = "123456";
+
+  // Future<void> sendOtp(String phoneNumber) async {
+  //   await _auth.verifyPhoneNumber(
+  //     phoneNumber: phoneNumber,
+  //     timeout: const Duration(seconds: 60),
+  //     verificationCompleted: (PhoneAuthCredential credential) async {
+  //       await _auth.signInWithCredential(credential);
+  //     },
+  //     verificationFailed: (FirebaseAuthException e) {
+  //       if (e.code == 'invalid-phone-number') {}
+  //     },
+  //     codeSent: (String verificationId, int? resendToken) {
+  //       // _verificationId = verificationId;
+  //     },
+  //     codeAutoRetrievalTimeout: (String verificationId) {
+  //       // _verificationId = verificationId;
+  //     },
+  //   );
+  // }
+
+  // Future<bool> verifyOtp(String otp) async {
+  //   var credential =
+  //       await _auth.signInWithCredential(PhoneAuthProvider.credential(
+  //     verificationId: _verificationId,
+  //     smsCode: otp,
+  //   ));
+
+  //   return credential.user != null ? true : false;
+  // }
+
+  final _auth = FirebaseAuth.instance;
+  String? _verificationId = "";
+
+  // Getter for _verificationId
+  String? get verificationId => _verificationId;
+
+  Future<void> sendOtp(String phoneNumber) async {
+    try {
+      print(phoneNumber);
+      await _auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        timeout: const Duration(seconds: 30),
+        verificationCompleted: (PhoneAuthCredential credential) async {
+          await _auth.signInWithCredential(credential);
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          print('Verification failed: ${e.message}');
+          // Handle verification failure
+        },
+        codeSent: (String verificationId, int? resendToken) {
+          print('Code sent to $phoneNumber');
+          _verificationId = verificationId; // Simpan verificationId
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {
+          _verificationId = verificationId; // Simpan verificationId
+        },
+      );
+      print("verificationId: $_verificationId");
+    } catch (e) {
+      print('Failed to send OTP: $e');
+      // Handle error
+    }
+  }
+
+  Future<bool> verifyOtp(String otp, String verificationId) async {
+    try {
+      print("verificationId: $verificationId");
+      var credential = PhoneAuthProvider.credential(
+        verificationId: verificationId,
+        smsCode: otp,
+      );
+      var result = await _auth.signInWithCredential(credential);
+      return result.user != null;
+    } catch (e) {
+      print('Failed to verify OTP: $e');
+      return false;
     }
   }
 
@@ -52,7 +154,7 @@ class AuthRemoteDatasource {
     }
   }
 
-  Future<Either<String, AuthResponseModel>> getCurrentUser() async {
+  Future<Either<void, AuthResponseModel>> getCurrentUser() async {
     final authDataModel = await AuthLocalDataSource().getAuthData();
     final url = Uri.parse('$baseUrl/api/user/get-current-user');
     final response = await http.get(url, headers: {
@@ -65,7 +167,7 @@ class AuthRemoteDatasource {
           AuthResponseModel.fromJson(jsonDecode(response.body));
       return Right(authResponseModel);
     } else {
-      return Left(response.body);
+      return const Left(null);
     }
   }
 }

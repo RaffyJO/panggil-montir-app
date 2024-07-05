@@ -10,8 +10,8 @@ import 'package:panggil_montir_app/presentation/pages/panggil_service/detail_ben
 import 'package:panggil_montir_app/presentation/pages/panggil_service/detail_bengkel/methods/layanan_item.dart';
 
 class DetailBengkel extends StatefulWidget {
-  Garage garage;
-  DetailBengkel({
+  final Garage garage;
+  const DetailBengkel({
     super.key,
     required this.garage,
   });
@@ -59,43 +59,51 @@ class _DetailBengkelState extends State<DetailBengkel> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                children: [
-                                  Image.network(
-                                    "https://i.ytimg.com/vi/sN-Cjxt3C70/maxresdefault.jpg",
-                                    width: 100,
-                                    height: 70,
-                                  ),
-                                  horizontalSpace(12),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        widget.garage.name!,
-                                        style: blackTextStyle.copyWith(
-                                          fontWeight: semiBold,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      verticalSpace(2),
-                                      Row(
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    Image.network(
+                                      "https://i.ytimg.com/vi/sN-Cjxt3C70/maxresdefault.jpg",
+                                      width: 100,
+                                      height: 70,
+                                    ),
+                                    horizontalSpace(12),
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
-                                          Icon(
-                                            Icons.timelapse_rounded,
-                                            color: blueColor,
-                                            size: 16,
-                                          ),
-                                          horizontalSpace(4),
                                           Text(
-                                            "Buka hingga ${formatEndHours(widget.garage.operasionalHours!)} hari ini",
-                                            style: blackTextStyle,
+                                            widget.garage.name!,
+                                            style: blackTextStyle.copyWith(
+                                              fontWeight: semiBold,
+                                              fontSize: 16,
+                                            ),
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 1,
+                                          ),
+                                          verticalSpace(2),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                Icons.timelapse_rounded,
+                                                color: blueColor,
+                                                size: 16,
+                                              ),
+                                              horizontalSpace(4),
+                                              Text(
+                                                "Buka hingga ${formatEndHours(widget.garage.operasionalHours!)} hari ini",
+                                                style: blackTextStyle,
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
-                                    ],
-                                  ),
-                                ],
+                                    ),
+                                  ],
+                                ),
                               ),
                               isFavorite
                                   ? GestureDetector(

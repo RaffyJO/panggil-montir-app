@@ -21,5 +21,15 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
         (r) => emit(_Success(r)),
       );
     });
+
+    // Get all addresses
+    on<_GetListAddress>((event, emit) async {
+      emit(const _Loading());
+      final response = await _addressRemoteDatasource.getListAddress();
+      response.fold(
+        (l) => emit(_Failure(l)),
+        (r) => emit(_SuccessList(r)),
+      );
+    });
   }
 }
