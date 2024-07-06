@@ -10,9 +10,27 @@ import '../../dto/login_response.dart';
 import '../local_datasources/auth_local_datasources.dart';
 
 class AuthRemoteDatasource {
+  Future<Either<String, bool>> checkEmail(String email) async {
+    try {
+      final respone = await http.post(
+        Uri.parse('$baseUrl/api/user/is-email-exist'),
+        body: {
+          'email': email,
+        },
+      );
+
+      if (respone.statusCode == 200) {
+        return right(jsonDecode(respone.body)['is_email_exist']);
+      } else {
+        return Left(jsonDecode(respone.body)['error']['email']);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<Either<String, AuthResponseModel>> register(
       RegisterModel model) async {
-    print(model.toJson());
     final url = Uri.parse('$baseUrl/api/user/register');
     final response = await http.post(
       url,
@@ -49,38 +67,6 @@ class AuthRemoteDatasource {
       return const Left('Email atau password salah');
     }
   }
-
-  // final _auth = FirebaseAuth.instance;
-  // final String _verificationId = "123456";
-
-  // Future<void> sendOtp(String phoneNumber) async {
-  //   await _auth.verifyPhoneNumber(
-  //     phoneNumber: phoneNumber,
-  //     timeout: const Duration(seconds: 60),
-  //     verificationCompleted: (PhoneAuthCredential credential) async {
-  //       await _auth.signInWithCredential(credential);
-  //     },
-  //     verificationFailed: (FirebaseAuthException e) {
-  //       if (e.code == 'invalid-phone-number') {}
-  //     },
-  //     codeSent: (String verificationId, int? resendToken) {
-  //       // _verificationId = verificationId;
-  //     },
-  //     codeAutoRetrievalTimeout: (String verificationId) {
-  //       // _verificationId = verificationId;
-  //     },
-  //   );
-  // }
-
-  // Future<bool> verifyOtp(String otp) async {
-  //   var credential =
-  //       await _auth.signInWithCredential(PhoneAuthProvider.credential(
-  //     verificationId: _verificationId,
-  //     smsCode: otp,
-  //   ));
-
-  //   return credential.user != null ? true : false;
-  // }
 
   final _auth = FirebaseAuth.instance;
   String? _verificationId = "";

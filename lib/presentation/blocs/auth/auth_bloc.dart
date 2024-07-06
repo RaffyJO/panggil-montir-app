@@ -35,6 +35,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       );
     });
 
+    // Check Email
+    on<_CheckEmail>((event, emit) async {
+      emit(const _Loading());
+      final result = await _authRemoteDatasource.checkEmail(event.email);
+      result.fold(
+        (l) => emit(_Error(l)),
+        (r) => r
+            ? emit(const _Error('Email sudah ada yang menggunakan'))
+            : emit(const _AuthCheckEmailSuccess()),
+      );
+    });
+
     // Logout
     on<_Logout>((event, emit) async {
       emit(const _Loading());

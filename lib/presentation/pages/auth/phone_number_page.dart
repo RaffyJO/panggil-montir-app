@@ -82,7 +82,7 @@ class _PhoneNumberPageState extends State<PhoneNumberPage> {
                     MaterialPageRoute(
                       builder: (context) => OtpPage(
                         data: widget.data.copyWith(
-                          phone: _phoneController.text,
+                          phone: "+62${_phoneController.text}",
                         ),
                         verificationId: verificationId,
                       ),

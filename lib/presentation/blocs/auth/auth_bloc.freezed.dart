@@ -20,6 +20,7 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String email, String password) login,
+    required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
@@ -30,6 +31,7 @@ mixin _$AuthEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String email, String password)? login,
+    TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
@@ -40,6 +42,7 @@ mixin _$AuthEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String email, String password)? login,
+    TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
@@ -51,6 +54,7 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Login value) login,
+    required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
@@ -61,6 +65,7 @@ mixin _$AuthEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Login value)? login,
+    TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
@@ -71,6 +76,7 @@ mixin _$AuthEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Login value)? login,
+    TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
@@ -137,6 +143,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String email, String password) login,
+    required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
@@ -150,6 +157,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String email, String password)? login,
+    TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
@@ -163,6 +171,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String email, String password)? login,
+    TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
@@ -180,6 +189,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Login value) login,
+    required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
@@ -193,6 +203,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Login value)? login,
+    TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
@@ -206,6 +217,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Login value)? login,
+    TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
@@ -298,6 +310,7 @@ class _$LoginImpl implements _Login {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String email, String password) login,
+    required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
@@ -311,6 +324,7 @@ class _$LoginImpl implements _Login {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String email, String password)? login,
+    TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
@@ -324,6 +338,7 @@ class _$LoginImpl implements _Login {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String email, String password)? login,
+    TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
@@ -341,6 +356,7 @@ class _$LoginImpl implements _Login {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Login value) login,
+    required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
@@ -354,6 +370,7 @@ class _$LoginImpl implements _Login {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Login value)? login,
+    TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
@@ -367,6 +384,7 @@ class _$LoginImpl implements _Login {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Login value)? login,
+    TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
@@ -387,6 +405,169 @@ abstract class _Login implements AuthEvent {
   String get password;
   @JsonKey(ignore: true)
   _$$LoginImplCopyWith<_$LoginImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CheckEmailImplCopyWith<$Res> {
+  factory _$$CheckEmailImplCopyWith(
+          _$CheckEmailImpl value, $Res Function(_$CheckEmailImpl) then) =
+      __$$CheckEmailImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String email});
+}
+
+/// @nodoc
+class __$$CheckEmailImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$CheckEmailImpl>
+    implements _$$CheckEmailImplCopyWith<$Res> {
+  __$$CheckEmailImplCopyWithImpl(
+      _$CheckEmailImpl _value, $Res Function(_$CheckEmailImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+  }) {
+    return _then(_$CheckEmailImpl(
+      null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CheckEmailImpl implements _CheckEmail {
+  const _$CheckEmailImpl(this.email);
+
+  @override
+  final String email;
+
+  @override
+  String toString() {
+    return 'AuthEvent.checkEmail(email: $email)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckEmailImpl &&
+            (identical(other.email, email) || other.email == email));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, email);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckEmailImplCopyWith<_$CheckEmailImpl> get copyWith =>
+      __$$CheckEmailImplCopyWithImpl<_$CheckEmailImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String email, String password) login,
+    required TResult Function(String email) checkEmail,
+    required TResult Function(RegisterModel model) register,
+    required TResult Function() getCurrentUser,
+    required TResult Function() logout,
+    required TResult Function() checkUserSignIn,
+  }) {
+    return checkEmail(email);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String email, String password)? login,
+    TResult? Function(String email)? checkEmail,
+    TResult? Function(RegisterModel model)? register,
+    TResult? Function()? getCurrentUser,
+    TResult? Function()? logout,
+    TResult? Function()? checkUserSignIn,
+  }) {
+    return checkEmail?.call(email);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String email, String password)? login,
+    TResult Function(String email)? checkEmail,
+    TResult Function(RegisterModel model)? register,
+    TResult Function()? getCurrentUser,
+    TResult Function()? logout,
+    TResult Function()? checkUserSignIn,
+    required TResult orElse(),
+  }) {
+    if (checkEmail != null) {
+      return checkEmail(email);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Login value) login,
+    required TResult Function(_CheckEmail value) checkEmail,
+    required TResult Function(_Register value) register,
+    required TResult Function(_GetCurrentUser value) getCurrentUser,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_CheckUserSignIn value) checkUserSignIn,
+  }) {
+    return checkEmail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_CheckEmail value)? checkEmail,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_GetCurrentUser value)? getCurrentUser,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
+  }) {
+    return checkEmail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Login value)? login,
+    TResult Function(_CheckEmail value)? checkEmail,
+    TResult Function(_Register value)? register,
+    TResult Function(_GetCurrentUser value)? getCurrentUser,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_CheckUserSignIn value)? checkUserSignIn,
+    required TResult orElse(),
+  }) {
+    if (checkEmail != null) {
+      return checkEmail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CheckEmail implements AuthEvent {
+  const factory _CheckEmail(final String email) = _$CheckEmailImpl;
+
+  String get email;
+  @JsonKey(ignore: true)
+  _$$CheckEmailImplCopyWith<_$CheckEmailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -456,6 +637,7 @@ class _$RegisterImpl implements _Register {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String email, String password) login,
+    required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
@@ -469,6 +651,7 @@ class _$RegisterImpl implements _Register {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String email, String password)? login,
+    TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
@@ -482,6 +665,7 @@ class _$RegisterImpl implements _Register {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String email, String password)? login,
+    TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
@@ -499,6 +683,7 @@ class _$RegisterImpl implements _Register {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Login value) login,
+    required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
@@ -512,6 +697,7 @@ class _$RegisterImpl implements _Register {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Login value)? login,
+    TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
@@ -525,6 +711,7 @@ class _$RegisterImpl implements _Register {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Login value)? login,
+    TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
@@ -587,6 +774,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String email, String password) login,
+    required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
@@ -600,6 +788,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String email, String password)? login,
+    TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
@@ -613,6 +802,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String email, String password)? login,
+    TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
@@ -630,6 +820,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Login value) login,
+    required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
@@ -643,6 +834,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Login value)? login,
+    TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
@@ -656,6 +848,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Login value)? login,
+    TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
@@ -713,6 +906,7 @@ class _$LogoutImpl implements _Logout {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String email, String password) login,
+    required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
@@ -726,6 +920,7 @@ class _$LogoutImpl implements _Logout {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String email, String password)? login,
+    TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
@@ -739,6 +934,7 @@ class _$LogoutImpl implements _Logout {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String email, String password)? login,
+    TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
@@ -756,6 +952,7 @@ class _$LogoutImpl implements _Logout {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Login value) login,
+    required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
@@ -769,6 +966,7 @@ class _$LogoutImpl implements _Logout {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Login value)? login,
+    TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
@@ -782,6 +980,7 @@ class _$LogoutImpl implements _Logout {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Login value)? login,
+    TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
@@ -839,6 +1038,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String email, String password) login,
+    required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
@@ -852,6 +1052,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String email, String password)? login,
+    TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
@@ -865,6 +1066,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String email, String password)? login,
+    TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
@@ -882,6 +1084,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Login value) login,
+    required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
@@ -895,6 +1098,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_Login value)? login,
+    TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
@@ -908,6 +1112,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Login value)? login,
+    TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
@@ -931,6 +1136,7 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() authCheckEmailSuccess,
     required TResult Function(AuthResponseModel model) loginSuccess,
     required TResult Function() logoutSuccess,
     required TResult Function(String message) error,
@@ -940,6 +1146,7 @@ mixin _$AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? authCheckEmailSuccess,
     TResult? Function(AuthResponseModel model)? loginSuccess,
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? error,
@@ -949,6 +1156,7 @@ mixin _$AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? authCheckEmailSuccess,
     TResult Function(AuthResponseModel model)? loginSuccess,
     TResult Function()? logoutSuccess,
     TResult Function(String message)? error,
@@ -959,6 +1167,8 @@ mixin _$AuthState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_AuthCheckEmailSuccess value)
+        authCheckEmailSuccess,
     required TResult Function(_SuccessLogin value) loginSuccess,
     required TResult Function(_SuccessLogout value) logoutSuccess,
     required TResult Function(_Error value) error,
@@ -968,6 +1178,7 @@ mixin _$AuthState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
     TResult? Function(_SuccessLogin value)? loginSuccess,
     TResult? Function(_SuccessLogout value)? logoutSuccess,
     TResult? Function(_Error value)? error,
@@ -977,6 +1188,7 @@ mixin _$AuthState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
     TResult Function(_SuccessLogin value)? loginSuccess,
     TResult Function(_SuccessLogout value)? logoutSuccess,
     TResult Function(_Error value)? error,
@@ -1042,6 +1254,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() authCheckEmailSuccess,
     required TResult Function(AuthResponseModel model) loginSuccess,
     required TResult Function() logoutSuccess,
     required TResult Function(String message) error,
@@ -1054,6 +1267,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? authCheckEmailSuccess,
     TResult? Function(AuthResponseModel model)? loginSuccess,
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? error,
@@ -1066,6 +1280,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? authCheckEmailSuccess,
     TResult Function(AuthResponseModel model)? loginSuccess,
     TResult Function()? logoutSuccess,
     TResult Function(String message)? error,
@@ -1082,6 +1297,8 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_AuthCheckEmailSuccess value)
+        authCheckEmailSuccess,
     required TResult Function(_SuccessLogin value) loginSuccess,
     required TResult Function(_SuccessLogout value) logoutSuccess,
     required TResult Function(_Error value) error,
@@ -1094,6 +1311,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
     TResult? Function(_SuccessLogin value)? loginSuccess,
     TResult? Function(_SuccessLogout value)? logoutSuccess,
     TResult? Function(_Error value)? error,
@@ -1106,6 +1324,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
     TResult Function(_SuccessLogin value)? loginSuccess,
     TResult Function(_SuccessLogout value)? logoutSuccess,
     TResult Function(_Error value)? error,
@@ -1162,6 +1381,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() authCheckEmailSuccess,
     required TResult Function(AuthResponseModel model) loginSuccess,
     required TResult Function() logoutSuccess,
     required TResult Function(String message) error,
@@ -1174,6 +1394,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? authCheckEmailSuccess,
     TResult? Function(AuthResponseModel model)? loginSuccess,
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? error,
@@ -1186,6 +1407,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? authCheckEmailSuccess,
     TResult Function(AuthResponseModel model)? loginSuccess,
     TResult Function()? logoutSuccess,
     TResult Function(String message)? error,
@@ -1202,6 +1424,8 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_AuthCheckEmailSuccess value)
+        authCheckEmailSuccess,
     required TResult Function(_SuccessLogin value) loginSuccess,
     required TResult Function(_SuccessLogout value) logoutSuccess,
     required TResult Function(_Error value) error,
@@ -1214,6 +1438,7 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
     TResult? Function(_SuccessLogin value)? loginSuccess,
     TResult? Function(_SuccessLogout value)? logoutSuccess,
     TResult? Function(_Error value)? error,
@@ -1226,6 +1451,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
     TResult Function(_SuccessLogin value)? loginSuccess,
     TResult Function(_SuccessLogout value)? logoutSuccess,
     TResult Function(_Error value)? error,
@@ -1240,6 +1466,135 @@ class _$LoadingImpl implements _Loading {
 
 abstract class _Loading implements AuthState {
   const factory _Loading() = _$LoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$AuthCheckEmailSuccessImplCopyWith<$Res> {
+  factory _$$AuthCheckEmailSuccessImplCopyWith(
+          _$AuthCheckEmailSuccessImpl value,
+          $Res Function(_$AuthCheckEmailSuccessImpl) then) =
+      __$$AuthCheckEmailSuccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AuthCheckEmailSuccessImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthCheckEmailSuccessImpl>
+    implements _$$AuthCheckEmailSuccessImplCopyWith<$Res> {
+  __$$AuthCheckEmailSuccessImplCopyWithImpl(_$AuthCheckEmailSuccessImpl _value,
+      $Res Function(_$AuthCheckEmailSuccessImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AuthCheckEmailSuccessImpl implements _AuthCheckEmailSuccess {
+  const _$AuthCheckEmailSuccessImpl();
+
+  @override
+  String toString() {
+    return 'AuthState.authCheckEmailSuccess()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AuthCheckEmailSuccessImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() authCheckEmailSuccess,
+    required TResult Function(AuthResponseModel model) loginSuccess,
+    required TResult Function() logoutSuccess,
+    required TResult Function(String message) error,
+  }) {
+    return authCheckEmailSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? authCheckEmailSuccess,
+    TResult? Function(AuthResponseModel model)? loginSuccess,
+    TResult? Function()? logoutSuccess,
+    TResult? Function(String message)? error,
+  }) {
+    return authCheckEmailSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? authCheckEmailSuccess,
+    TResult Function(AuthResponseModel model)? loginSuccess,
+    TResult Function()? logoutSuccess,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (authCheckEmailSuccess != null) {
+      return authCheckEmailSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_AuthCheckEmailSuccess value)
+        authCheckEmailSuccess,
+    required TResult Function(_SuccessLogin value) loginSuccess,
+    required TResult Function(_SuccessLogout value) logoutSuccess,
+    required TResult Function(_Error value) error,
+  }) {
+    return authCheckEmailSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
+    TResult? Function(_SuccessLogin value)? loginSuccess,
+    TResult? Function(_SuccessLogout value)? logoutSuccess,
+    TResult? Function(_Error value)? error,
+  }) {
+    return authCheckEmailSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
+    TResult Function(_SuccessLogin value)? loginSuccess,
+    TResult Function(_SuccessLogout value)? logoutSuccess,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (authCheckEmailSuccess != null) {
+      return authCheckEmailSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AuthCheckEmailSuccess implements AuthState {
+  const factory _AuthCheckEmailSuccess() = _$AuthCheckEmailSuccessImpl;
 }
 
 /// @nodoc
@@ -1308,6 +1663,7 @@ class _$SuccessLoginImpl implements _SuccessLogin {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() authCheckEmailSuccess,
     required TResult Function(AuthResponseModel model) loginSuccess,
     required TResult Function() logoutSuccess,
     required TResult Function(String message) error,
@@ -1320,6 +1676,7 @@ class _$SuccessLoginImpl implements _SuccessLogin {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? authCheckEmailSuccess,
     TResult? Function(AuthResponseModel model)? loginSuccess,
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? error,
@@ -1332,6 +1689,7 @@ class _$SuccessLoginImpl implements _SuccessLogin {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? authCheckEmailSuccess,
     TResult Function(AuthResponseModel model)? loginSuccess,
     TResult Function()? logoutSuccess,
     TResult Function(String message)? error,
@@ -1348,6 +1706,8 @@ class _$SuccessLoginImpl implements _SuccessLogin {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_AuthCheckEmailSuccess value)
+        authCheckEmailSuccess,
     required TResult Function(_SuccessLogin value) loginSuccess,
     required TResult Function(_SuccessLogout value) logoutSuccess,
     required TResult Function(_Error value) error,
@@ -1360,6 +1720,7 @@ class _$SuccessLoginImpl implements _SuccessLogin {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
     TResult? Function(_SuccessLogin value)? loginSuccess,
     TResult? Function(_SuccessLogout value)? logoutSuccess,
     TResult? Function(_Error value)? error,
@@ -1372,6 +1733,7 @@ class _$SuccessLoginImpl implements _SuccessLogin {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
     TResult Function(_SuccessLogin value)? loginSuccess,
     TResult Function(_SuccessLogout value)? logoutSuccess,
     TResult Function(_Error value)? error,
@@ -1434,6 +1796,7 @@ class _$SuccessLogoutImpl implements _SuccessLogout {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() authCheckEmailSuccess,
     required TResult Function(AuthResponseModel model) loginSuccess,
     required TResult Function() logoutSuccess,
     required TResult Function(String message) error,
@@ -1446,6 +1809,7 @@ class _$SuccessLogoutImpl implements _SuccessLogout {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? authCheckEmailSuccess,
     TResult? Function(AuthResponseModel model)? loginSuccess,
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? error,
@@ -1458,6 +1822,7 @@ class _$SuccessLogoutImpl implements _SuccessLogout {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? authCheckEmailSuccess,
     TResult Function(AuthResponseModel model)? loginSuccess,
     TResult Function()? logoutSuccess,
     TResult Function(String message)? error,
@@ -1474,6 +1839,8 @@ class _$SuccessLogoutImpl implements _SuccessLogout {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_AuthCheckEmailSuccess value)
+        authCheckEmailSuccess,
     required TResult Function(_SuccessLogin value) loginSuccess,
     required TResult Function(_SuccessLogout value) logoutSuccess,
     required TResult Function(_Error value) error,
@@ -1486,6 +1853,7 @@ class _$SuccessLogoutImpl implements _SuccessLogout {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
     TResult? Function(_SuccessLogin value)? loginSuccess,
     TResult? Function(_SuccessLogout value)? logoutSuccess,
     TResult? Function(_Error value)? error,
@@ -1498,6 +1866,7 @@ class _$SuccessLogoutImpl implements _SuccessLogout {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
     TResult Function(_SuccessLogin value)? loginSuccess,
     TResult Function(_SuccessLogout value)? logoutSuccess,
     TResult Function(_Error value)? error,
@@ -1580,6 +1949,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() authCheckEmailSuccess,
     required TResult Function(AuthResponseModel model) loginSuccess,
     required TResult Function() logoutSuccess,
     required TResult Function(String message) error,
@@ -1592,6 +1962,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? authCheckEmailSuccess,
     TResult? Function(AuthResponseModel model)? loginSuccess,
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? error,
@@ -1604,6 +1975,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? authCheckEmailSuccess,
     TResult Function(AuthResponseModel model)? loginSuccess,
     TResult Function()? logoutSuccess,
     TResult Function(String message)? error,
@@ -1620,6 +1992,8 @@ class _$ErrorImpl implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_AuthCheckEmailSuccess value)
+        authCheckEmailSuccess,
     required TResult Function(_SuccessLogin value) loginSuccess,
     required TResult Function(_SuccessLogout value) logoutSuccess,
     required TResult Function(_Error value) error,
@@ -1632,6 +2006,7 @@ class _$ErrorImpl implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
     TResult? Function(_SuccessLogin value)? loginSuccess,
     TResult? Function(_SuccessLogout value)? logoutSuccess,
     TResult? Function(_Error value)? error,
@@ -1644,6 +2019,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_AuthCheckEmailSuccess value)? authCheckEmailSuccess,
     TResult Function(_SuccessLogin value)? loginSuccess,
     TResult Function(_SuccessLogout value)? logoutSuccess,
     TResult Function(_Error value)? error,
