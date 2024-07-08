@@ -31,5 +31,15 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
         (r) => emit(_SuccessList(r)),
       );
     });
+
+    // Delete address
+    on<_DeleteAddress>((event, emit) async {
+      emit(const _Loading());
+      final response = await _addressRemoteDatasource.deleteAddress(event.id);
+      response.fold(
+        (l) => emit(_Failure(l)),
+        (r) => emit(const _SuccessList([])),
+      );
+    });
   }
 }

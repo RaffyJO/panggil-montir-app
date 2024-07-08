@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/address/address_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
+import 'package:panggil_montir_app/presentation/misc/methods.dart';
+import 'package:panggil_montir_app/presentation/pages/address/methods/address_delete_item.dart';
 import 'package:panggil_montir_app/presentation/pages/address/methods/address_item.dart';
 
 class AddressPage extends StatefulWidget {
@@ -16,7 +18,7 @@ class _AddressPageState extends State<AddressPage> {
   Widget build(BuildContext context) {
     return BlocConsumer<AddressBloc, AddressState>(
       listener: (context, state) {
-        // TODO: implement listener
+        //
       },
       builder: (context, state) {
         return state.maybeWhen(
@@ -59,7 +61,82 @@ class _AddressPageState extends State<AddressPage> {
                     data[index].description!,
                     notes: data[index].notes,
                     onTapEdit: () {},
-                    onTapDelete: () {},
+                    onTapDelete: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: whiteColor,
+                          insetPadding: EdgeInsets.zero,
+                          alignment: Alignment.bottomCenter,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(16.0),
+                              topRight: Radius.circular(16.0),
+                            ),
+                          ),
+                          title: Text(
+                            'Mau hapus alamat ini?',
+                            style: blackTextStyle.copyWith(
+                              fontWeight: semiBold,
+                              fontSize: 18,
+                            ),
+                          ),
+                          content: Container(
+                            width: double.infinity,
+                            height: 174,
+                            decoration: BoxDecoration(
+                              color: whiteColor,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'Apakah anda yakin ingin menghapus alamat ini?',
+                                  style: blackTextStyle,
+                                ),
+                                verticalSpace(12),
+                                addressDeleteItem(
+                                  data[index].title!,
+                                  data[index].description!,
+                                ),
+                              ],
+                            ),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                'Batal',
+                                style: blackTextStyle.copyWith(
+                                  fontWeight: semiBold,
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () async {
+                                context.read<AddressBloc>().add(
+                                      AddressEvent.deleteAddress(
+                                          data[index].id!),
+                                    );
+                                context.read<AddressBloc>().add(
+                                      const AddressEvent.getListAddress(),
+                                    );
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                'Hapus',
+                                style: redTextStyle.copyWith(
+                                  fontWeight: semiBold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   );
                 },
               ),

@@ -10,9 +10,9 @@ Widget userInfo({
   required String points,
 }) {
   return Container(
-    padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+    padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
     width: double.infinity,
-    height: 130,
+    height: 120,
     color: whiteColor,
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,

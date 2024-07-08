@@ -47,7 +47,7 @@ class AddressRemoteDatasource {
     }
   }
 
-  Future<Either<String, Address>> deleteAddress(String id) async {
+  Future<Either<String, void>> deleteAddress(int id) async {
     final authDataModel = await AuthLocalDataSource().getAuthData();
     final url = Uri.parse('$baseUrl/api/user/delete-address/$id');
     final response = await http.delete(url, headers: {
@@ -56,13 +56,9 @@ class AddressRemoteDatasource {
     });
 
     if (response.statusCode == 200) {
-      return Right(
-        Address.fromJson(
-          jsonDecode(response.body)['data'],
-        ),
-      );
+      return const Right(null);
     } else {
-      return Left(response.body);
+      return Left(jsonDecode(response.body)['message']);
     }
   }
 }
