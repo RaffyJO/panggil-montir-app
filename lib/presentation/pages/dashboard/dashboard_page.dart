@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/address/address_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
+import 'package:panggil_montir_app/presentation/pages/panggil_darurat/order_page.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_service/list_bengkel/list_bengkel.dart';
 import 'package:panggil_montir_app/presentation/widgets/service_item.dart';
 
@@ -117,9 +118,12 @@ class _DashboardPageState extends State<DashboardPage> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    setState(() {
-                      // selectedDataInternet = dataInternet;
-                    });
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OrderPage(),
+                      ),
+                    );
                   },
                   child: const ServiceItem(
                     name: 'Panggil Darurat',

@@ -57,6 +57,10 @@ dependencies:
   firebase_app_check: ^0.3.0+2
   image_picker: ^1.1.2
   country_picker: ^2.0.26
+  pull_to_refresh: ^2.0.0
+  google_maps_flutter: ^2.2.8
+  location: ^6.0.2
+  geocoding: ^3.0.0
 
 dev_dependencies:
   flutter_test:

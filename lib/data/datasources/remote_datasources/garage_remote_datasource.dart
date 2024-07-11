@@ -7,9 +7,9 @@ import 'package:panggil_montir_app/domain/entities/garage.dart';
 import 'package:panggil_montir_app/presentation/extension/values.dart';
 
 class GarageRemoteDatasource {
-  Future<Either<String, List<Garage>>> getGarages() async {
+  Future<Either<String, List<Garage>>> getGarages(int page) async {
     final authDataModel = await AuthLocalDataSource().getAuthData();
-    final url = Uri.parse('$baseUrl/api/user/get-garages');
+    final url = Uri.parse('$baseUrl/api/user/get-garages?page=$page');
     final response = await http.get(url, headers: {
       'Authorization': 'Bearer ${authDataModel?.token}',
     });

@@ -20,18 +20,24 @@ mixin _$GarageEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getGarages,
+    required TResult Function() garageFetched,
+    required TResult Function() garageRefresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getGarages,
+    TResult? Function()? garageFetched,
+    TResult? Function()? garageRefresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getGarages,
+    TResult Function()? garageFetched,
+    TResult Function()? garageRefresh,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,24 @@ mixin _$GarageEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetGarages value) getGarages,
+    required TResult Function(_GarageFetched value) garageFetched,
+    required TResult Function(_GarageRefresh value) garageRefresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetGarages value)? getGarages,
+    TResult? Function(_GarageFetched value)? garageFetched,
+    TResult? Function(_GarageRefresh value)? garageRefresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetGarages value)? getGarages,
+    TResult Function(_GarageFetched value)? garageFetched,
+    TResult Function(_GarageRefresh value)? garageRefresh,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +126,8 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getGarages,
+    required TResult Function() garageFetched,
+    required TResult Function() garageRefresh,
   }) {
     return started();
   }
@@ -123,6 +137,8 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getGarages,
+    TResult? Function()? garageFetched,
+    TResult? Function()? garageRefresh,
   }) {
     return started?.call();
   }
@@ -132,6 +148,8 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getGarages,
+    TResult Function()? garageFetched,
+    TResult Function()? garageRefresh,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -145,6 +163,8 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetGarages value) getGarages,
+    required TResult Function(_GarageFetched value) garageFetched,
+    required TResult Function(_GarageRefresh value) garageRefresh,
   }) {
     return started(this);
   }
@@ -154,6 +174,8 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetGarages value)? getGarages,
+    TResult? Function(_GarageFetched value)? garageFetched,
+    TResult? Function(_GarageRefresh value)? garageRefresh,
   }) {
     return started?.call(this);
   }
@@ -163,6 +185,8 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetGarages value)? getGarages,
+    TResult Function(_GarageFetched value)? garageFetched,
+    TResult Function(_GarageRefresh value)? garageRefresh,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -216,6 +240,8 @@ class _$GetGaragesImpl implements _GetGarages {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getGarages,
+    required TResult Function() garageFetched,
+    required TResult Function() garageRefresh,
   }) {
     return getGarages();
   }
@@ -225,6 +251,8 @@ class _$GetGaragesImpl implements _GetGarages {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getGarages,
+    TResult? Function()? garageFetched,
+    TResult? Function()? garageRefresh,
   }) {
     return getGarages?.call();
   }
@@ -234,6 +262,8 @@ class _$GetGaragesImpl implements _GetGarages {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getGarages,
+    TResult Function()? garageFetched,
+    TResult Function()? garageRefresh,
     required TResult orElse(),
   }) {
     if (getGarages != null) {
@@ -247,6 +277,8 @@ class _$GetGaragesImpl implements _GetGarages {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_GetGarages value) getGarages,
+    required TResult Function(_GarageFetched value) garageFetched,
+    required TResult Function(_GarageRefresh value) garageRefresh,
   }) {
     return getGarages(this);
   }
@@ -256,6 +288,8 @@ class _$GetGaragesImpl implements _GetGarages {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_GetGarages value)? getGarages,
+    TResult? Function(_GarageFetched value)? garageFetched,
+    TResult? Function(_GarageRefresh value)? garageRefresh,
   }) {
     return getGarages?.call(this);
   }
@@ -265,6 +299,8 @@ class _$GetGaragesImpl implements _GetGarages {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_GetGarages value)? getGarages,
+    TResult Function(_GarageFetched value)? garageFetched,
+    TResult Function(_GarageRefresh value)? garageRefresh,
     required TResult orElse(),
   }) {
     if (getGarages != null) {
@@ -279,13 +315,241 @@ abstract class _GetGarages implements GarageEvent {
 }
 
 /// @nodoc
+abstract class _$$GarageFetchedImplCopyWith<$Res> {
+  factory _$$GarageFetchedImplCopyWith(
+          _$GarageFetchedImpl value, $Res Function(_$GarageFetchedImpl) then) =
+      __$$GarageFetchedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GarageFetchedImplCopyWithImpl<$Res>
+    extends _$GarageEventCopyWithImpl<$Res, _$GarageFetchedImpl>
+    implements _$$GarageFetchedImplCopyWith<$Res> {
+  __$$GarageFetchedImplCopyWithImpl(
+      _$GarageFetchedImpl _value, $Res Function(_$GarageFetchedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GarageFetchedImpl implements _GarageFetched {
+  const _$GarageFetchedImpl();
+
+  @override
+  String toString() {
+    return 'GarageEvent.garageFetched()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GarageFetchedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getGarages,
+    required TResult Function() garageFetched,
+    required TResult Function() garageRefresh,
+  }) {
+    return garageFetched();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getGarages,
+    TResult? Function()? garageFetched,
+    TResult? Function()? garageRefresh,
+  }) {
+    return garageFetched?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getGarages,
+    TResult Function()? garageFetched,
+    TResult Function()? garageRefresh,
+    required TResult orElse(),
+  }) {
+    if (garageFetched != null) {
+      return garageFetched();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetGarages value) getGarages,
+    required TResult Function(_GarageFetched value) garageFetched,
+    required TResult Function(_GarageRefresh value) garageRefresh,
+  }) {
+    return garageFetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetGarages value)? getGarages,
+    TResult? Function(_GarageFetched value)? garageFetched,
+    TResult? Function(_GarageRefresh value)? garageRefresh,
+  }) {
+    return garageFetched?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetGarages value)? getGarages,
+    TResult Function(_GarageFetched value)? garageFetched,
+    TResult Function(_GarageRefresh value)? garageRefresh,
+    required TResult orElse(),
+  }) {
+    if (garageFetched != null) {
+      return garageFetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GarageFetched implements GarageEvent {
+  const factory _GarageFetched() = _$GarageFetchedImpl;
+}
+
+/// @nodoc
+abstract class _$$GarageRefreshImplCopyWith<$Res> {
+  factory _$$GarageRefreshImplCopyWith(
+          _$GarageRefreshImpl value, $Res Function(_$GarageRefreshImpl) then) =
+      __$$GarageRefreshImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GarageRefreshImplCopyWithImpl<$Res>
+    extends _$GarageEventCopyWithImpl<$Res, _$GarageRefreshImpl>
+    implements _$$GarageRefreshImplCopyWith<$Res> {
+  __$$GarageRefreshImplCopyWithImpl(
+      _$GarageRefreshImpl _value, $Res Function(_$GarageRefreshImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GarageRefreshImpl implements _GarageRefresh {
+  const _$GarageRefreshImpl();
+
+  @override
+  String toString() {
+    return 'GarageEvent.garageRefresh()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GarageRefreshImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getGarages,
+    required TResult Function() garageFetched,
+    required TResult Function() garageRefresh,
+  }) {
+    return garageRefresh();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getGarages,
+    TResult? Function()? garageFetched,
+    TResult? Function()? garageRefresh,
+  }) {
+    return garageRefresh?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getGarages,
+    TResult Function()? garageFetched,
+    TResult Function()? garageRefresh,
+    required TResult orElse(),
+  }) {
+    if (garageRefresh != null) {
+      return garageRefresh();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetGarages value) getGarages,
+    required TResult Function(_GarageFetched value) garageFetched,
+    required TResult Function(_GarageRefresh value) garageRefresh,
+  }) {
+    return garageRefresh(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetGarages value)? getGarages,
+    TResult? Function(_GarageFetched value)? garageFetched,
+    TResult? Function(_GarageRefresh value)? garageRefresh,
+  }) {
+    return garageRefresh?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetGarages value)? getGarages,
+    TResult Function(_GarageFetched value)? garageFetched,
+    TResult Function(_GarageRefresh value)? garageRefresh,
+    required TResult orElse(),
+  }) {
+    if (garageRefresh != null) {
+      return garageRefresh(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GarageRefresh implements GarageEvent {
+  const factory _GarageRefresh() = _$GarageRefreshImpl;
+}
+
+/// @nodoc
 mixin _$GarageState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(List<Garage> garages) success,
+    required TResult Function(List<Garage> garages, bool hasReachedMax) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -293,7 +557,7 @@ mixin _$GarageState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(List<Garage> garages)? success,
+    TResult? Function(List<Garage> garages, bool hasReachedMax)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -301,7 +565,7 @@ mixin _$GarageState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(List<Garage> garages)? success,
+    TResult Function(List<Garage> garages, bool hasReachedMax)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -391,7 +655,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(List<Garage> garages) success,
+    required TResult Function(List<Garage> garages, bool hasReachedMax) success,
   }) {
     return initial();
   }
@@ -402,7 +666,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(List<Garage> garages)? success,
+    TResult? Function(List<Garage> garages, bool hasReachedMax)? success,
   }) {
     return initial?.call();
   }
@@ -413,7 +677,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(List<Garage> garages)? success,
+    TResult Function(List<Garage> garages, bool hasReachedMax)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -505,7 +769,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(List<Garage> garages) success,
+    required TResult Function(List<Garage> garages, bool hasReachedMax) success,
   }) {
     return loading();
   }
@@ -516,7 +780,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(List<Garage> garages)? success,
+    TResult? Function(List<Garage> garages, bool hasReachedMax)? success,
   }) {
     return loading?.call();
   }
@@ -527,7 +791,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(List<Garage> garages)? success,
+    TResult Function(List<Garage> garages, bool hasReachedMax)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -645,7 +909,7 @@ class _$FailureImpl implements _Failure {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(List<Garage> garages) success,
+    required TResult Function(List<Garage> garages, bool hasReachedMax) success,
   }) {
     return failure(message);
   }
@@ -656,7 +920,7 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(List<Garage> garages)? success,
+    TResult? Function(List<Garage> garages, bool hasReachedMax)? success,
   }) {
     return failure?.call(message);
   }
@@ -667,7 +931,7 @@ class _$FailureImpl implements _Failure {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(List<Garage> garages)? success,
+    TResult Function(List<Garage> garages, bool hasReachedMax)? success,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -729,7 +993,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Garage> garages});
+  $Res call({List<Garage> garages, bool hasReachedMax});
 }
 
 /// @nodoc
@@ -744,12 +1008,17 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? garages = null,
+    Object? hasReachedMax = null,
   }) {
     return _then(_$SuccessImpl(
-      null == garages
+      garages: null == garages
           ? _value._garages
           : garages // ignore: cast_nullable_to_non_nullable
               as List<Garage>,
+      hasReachedMax: null == hasReachedMax
+          ? _value.hasReachedMax
+          : hasReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -757,7 +1026,9 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<Garage> garages) : _garages = garages;
+  const _$SuccessImpl(
+      {required final List<Garage> garages, this.hasReachedMax = false})
+      : _garages = garages;
 
   final List<Garage> _garages;
   @override
@@ -768,8 +1039,12 @@ class _$SuccessImpl implements _Success {
   }
 
   @override
+  @JsonKey()
+  final bool hasReachedMax;
+
+  @override
   String toString() {
-    return 'GarageState.success(garages: $garages)';
+    return 'GarageState.success(garages: $garages, hasReachedMax: $hasReachedMax)';
   }
 
   @override
@@ -777,12 +1052,14 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._garages, _garages));
+            const DeepCollectionEquality().equals(other._garages, _garages) &&
+            (identical(other.hasReachedMax, hasReachedMax) ||
+                other.hasReachedMax == hasReachedMax));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_garages));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_garages), hasReachedMax);
 
   @JsonKey(ignore: true)
   @override
@@ -796,9 +1073,9 @@ class _$SuccessImpl implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) failure,
-    required TResult Function(List<Garage> garages) success,
+    required TResult Function(List<Garage> garages, bool hasReachedMax) success,
   }) {
-    return success(garages);
+    return success(garages, hasReachedMax);
   }
 
   @override
@@ -807,9 +1084,9 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? failure,
-    TResult? Function(List<Garage> garages)? success,
+    TResult? Function(List<Garage> garages, bool hasReachedMax)? success,
   }) {
-    return success?.call(garages);
+    return success?.call(garages, hasReachedMax);
   }
 
   @override
@@ -818,11 +1095,11 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? failure,
-    TResult Function(List<Garage> garages)? success,
+    TResult Function(List<Garage> garages, bool hasReachedMax)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(garages);
+      return success(garages, hasReachedMax);
     }
     return orElse();
   }
@@ -866,9 +1143,12 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements GarageState {
-  const factory _Success(final List<Garage> garages) = _$SuccessImpl;
+  const factory _Success(
+      {required final List<Garage> garages,
+      final bool hasReachedMax}) = _$SuccessImpl;
 
   List<Garage> get garages;
+  bool get hasReachedMax;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
