@@ -1,12 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:panggil_montir_app/presentation/blocs/address/address_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/auth/auth_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
-import 'package:panggil_montir_app/presentation/pages/panggil_darurat/order_page.dart';
-import 'package:panggil_montir_app/presentation/pages/panggil_service/list_bengkel/list_bengkel.dart';
-import 'package:panggil_montir_app/presentation/widgets/service_item.dart';
+import 'package:panggil_montir_app/presentation/pages/dashboard/methods/user_services.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -16,10 +14,19 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  int currentIndex = 0;
+  CarouselController carouselController = CarouselController();
+
   final List<String> promotionsImageFileNames = const [
     'https://i.ytimg.com/vi/sN-Cjxt3C70/maxresdefault.jpg',
     'https://i.ytimg.com/vi/4_CS4ivAGGM/maxresdefault.jpg',
     'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIRdaZYsH8W1TkLKkGCLUBWX_bSilAbaAL4qmw6kXT4OTpz059WjHH67mBCp1vIMniHGaSCmykOja_HU_0TWndyaqDfQCWAOm_q_YenjV1Rm9QmQfARpo2bg-7UZL6YoZ7rDv5S5mvqc8GzMIGRwtLOyvkGmsITOCg5c9ewXKk79o4tJT_KGOeloRrgQ/w1200-h630-p-k-no-nu/BANNER%20MOTOR%20a.jpg'
+  ];
+
+  final List<String> artikelTitte = const [
+    'Panduan Lengkap Servis Berkala: Cara Menjaga Kendaraan Bermotor Anda Tetap Prima',
+    '10 Tips Praktis untuk Merawat Motor Anda Agar Tetap Awet dan Nyaman Dikendarai',
+    'Mengenal Tanda-Tanda Kerusakan pada Kendaraan Bermotor dan Cara Mengatasinya'
   ];
 
   @override
@@ -27,155 +34,247 @@ class _DashboardPageState extends State<DashboardPage> {
     return Scaffold(
       backgroundColor: whiteColor,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(24, 48, 24, 0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Image.asset(
-                      'assets/images/img_logo.png',
-                      width: 60,
-                    ),
-                    horizontalSpace(8),
-                    Text(
-                      'PanggilMontir',
-                      style: blueTextStyle.copyWith(
-                        fontSize: 14,
-                        fontWeight: semiBold,
-                      ),
-                    ),
-                  ],
-                ),
-                const Icon(
-                  Icons.notifications_active,
-                  size: 28,
-                ),
-              ],
-            ),
-            verticalSpace(16),
             Container(
-              width: MediaQuery.of(context).size.width - 24 - 24,
-              height: 50,
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.fromLTRB(16, 40, 16, 24),
+              width: double.infinity,
+              height: 184,
               decoration: BoxDecoration(
-                color: Colors.white30,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(),
-              ),
-              child: const TextField(
-                style: TextStyle(color: Colors.black),
-                decoration: InputDecoration(
-                  hintText: 'Layanan servis apa yang anda cari...',
-                  hintStyle: TextStyle(color: Colors.black54),
-                  border: InputBorder.none,
-                  icon: Icon(Icons.search),
+                color: blueColor,
+                shape: BoxShape.rectangle,
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
                 ),
               ),
-            ),
-            verticalSpace(24),
-            CarouselSlider.builder(
-              itemCount: promotionsImageFileNames.length,
-              itemBuilder:
-                  (BuildContext context, int itemIndex, int pageViewIndex) =>
-                      Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: Image.network(
-                    promotionsImageFileNames[itemIndex],
-                    width: double.infinity,
-                    height: 80.0,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              options: CarouselOptions(
-                height: 160,
-                autoPlay: true,
-                enlargeCenterPage: false,
-                viewportFraction: 1,
-                aspectRatio: 2.0,
-                initialPage: 2,
-                autoPlayInterval: const Duration(seconds: 4),
-              ),
-            ),
-            verticalSpace(24),
-            Text(
-              'Service',
-              style: blackTextStyle.copyWith(
-                fontSize: 14,
-                fontWeight: semiBold,
-              ),
-            ),
-            verticalSpace(12),
-            Wrap(
-              spacing: 20,
-              runSpacing: 20,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const OrderPage(),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      BlocBuilder<AuthBloc, AuthState>(
+                        builder: (context, state) {
+                          return state.maybeWhen(
+                            orElse: () {
+                              return const Center(
+                                child: Text('No data'),
+                              );
+                            },
+                            loading: () {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            },
+                            loginSuccess: (data) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    getGreeting(),
+                                    style: whiteTextStyle.copyWith(
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                  Text(
+                                    data.user!.name!,
+                                    style: whiteTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: semiBold,
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
                       ),
-                    );
-                  },
-                  child: const ServiceItem(
-                    name: 'Panggil Darurat',
+                      Column(
+                        children: [
+                          Container(
+                            width: 36,
+                            height: 36,
+                            decoration: BoxDecoration(
+                              color: Colors.white12,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            child: Icon(
+                              Icons.notifications_active,
+                              color: whiteColor,
+                              size: 24,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    context
-                        .read<AddressBloc>()
-                        .add(const AddressEvent.getCurentAddress());
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ListBengkel(),
+                  verticalSpace(28),
+                  Container(
+                    width: MediaQuery.of(context).size.width - 16 - 16,
+                    height: 50,
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    decoration: BoxDecoration(
+                      color: whiteColor,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(),
+                    ),
+                    child: const TextField(
+                      style: TextStyle(color: Colors.black),
+                      decoration: InputDecoration(
+                        hintText: 'Layanan servis apa yang anda cari...',
+                        hintStyle: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 15,
+                        ),
+                        border: InputBorder.none,
+                        icon: Icon(Icons.search),
                       ),
-                    );
-                  },
-                  child: const ServiceItem(
-                    name: 'Panggil Servis',
+                    ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      // selectedDataInternet = dataInternet;
-                    });
-                  },
-                  child: const ServiceItem(
-                    name: 'Inspeksi',
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      // selectedDataInternet = dataInternet;
-                    });
-                  },
-                  child: const ServiceItem(
-                    name: 'Membership',
-                  ),
-                ),
-              ],
-            ),
-            verticalSpace(24),
-            Text(
-              'Artikel',
-              style: blackTextStyle.copyWith(
-                fontSize: 14,
-                fontWeight: semiBold,
+                ],
               ),
             ),
-            verticalSpace(12),
+            Container(
+              color: whiteColor,
+              padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height - 184,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Promo Terbaru',
+                    style: blackTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: semiBold,
+                    ),
+                  ),
+                  verticalSpace(12),
+                  CarouselSlider.builder(
+                    itemCount: promotionsImageFileNames.length,
+                    itemBuilder: (BuildContext context, int itemIndex,
+                            int pageViewIndex) =>
+                        Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.network(
+                          promotionsImageFileNames[itemIndex],
+                          width: double.infinity,
+                          height: 60.0,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    options: CarouselOptions(
+                      height: 150,
+                      autoPlay: true,
+                      enlargeCenterPage: false,
+                      viewportFraction: 1,
+                      aspectRatio: 2.0,
+                      initialPage: 2,
+                      autoPlayInterval: const Duration(seconds: 4),
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          currentIndex = index;
+                        });
+                      },
+                    ),
+                    carouselController: carouselController,
+                  ),
+                  verticalSpace(8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: (currentIndex == 0) ? 20 : 8,
+                        height: 8,
+                        margin: const EdgeInsets.only(right: 5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: (currentIndex == 0) ? blueColor : greyColor,
+                        ),
+                      ),
+                      Container(
+                        width: (currentIndex == 1) ? 20 : 8,
+                        height: 8,
+                        margin: const EdgeInsets.only(right: 5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: (currentIndex == 1) ? blueColor : greyColor,
+                        ),
+                      ),
+                      Container(
+                        width: (currentIndex == 2) ? 20 : 8,
+                        height: 8,
+                        margin: const EdgeInsets.only(right: 5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: (currentIndex == 2) ? blueColor : greyColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  verticalSpace(12),
+                  Text(
+                    'Layanan',
+                    style: blackTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: semiBold,
+                    ),
+                  ),
+                  verticalSpace(12),
+                  userServices(context),
+                  verticalSpace(24),
+                  Text(
+                    'Artikel Menarik',
+                    style: blackTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: semiBold,
+                    ),
+                  ),
+                  verticalSpace(12),
+                  SizedBox(
+                    height: 200,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 3,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            Container(
+                              height: 120,
+                              width: 240,
+                              margin: const EdgeInsets.only(right: 12),
+                              decoration: BoxDecoration(
+                                color: blueColor,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            verticalSpace(4),
+                            Container(
+                              color: whiteColor,
+                              width: 240,
+                              margin: const EdgeInsets.only(right: 12),
+                              child: Text(
+                                artikelTitte[index],
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 13,
+                                  fontWeight: semiBold,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                              ),
+                            )
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

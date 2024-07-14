@@ -23,10 +23,10 @@ class _FindMontirPageState extends State<FindMontirPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height - 100,
         width: MediaQuery.of(context).size.width,
         color: Colors.white,
-        child: Lottie.asset('assets/lottie/search_montir.json'),
+        child: Lottie.asset('assets/lottie/search.json'),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: ClipRRect(
@@ -42,7 +42,7 @@ class _FindMontirPageState extends State<FindMontirPage> {
               BoxShadow(
                 color: blackColor,
                 blurRadius: 4.0,
-                offset: const Offset(2, 2),
+                offset: const Offset(2, -2),
               ),
             ],
           ),
