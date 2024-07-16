@@ -39,7 +39,7 @@ class _DashboardPageState extends State<DashboardPage> {
             Container(
               padding: const EdgeInsets.fromLTRB(16, 40, 16, 24),
               width: double.infinity,
-              height: 184,
+              height: 186,
               decoration: BoxDecoration(
                 color: blueColor,
                 shape: BoxShape.rectangle,
@@ -76,6 +76,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                       fontSize: 14,
                                     ),
                                   ),
+                                  verticalSpace(2),
                                   Text(
                                     data.user!.name!,
                                     style: whiteTextStyle.copyWith(
@@ -139,7 +140,6 @@ class _DashboardPageState extends State<DashboardPage> {
               color: whiteColor,
               padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
               width: double.infinity,
-              height: MediaQuery.of(context).size.height - 184,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -227,12 +227,26 @@ class _DashboardPageState extends State<DashboardPage> {
                   verticalSpace(12),
                   userServices(context),
                   verticalSpace(24),
-                  Text(
-                    'Artikel Menarik',
-                    style: blackTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: semiBold,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Artikel Menarik',
+                        style: blackTextStyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: semiBold,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          'Lihat semua',
+                          style: blueTextStyle.copyWith(
+                            fontWeight: semiBold,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   verticalSpace(12),
                   SizedBox(
