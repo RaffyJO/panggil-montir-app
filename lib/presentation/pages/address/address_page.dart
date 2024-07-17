@@ -18,7 +18,15 @@ class _AddressPageState extends State<AddressPage> {
   Widget build(BuildContext context) {
     return BlocConsumer<AddressBloc, AddressState>(
       listener: (context, state) {
-        //
+        state.maybeWhen(
+          orElse: () => const Scaffold(body: Center(child: Text('No data'))),
+          failure: (message) => ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(message),
+              backgroundColor: Colors.red,
+            ),
+          ),
+        );
       },
       builder: (context, state) {
         return state.maybeWhen(

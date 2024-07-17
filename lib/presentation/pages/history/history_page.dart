@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/transaction/transaction_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
+import 'package:panggil_montir_app/presentation/pages/history/methods/history_item.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -44,131 +47,151 @@ class _HistoryPageState extends State<HistoryPage> {
         ),
         body: TabBarView(
           children: [
-            ListView.builder(
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  width: double.infinity,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: whiteColor,
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 6.0,
-                        offset: Offset(0, 2),
+            BlocConsumer<TransactionBloc, TransactionState>(
+              listener: (context, state) {
+                // TODO: implement listener
+              },
+              builder: (context, state) {
+                return state.maybeWhen(
+                  orElse: () {
+                    return const Center(
+                      child: Text('No data'),
+                    );
+                  },
+                  loading: () {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                  failure: (message) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(message),
+                        backgroundColor: Colors.red,
                       ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '22 Juni 2024, 15:41',
-                        style: blackTextStyle.copyWith(
-                          fontWeight: semiBold,
-                          fontSize: 13,
-                        ),
-                      ),
-                      verticalSpace(8),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    );
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                  success: (data) {
+                    if (data.isEmpty) {
+                      return Column(
                         children: [
-                          Expanded(
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  'assets/icons/icon-darurat.png',
-                                  width: 72,
-                                ),
-                                horizontalSpace(8),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Pasar Kaget Villa Indah Permai Bekasi Utara Kec. Permai',
-                                        style: blackTextStyle.copyWith(
-                                          fontWeight: semiBold,
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 2,
-                                      ),
-                                      verticalSpace(4),
-                                      Row(
-                                        children: [
-                                          Image.asset(
-                                            'assets/icons/icon-success.png',
-                                            width: 20,
-                                          ),
-                                          horizontalSpace(2),
-                                          Expanded(
-                                            child: Text(
-                                              'Servis selesai',
-                                              style: blackTextStyle.copyWith(
-                                                fontWeight: semiBold,
-                                                fontSize: 13,
-                                              ),
-                                              overflow: TextOverflow.ellipsis,
-                                              maxLines: 1,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
+                          verticalSpace(16),
+                          Image.asset(
+                            'assets/images/img_service.png',
+                            width: 200,
+                            height: 200,
+                          ),
+                          verticalSpace(2),
+                          Text(
+                            'Panggil Montir, yuk!',
+                            style: blackTextStyle.copyWith(
+                              fontSize: 16,
+                              fontWeight: semiBold,
                             ),
                           ),
-                          horizontalSpace(4),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                formatCurrency(20000),
-                                style: blackTextStyle.copyWith(
-                                  fontWeight: semiBold,
-                                  fontSize: 13,
-                                ),
-                              ),
-                              verticalSpace(8),
-                              Container(
-                                height: 36,
-                                decoration: BoxDecoration(
-                                  color: blueColor,
-                                  shape: BoxShape.rectangle,
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                                child: TextButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    "Pesan lagi",
-                                    style: whiteTextStyle.copyWith(
-                                      fontWeight: semiBold,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )
+                          verticalSpace(4),
+                          Text(
+                            'Montir kami akan dengan senang hati\n memperbaiki motormu.',
+                            style: blackTextStyle.copyWith(
+                              fontSize: 14,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                         ],
-                      )
-                    ],
-                  ),
+                      );
+                    } else {
+                      return RefreshIndicator(
+                        color: blueColor,
+                        onRefresh: () async {
+                          BlocProvider.of<TransactionBloc>(context)
+                              .add(const TransactionEvent.getTransactions());
+                        },
+                        child: ListView.builder(
+                          itemCount: data.length,
+                          itemBuilder: (context, index) {
+                            if (data[index].status != 'started' &&
+                                data[index].status != 'ongoing') {
+                              return HistoryItem(order: data[index]);
+                            }
+                            return null;
+                          },
+                        ),
+                      );
+                    }
+                  },
                 );
               },
             ),
-            const Center(
-              child: Text('Dalam proses'),
+            BlocBuilder<TransactionBloc, TransactionState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                  orElse: () {
+                    return const Center(
+                      child: Text('No data'),
+                    );
+                  },
+                  loading: () {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                  failure: (message) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(message),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                  success: (data) {
+                    if (data.isEmpty) {
+                      return Column(
+                        children: [
+                          verticalSpace(16),
+                          Image.asset(
+                            'assets/images/img_service.png',
+                            width: 200,
+                            height: 200,
+                          ),
+                          verticalSpace(2),
+                          Text(
+                            'Panggil Montir, yuk!',
+                            style: blackTextStyle.copyWith(
+                              fontSize: 16,
+                              fontWeight: semiBold,
+                            ),
+                          ),
+                          verticalSpace(4),
+                          Text(
+                            'Montir kami akan dengan senang hati\n memperbaiki motormu.',
+                            style: blackTextStyle.copyWith(
+                              fontSize: 14,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      );
+                    } else {
+                      return ListView.builder(
+                        itemCount: data.length,
+                        itemBuilder: (context, index) {
+                          if (data[index].status != 'cancelled' &&
+                              data[index].status != 'completed') {
+                            return HistoryItem(order: data[index]);
+                          }
+                          return null;
+                        },
+                      );
+                    }
+                  },
+                );
+              },
             ),
           ],
         ),

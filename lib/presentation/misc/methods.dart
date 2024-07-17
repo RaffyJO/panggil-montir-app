@@ -1,6 +1,7 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:panggil_montir_app/domain/entities/operasional_hour.dart';
 
@@ -123,4 +124,10 @@ String getGreeting() {
   } else {
     return 'Selamat Malam';
   }
+}
+
+String formatDateTime(String dateTimeString) {
+  initializeDateFormatting('id_ID', null);
+  DateTime dateTime = DateTime.parse(dateTimeString);
+  return DateFormat('d MMMM yyyy, HH:mm', 'id_ID').format(dateTime);
 }

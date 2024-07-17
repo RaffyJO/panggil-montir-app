@@ -26,9 +26,9 @@ mixin _$Order {
   String? get notes => throw _privateConstructorUsedError;
   int? get serviceFee => throw _privateConstructorUsedError;
   int? get deliveryFee => throw _privateConstructorUsedError;
-  DateTime? get orderDate => throw _privateConstructorUsedError;
-  DateTime? get bookedDate => throw _privateConstructorUsedError;
-  DateTime? get completedDate => throw _privateConstructorUsedError;
+  String? get orderDate => throw _privateConstructorUsedError;
+  String? get bookedDate => throw _privateConstructorUsedError;
+  String? get completedDate => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
   String? get latitude => throw _privateConstructorUsedError;
   String? get longitude => throw _privateConstructorUsedError;
@@ -57,9 +57,9 @@ abstract class $OrderCopyWith<$Res> {
       String? notes,
       int? serviceFee,
       int? deliveryFee,
-      DateTime? orderDate,
-      DateTime? bookedDate,
-      DateTime? completedDate,
+      String? orderDate,
+      String? bookedDate,
+      String? completedDate,
       String? address,
       String? latitude,
       String? longitude,
@@ -139,15 +139,15 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
       orderDate: freezed == orderDate
           ? _value.orderDate
           : orderDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
       bookedDate: freezed == bookedDate
           ? _value.bookedDate
           : bookedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
       completedDate: freezed == completedDate
           ? _value.completedDate
           : completedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
       address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -266,9 +266,9 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       String? notes,
       int? serviceFee,
       int? deliveryFee,
-      DateTime? orderDate,
-      DateTime? bookedDate,
-      DateTime? completedDate,
+      String? orderDate,
+      String? bookedDate,
+      String? completedDate,
       String? address,
       String? latitude,
       String? longitude,
@@ -351,15 +351,15 @@ class __$$OrderImplCopyWithImpl<$Res>
       orderDate: freezed == orderDate
           ? _value.orderDate
           : orderDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
       bookedDate: freezed == bookedDate
           ? _value.bookedDate
           : bookedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
       completedDate: freezed == completedDate
           ? _value.completedDate
           : completedDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
       address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -445,11 +445,11 @@ class _$OrderImpl implements _Order {
   @override
   final int? deliveryFee;
   @override
-  final DateTime? orderDate;
+  final String? orderDate;
   @override
-  final DateTime? bookedDate;
+  final String? bookedDate;
   @override
-  final DateTime? completedDate;
+  final String? completedDate;
   @override
   final String? address;
   @override
@@ -566,9 +566,9 @@ abstract class _Order implements Order {
       final String? notes,
       final int? serviceFee,
       final int? deliveryFee,
-      final DateTime? orderDate,
-      final DateTime? bookedDate,
-      final DateTime? completedDate,
+      final String? orderDate,
+      final String? bookedDate,
+      final String? completedDate,
       final String? address,
       final String? latitude,
       final String? longitude,
@@ -595,11 +595,11 @@ abstract class _Order implements Order {
   @override
   int? get deliveryFee;
   @override
-  DateTime? get orderDate;
+  String? get orderDate;
   @override
-  DateTime? get bookedDate;
+  String? get bookedDate;
   @override
-  DateTime? get completedDate;
+  String? get completedDate;
   @override
   String? get address;
   @override

@@ -29,6 +29,12 @@ class _DashboardPageState extends State<DashboardPage> {
     'Mengenal Tanda-Tanda Kerusakan pada Kendaraan Bermotor dan Cara Mengatasinya'
   ];
 
+  final List<String> artikeImage = const [
+    'https://carmudi-journal.icarcdn.com/carmudi-id/wp-content/uploads/2022/02/03194542/Servis-motor-rutin.jpg',
+    'https://gpsku.co.id/wp-content/uploads/2021/12/cara-merawat-motor-yang-benar-injeksi.png',
+    'https://www.kliknss.co.id/images/d23045e3cd928575df79ce063ff25503.jpg'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -262,8 +268,21 @@ class _DashboardPageState extends State<DashboardPage> {
                               width: 240,
                               margin: const EdgeInsets.only(right: 12),
                               decoration: BoxDecoration(
-                                color: blueColor,
-                                borderRadius: BorderRadius.circular(8),
+                                color: whiteColor,
+                                borderRadius: BorderRadius.circular(12),
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: Colors.black26,
+                                    offset: Offset(0, 0.5),
+                                  ),
+                                ],
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.network(
+                                  artikeImage[index],
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                             verticalSpace(4),
@@ -289,6 +308,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 ],
               ),
             ),
+            verticalSpace(8),
           ],
         ),
       ),

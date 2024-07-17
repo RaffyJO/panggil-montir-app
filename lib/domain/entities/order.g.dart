@@ -13,15 +13,9 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
       notes: json['notes'] as String?,
       serviceFee: (json['serviceFee'] as num?)?.toInt(),
       deliveryFee: (json['deliveryFee'] as num?)?.toInt(),
-      orderDate: json['orderDate'] == null
-          ? null
-          : DateTime.parse(json['orderDate'] as String),
-      bookedDate: json['bookedDate'] == null
-          ? null
-          : DateTime.parse(json['bookedDate'] as String),
-      completedDate: json['completedDate'] == null
-          ? null
-          : DateTime.parse(json['completedDate'] as String),
+      orderDate: json['orderDate'] as String?,
+      bookedDate: json['bookedDate'] as String?,
+      completedDate: json['completedDate'] as String?,
       address: json['address'] as String?,
       latitude: json['latitude'] as String?,
       longitude: json['longitude'] as String?,
@@ -55,9 +49,9 @@ Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
       'notes': instance.notes,
       'serviceFee': instance.serviceFee,
       'deliveryFee': instance.deliveryFee,
-      'orderDate': instance.orderDate?.toIso8601String(),
-      'bookedDate': instance.bookedDate?.toIso8601String(),
-      'completedDate': instance.completedDate?.toIso8601String(),
+      'orderDate': instance.orderDate,
+      'bookedDate': instance.bookedDate,
+      'completedDate': instance.completedDate,
       'address': instance.address,
       'latitude': instance.latitude,
       'longitude': instance.longitude,

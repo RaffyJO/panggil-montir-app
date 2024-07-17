@@ -2,18 +2,21 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:panggil_montir_app/data/datasources/local_datasources/auth_local_datasources.dart';
 import 'package:panggil_montir_app/data/datasources/remote_datasources/address_remote_datasource.dart';
 import 'package:panggil_montir_app/data/datasources/remote_datasources/auth_remote_datasource.dart';
 import 'package:panggil_montir_app/data/datasources/remote_datasources/garage_remote_datasource.dart';
 import 'package:panggil_montir_app/data/datasources/remote_datasources/motorcycle_remote_datasource.dart';
 import 'package:panggil_montir_app/data/datasources/remote_datasources/panggil_servis/order_remote_datasource.dart';
+import 'package:panggil_montir_app/data/datasources/remote_datasources/transaction_remote_datasource.dart';
 import 'package:panggil_montir_app/firebase_options.dart';
 import 'package:panggil_montir_app/presentation/blocs/address/address_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/auth/auth_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/garage/garage_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/motorcycle/motorcycle_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/order_servis/order_servis_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/transaction/transaction_bloc.dart';
 import 'package:panggil_montir_app/presentation/pages/address/address_page.dart';
 import 'package:panggil_montir_app/presentation/pages/auth/login_page.dart';
 import 'package:panggil_montir_app/presentation/pages/auth/register_page.dart';
@@ -26,6 +29,7 @@ import 'package:panggil_montir_app/presentation/pages/splash_page.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await findSystemLocale();
+  await initializeDateFormatting('id_ID', null);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -61,6 +65,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => OrderServisBloc(OrderServisRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => TransactionBloc(TransactionRemoteDatasource())
+            ..add(const TransactionEvent.getTransactions()),
         ),
       ],
       child: MaterialApp(
