@@ -10,20 +10,27 @@ class CustomTextField extends StatelessWidget {
   final TextInputType? textInputType;
   final bool isShowTitle;
   final bool isPhoneNumber;
+  final bool isBorder;
+  final bool autoFocus;
+  final bool inputActionNone;
   final Function(String)? onFieldSubmitted;
   final Function(String)? onFieldChanged;
 
-  const CustomTextField(
-      {super.key,
-      required this.title,
-      this.obscureText = false,
-      this.controller,
-      this.textInputType,
-      this.hintText = '',
-      this.isShowTitle = true,
-      this.isPhoneNumber = false,
-      this.onFieldSubmitted,
-      this.onFieldChanged});
+  const CustomTextField({
+    super.key,
+    required this.title,
+    this.obscureText = false,
+    this.controller,
+    this.textInputType,
+    this.hintText = '',
+    this.isShowTitle = true,
+    this.isPhoneNumber = false,
+    this.isBorder = true,
+    this.autoFocus = false,
+    this.inputActionNone = false,
+    this.onFieldSubmitted,
+    this.onFieldChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -53,20 +60,38 @@ class CustomTextField extends StatelessWidget {
             height: 8,
           ),
         TextFormField(
+          textInputAction:
+              (inputActionNone) ? TextInputAction.none : TextInputAction.done,
+          autofocus: autoFocus,
           obscureText: obscureText,
           controller: controller,
           keyboardType: textInputType,
           decoration: InputDecoration(
             hintText: hintText,
-            contentPadding: const EdgeInsets.all(12),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: orangeColor),
-            ),
-            prefixIcon: isPhoneNumber == true
+            hintStyle: greyTextStyle.copyWith(fontWeight: semiBold),
+            contentPadding: const EdgeInsets.all(8),
+            border: isBorder
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  )
+                : InputBorder.none,
+            enabledBorder: isBorder
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                  )
+                : UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                  ),
+            focusedBorder: isBorder
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: orangeColor),
+                  )
+                : UnderlineInputBorder(
+                    borderSide: BorderSide(color: orangeColor),
+                  ),
+            prefixIcon: isPhoneNumber
                 ? Container(
                     padding: const EdgeInsets.fromLTRB(12, 13, 8, 10),
                     child: Text(

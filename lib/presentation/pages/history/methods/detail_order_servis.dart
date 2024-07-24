@@ -11,12 +11,13 @@ class DetailOrderServis extends StatelessWidget {
       backgroundColor: whiteColor,
       appBar: AppBar(
         backgroundColor: whiteColor,
-        toolbarHeight: 120,
+        toolbarHeight: 124,
         automaticallyImplyLeading: false,
         title: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            verticalSpace(4),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -116,7 +117,7 @@ class DetailOrderServis extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Kasih Bintang Dulu Yuk Ke Montir',
+                    'Kasih Bintang Dulu Yuk Ke Bengkel',
                     style: blackTextStyle.copyWith(
                       fontWeight: semiBold,
                       fontSize: 16,
@@ -274,25 +275,31 @@ class DetailOrderServis extends StatelessWidget {
                         ),
                       ),
                       horizontalSpace(12),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Alamat Bengkel',
-                            style: blackTextStyle.copyWith(
-                              fontSize: 12,
-                            ),
+                      Expanded(
+                        child: Container(
+                          color: whiteColor,
+                          width: double.infinity,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Alamat Bengkel',
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Text(
+                                'Bengkel TK Motor Bekasi Utara Teluk Pucung',
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: semiBold,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            ],
                           ),
-                          Text(
-                            'Bengkel TK Motor Bekasi Utara Teluk Pucung',
-                            style: blackTextStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: semiBold,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          ),
-                        ],
+                        ),
                       ),
                     ],
                   ),
@@ -313,29 +320,49 @@ class DetailOrderServis extends StatelessWidget {
                         ),
                       ),
                       horizontalSpace(12),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Alamat Servis',
-                            style: blackTextStyle.copyWith(
-                              fontSize: 12,
-                            ),
+                      Expanded(
+                        child: Container(
+                          color: whiteColor,
+                          width: double.infinity,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Alamat Servis',
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Text(
+                                'Jl. Borobudur Agung Tim. VII No.35, Mojolangu, Kec. Lowokwaru, Kota Malang, Jawa Timur 65142',
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: semiBold,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            ],
                           ),
-                          Text(
-                            'Jl. Borobudur Agung Tim. VII No.35, Mojolangu, Kec. Lowokwaru, Kota Malang, Jawa Timur 65142',
-                            style: blackTextStyle.copyWith(
-                              fontSize: 15,
-                              fontWeight: semiBold,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          ),
-                        ],
+                        ),
                       ),
                     ],
                   ),
                 ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              width: double.infinity,
+              height: 480,
+              decoration: BoxDecoration(
+                color: whiteColor,
+                border: const Border(
+                  bottom: BorderSide(
+                    color: Colors.grey,
+                    width: 0.5,
+                  ),
+                ),
               ),
             ),
           ],

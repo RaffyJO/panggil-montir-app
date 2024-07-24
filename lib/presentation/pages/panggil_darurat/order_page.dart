@@ -131,6 +131,7 @@ class _OrderPageState extends State<OrderPage> {
     );
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      backgroundColor: whiteColor,
       body: Stack(
         children: [
           SizedBox(

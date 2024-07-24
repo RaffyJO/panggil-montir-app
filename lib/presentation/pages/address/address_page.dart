@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/address/address_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
+import 'package:panggil_montir_app/presentation/pages/address/address_add_page.dart';
 import 'package:panggil_montir_app/presentation/pages/address/methods/address_delete_item.dart';
 import 'package:panggil_montir_app/presentation/pages/address/methods/address_item.dart';
 
@@ -19,7 +20,12 @@ class _AddressPageState extends State<AddressPage> {
     return BlocConsumer<AddressBloc, AddressState>(
       listener: (context, state) {
         state.maybeWhen(
-          orElse: () => const Scaffold(body: Center(child: Text('No data'))),
+          orElse: () => Scaffold(
+            backgroundColor: whiteColor,
+            body: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
           failure: (message) => ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(message),
@@ -30,9 +36,18 @@ class _AddressPageState extends State<AddressPage> {
       },
       builder: (context, state) {
         return state.maybeWhen(
-          orElse: () => const Scaffold(body: Center(child: Text('No data'))),
-          loading: () =>
-              const Scaffold(body: Center(child: CircularProgressIndicator())),
+          orElse: () => Scaffold(
+            backgroundColor: whiteColor,
+            body: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
+          loading: () => Scaffold(
+            backgroundColor: whiteColor,
+            body: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
           successList: (data) => Scaffold(
             backgroundColor: whiteColor,
             appBar: AppBar(
@@ -48,7 +63,14 @@ class _AddressPageState extends State<AddressPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AddressAddPage(),
+                        ),
+                      );
+                    },
                     child: Text(
                       'Tambah baru',
                       style: blueTextStyle.copyWith(
