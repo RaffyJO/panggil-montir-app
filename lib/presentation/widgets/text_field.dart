@@ -68,7 +68,10 @@ class CustomTextField extends StatelessWidget {
           keyboardType: textInputType,
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: greyTextStyle.copyWith(fontWeight: semiBold),
+            hintStyle: greyTextStyle.copyWith(
+              fontWeight: semiBold,
+              fontSize: 14,
+            ),
             contentPadding: const EdgeInsets.all(8),
             border: isBorder
                 ? OutlineInputBorder(

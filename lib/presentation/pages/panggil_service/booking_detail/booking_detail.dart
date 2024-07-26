@@ -44,6 +44,13 @@ class _BookingDetailState extends State<BookingDetail> {
   }
 
   @override
+  void dispose() {
+    detailIssueController.dispose();
+    notesController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<OrderServisBloc, OrderServisState>(
       listener: (context, state) {

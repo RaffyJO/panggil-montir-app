@@ -73,7 +73,7 @@ class _AddressPageState extends State<AddressPage> {
                     },
                     child: Text(
                       'Tambah baru',
-                      style: blueTextStyle.copyWith(
+                      style: blackTextStyle.copyWith(
                         fontWeight: semiBold,
                       ),
                     ),
@@ -89,6 +89,7 @@ class _AddressPageState extends State<AddressPage> {
                   return addressItem(
                     data[index].title!,
                     data[index].description!,
+                    data[index].isSelected!,
                     notes: data[index].notes,
                     onTapEdit: () {},
                     onTapDelete: () {

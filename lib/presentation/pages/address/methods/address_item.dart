@@ -2,36 +2,55 @@ import 'package:flutter/material.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 
-Widget addressItem(String title, String description,
+Widget addressItem(String title, String description, int isSelected,
         {String? notes, VoidCallback? onTapEdit, VoidCallback? onTapDelete}) =>
     Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: Container(
         height: notes != null ? 130 : 102,
         width: double.infinity,
-        decoration: BoxDecoration(
-          color: whiteColor,
-          shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: Colors.grey[400]!,
-            width: 1,
-          ),
-        ),
+        decoration: (isSelected == 0)
+            ? BoxDecoration(
+                color: whiteColor,
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: Colors.grey[400]!,
+                  width: 1,
+                ),
+              )
+            : BoxDecoration(
+                color: whiteColor,
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: orangeColor,
+                  width: 1,
+                ),
+              ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               width: double.infinity,
               height: 44,
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                shape: BoxShape.rectangle,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(12),
-                ),
-              ),
+              decoration: (isSelected == 0)
+                  ? BoxDecoration(
+                      color: Colors.grey[300],
+                      shape: BoxShape.rectangle,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        topRight: Radius.circular(12),
+                      ),
+                    )
+                  : BoxDecoration(
+                      color: orangeColor,
+                      shape: BoxShape.rectangle,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        topRight: Radius.circular(12),
+                      ),
+                    ),
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

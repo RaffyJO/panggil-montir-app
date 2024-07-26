@@ -14,6 +14,14 @@ class HistoryPage extends StatefulWidget {
 
 class _HistoryPageState extends State<HistoryPage> {
   @override
+  void initState() {
+    context
+        .read<TransactionBloc>()
+        .add(const TransactionEvent.getTransactions());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,

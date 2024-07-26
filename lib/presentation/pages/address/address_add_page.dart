@@ -394,12 +394,6 @@ class _AddressAddPageState extends State<AddressAddPage> {
                         child: BlocConsumer<AddressBloc, AddressState>(
                           listener: (context, state) {
                             state.maybeWhen(
-                              successList: (data) {
-                                context.read<AddressBloc>().add(
-                                      const AddressEvent.getListAddress(),
-                                    );
-                                // Navigator.pop(context);
-                              },
                               failure: (message) =>
                                   ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -416,7 +410,7 @@ class _AddressAddPageState extends State<AddressAddPage> {
                                 height: 42,
                                 width: double.infinity,
                                 child: ElevatedButton(
-                                  onPressed: () {
+                                  onPressed: () async {
                                     context.read<AddressBloc>().add(
                                           AddressEvent.addAddress(
                                             AddressCreateModel(
@@ -428,6 +422,10 @@ class _AddressAddPageState extends State<AddressAddPage> {
                                             ),
                                           ),
                                         );
+                                    context.read<AddressBloc>().add(
+                                          const AddressEvent.getListAddress(),
+                                        );
+                                    Navigator.pop(context);
                                   },
                                   style: ElevatedButton.styleFrom(
                                     foregroundColor: whiteColor,
