@@ -127,6 +127,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       border: Border.all(),
                     ),
                     child: const TextField(
+                      readOnly: true,
                       style: TextStyle(color: Colors.black),
                       decoration: InputDecoration(
                         hintText: 'Layanan servis apa yang anda cari...',

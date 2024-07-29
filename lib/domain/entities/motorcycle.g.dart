@@ -10,10 +10,19 @@ _$MotorcycleImpl _$$MotorcycleImplFromJson(Map<String, dynamic> json) =>
     _$MotorcycleImpl(
       id: (json['id'] as num?)?.toInt(),
       licensePlate: json['licensePlate'] as String?,
-      brand: json['brand'] as String?,
-      type: json['type'] as String?,
-      variant: json['variant'] as String?,
-      productionYear: json['productionYear'] as String?,
+      brand: json['brand'] == null
+          ? null
+          : Brand.fromJson(json['brand'] as Map<String, dynamic>),
+      type: json['type'] == null
+          ? null
+          : Tipe.fromJson(json['type'] as Map<String, dynamic>),
+      variant: json['variant'] == null
+          ? null
+          : Variant.fromJson(json['variant'] as Map<String, dynamic>),
+      productionYear: json['productionYear'] == null
+          ? null
+          : ProductionYear.fromJson(
+              json['productionYear'] as Map<String, dynamic>),
       isSelected: (json['isSelected'] as num?)?.toInt(),
     );
 

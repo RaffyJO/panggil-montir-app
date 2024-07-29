@@ -124,7 +124,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                 data[index].status != 'ongoing') {
                               return HistoryItem(order: data[index]);
                             }
-                            return null;
+                            return Container();
                           },
                         ),
                       );
@@ -193,7 +193,7 @@ class _HistoryPageState extends State<HistoryPage> {
                               data[index].status != 'completed') {
                             return HistoryItem(order: data[index]);
                           }
-                          return null;
+                          return Container();
                         },
                       );
                     }

@@ -25,4 +25,25 @@ class MotorcycleRemoteDatasource {
       return Left(response.body);
     }
   }
+
+  Future<Either<String, List<Motorcycle>>> getListMotorcycle() async {
+    final authDataModel = await AuthLocalDataSource().getAuthData();
+    final url = Uri.parse('$baseUrl/api/user/get-list-motorcycles');
+    final response = await http.get(url, headers: {
+      'Authorization': 'Bearer ${authDataModel?.token}',
+      'Content-Type': 'application/json',
+    });
+
+    if (response.statusCode == 200) {
+      return Right(
+        List<Motorcycle>.from(
+          jsonDecode(response.body)['data'].map(
+            (motorcycle) => Motorcycle.fromJson(motorcycle),
+          ),
+        ).toList(),
+      );
+    } else {
+      return Left(response.body);
+    }
+  }
 }

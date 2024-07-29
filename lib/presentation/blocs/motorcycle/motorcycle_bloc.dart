@@ -21,5 +21,15 @@ class MotorcycleBloc extends Bloc<MotorcycleEvent, MotorcycleState> {
         (r) => emit(_Success(r)),
       );
     });
+
+    // Get list motorcycle
+    on<_GetListMotorcycle>((event, emit) async {
+      emit(const _Loading());
+      final response = await _motorcycleRemoteDatasource.getListMotorcycle();
+      response.fold(
+        (l) => emit(_Failure(l)),
+        (r) => emit(_SuccessList(r)),
+      );
+    });
   }
 }

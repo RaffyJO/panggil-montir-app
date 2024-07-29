@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/address/address_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/auth/auth_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/motorcycle/motorcycle_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/profile/methods/profile_item.dart';
@@ -104,11 +105,11 @@ class _ProfilePageState extends State<ProfilePage> {
                         Icons.motorcycle_outlined,
                         size: 28,
                       ),
-                      onTap: () async {
-                        if (await Navigator.pushNamed(context, '/pin') ==
-                            true) {
-                          Navigator.pushNamed(context, '/profile-edit-pin');
-                        }
+                      onTap: () {
+                        context
+                            .read<MotorcycleBloc>()
+                            .add(const MotorcycleEvent.getListMotorcycle());
+                        Navigator.pushNamed(context, '/garasi');
                       },
                     ),
                     verticalSpace(5),

@@ -6,4 +6,6 @@ class MotorcycleState with _$MotorcycleState {
   const factory MotorcycleState.loading() = _Loading;
   const factory MotorcycleState.failure(String message) = _Failure;
   const factory MotorcycleState.success(Motorcycle motorcycle) = _Success;
+  const factory MotorcycleState.successList(List<Motorcycle> motorcycles) =
+      _SuccessList;
 }

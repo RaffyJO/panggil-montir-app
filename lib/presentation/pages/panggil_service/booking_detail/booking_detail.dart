@@ -303,12 +303,10 @@ class _BookingDetailState extends State<BookingDetail> {
                             labelText: 'Tanggal & Waktu',
                             fillColor: blueColor,
                           ),
-                          firstDate:
-                              DateTime.now().add(const Duration(days: 10)),
+                          firstDate: DateTime.now(),
                           lastDate:
-                              DateTime.now().add(const Duration(days: 40)),
-                          initialPickerDateTime:
-                              DateTime.now().add(const Duration(days: 20)),
+                              DateTime.now().add(const Duration(days: 30)),
+                          initialPickerDateTime: DateTime.now(),
                           onChanged: (DateTime? value) {
                             setState(() {
                               selectedDate = value;

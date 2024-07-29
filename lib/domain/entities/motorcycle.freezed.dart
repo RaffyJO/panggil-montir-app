@@ -22,10 +22,10 @@ Motorcycle _$MotorcycleFromJson(Map<String, dynamic> json) {
 mixin _$Motorcycle {
   int? get id => throw _privateConstructorUsedError;
   String? get licensePlate => throw _privateConstructorUsedError;
-  String? get brand => throw _privateConstructorUsedError;
-  String? get type => throw _privateConstructorUsedError;
-  String? get variant => throw _privateConstructorUsedError;
-  String? get productionYear => throw _privateConstructorUsedError;
+  Brand? get brand => throw _privateConstructorUsedError;
+  Tipe? get type => throw _privateConstructorUsedError;
+  Variant? get variant => throw _privateConstructorUsedError;
+  ProductionYear? get productionYear => throw _privateConstructorUsedError;
   int? get isSelected => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,11 +43,16 @@ abstract class $MotorcycleCopyWith<$Res> {
   $Res call(
       {int? id,
       String? licensePlate,
-      String? brand,
-      String? type,
-      String? variant,
-      String? productionYear,
+      Brand? brand,
+      Tipe? type,
+      Variant? variant,
+      ProductionYear? productionYear,
       int? isSelected});
+
+  $BrandCopyWith<$Res>? get brand;
+  $TipeCopyWith<$Res>? get type;
+  $VariantCopyWith<$Res>? get variant;
+  $ProductionYearCopyWith<$Res>? get productionYear;
 }
 
 /// @nodoc
@@ -83,24 +88,72 @@ class _$MotorcycleCopyWithImpl<$Res, $Val extends Motorcycle>
       brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Brand?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Tipe?,
       variant: freezed == variant
           ? _value.variant
           : variant // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Variant?,
       productionYear: freezed == productionYear
           ? _value.productionYear
           : productionYear // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ProductionYear?,
       isSelected: freezed == isSelected
           ? _value.isSelected
           : isSelected // ignore: cast_nullable_to_non_nullable
               as int?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BrandCopyWith<$Res>? get brand {
+    if (_value.brand == null) {
+      return null;
+    }
+
+    return $BrandCopyWith<$Res>(_value.brand!, (value) {
+      return _then(_value.copyWith(brand: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TipeCopyWith<$Res>? get type {
+    if (_value.type == null) {
+      return null;
+    }
+
+    return $TipeCopyWith<$Res>(_value.type!, (value) {
+      return _then(_value.copyWith(type: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $VariantCopyWith<$Res>? get variant {
+    if (_value.variant == null) {
+      return null;
+    }
+
+    return $VariantCopyWith<$Res>(_value.variant!, (value) {
+      return _then(_value.copyWith(variant: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductionYearCopyWith<$Res>? get productionYear {
+    if (_value.productionYear == null) {
+      return null;
+    }
+
+    return $ProductionYearCopyWith<$Res>(_value.productionYear!, (value) {
+      return _then(_value.copyWith(productionYear: value) as $Val);
+    });
   }
 }
 
@@ -115,11 +168,20 @@ abstract class _$$MotorcycleImplCopyWith<$Res>
   $Res call(
       {int? id,
       String? licensePlate,
-      String? brand,
-      String? type,
-      String? variant,
-      String? productionYear,
+      Brand? brand,
+      Tipe? type,
+      Variant? variant,
+      ProductionYear? productionYear,
       int? isSelected});
+
+  @override
+  $BrandCopyWith<$Res>? get brand;
+  @override
+  $TipeCopyWith<$Res>? get type;
+  @override
+  $VariantCopyWith<$Res>? get variant;
+  @override
+  $ProductionYearCopyWith<$Res>? get productionYear;
 }
 
 /// @nodoc
@@ -153,19 +215,19 @@ class __$$MotorcycleImplCopyWithImpl<$Res>
       brand: freezed == brand
           ? _value.brand
           : brand // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Brand?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Tipe?,
       variant: freezed == variant
           ? _value.variant
           : variant // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Variant?,
       productionYear: freezed == productionYear
           ? _value.productionYear
           : productionYear // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ProductionYear?,
       isSelected: freezed == isSelected
           ? _value.isSelected
           : isSelected // ignore: cast_nullable_to_non_nullable
@@ -194,13 +256,13 @@ class _$MotorcycleImpl implements _Motorcycle {
   @override
   final String? licensePlate;
   @override
-  final String? brand;
+  final Brand? brand;
   @override
-  final String? type;
+  final Tipe? type;
   @override
-  final String? variant;
+  final Variant? variant;
   @override
-  final String? productionYear;
+  final ProductionYear? productionYear;
   @override
   final int? isSelected;
 
@@ -249,10 +311,10 @@ abstract class _Motorcycle implements Motorcycle {
   const factory _Motorcycle(
       {final int? id,
       final String? licensePlate,
-      final String? brand,
-      final String? type,
-      final String? variant,
-      final String? productionYear,
+      final Brand? brand,
+      final Tipe? type,
+      final Variant? variant,
+      final ProductionYear? productionYear,
       final int? isSelected}) = _$MotorcycleImpl;
 
   factory _Motorcycle.fromJson(Map<String, dynamic> json) =
@@ -263,13 +325,13 @@ abstract class _Motorcycle implements Motorcycle {
   @override
   String? get licensePlate;
   @override
-  String? get brand;
+  Brand? get brand;
   @override
-  String? get type;
+  Tipe? get type;
   @override
-  String? get variant;
+  Variant? get variant;
   @override
-  String? get productionYear;
+  ProductionYear? get productionYear;
   @override
   int? get isSelected;
   @override

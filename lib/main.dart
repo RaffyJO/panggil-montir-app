@@ -21,6 +21,7 @@ import 'package:panggil_montir_app/presentation/pages/address/address_page.dart'
 import 'package:panggil_montir_app/presentation/pages/auth/login_page.dart';
 import 'package:panggil_montir_app/presentation/pages/auth/register_page.dart';
 import 'package:panggil_montir_app/presentation/pages/dashboard/dashboard_page.dart';
+import 'package:panggil_montir_app/presentation/pages/garasi/garasi_page.dart';
 import 'package:panggil_montir_app/presentation/pages/main_page.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_service/panggil_service_success_page.dart';
 import 'package:panggil_montir_app/presentation/pages/profile/profile_page.dart';
@@ -61,7 +62,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => MotorcycleBloc(MotorcycleRemoteDatasource())
-            ..add(const MotorcycleEvent.getCurentMotorcycle()),
+            ..add(const MotorcycleEvent.getListMotorcycle()),
         ),
         BlocProvider(
           create: (context) => OrderServisBloc(OrderServisRemoteDatasource()),
@@ -104,6 +105,7 @@ class MyApp extends StatelessWidget {
           '/home': (context) => const MainPage(),
           '/profile': (context) => const ProfilePage(),
           '/address': (context) => const AddressPage(),
+          '/garasi': (context) => const GarasiPage()
           // '/upcoming': (context) => const UpcomingPage(),
         },
       ),
