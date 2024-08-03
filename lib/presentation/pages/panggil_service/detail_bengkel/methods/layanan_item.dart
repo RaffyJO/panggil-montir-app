@@ -43,7 +43,7 @@ Widget layananItem(String title, String description, String price,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Mulai dari",
+                    "Harga",
                     style: greyTextStyle,
                   ),
                   Text(

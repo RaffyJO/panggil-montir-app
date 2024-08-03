@@ -126,8 +126,37 @@ class LoginPage extends StatelessWidget {
                         );
                       },
                       loading: () {
-                        return const Center(
-                          child: CircularProgressIndicator(),
+                        return SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (validateEmailPassword()) {
+                                context.read<AuthBloc>().add(
+                                      AuthEvent.login(
+                                        emailController.text,
+                                        passwordController.text,
+                                      ),
+                                    );
+                              } else {
+                                showCustomSnackbar(
+                                  context,
+                                  "Email dan Password tidak boleh kosong",
+                                );
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: whiteColor,
+                              backgroundColor: orangeColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            child: Text(
+                              'Masuk',
+                              style: blackTextStyle.copyWith(
+                                  fontSize: 14, fontWeight: semiBold),
+                            ),
+                          ),
                         );
                       },
                     );

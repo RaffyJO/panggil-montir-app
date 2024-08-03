@@ -7,7 +7,7 @@ Widget addressItem(String title, String description, int isSelected,
     Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: Container(
-        height: notes != null ? 130 : 102,
+        height: notes != null ? 170 : 146,
         width: double.infinity,
         decoration: (isSelected == 0)
             ? BoxDecoration(
@@ -166,6 +166,52 @@ Widget addressItem(String title, String description, int isSelected,
                 ],
               ),
             ),
+            verticalSpace(2),
+            (isSelected == 0)
+                ? Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    height: 32,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: whiteColor,
+                        backgroundColor: orangeColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Text(
+                        'Pilih Alamat',
+                        style: blackTextStyle.copyWith(
+                          fontSize: 14,
+                          fontWeight: semiBold,
+                        ),
+                      ),
+                    ),
+                  )
+                : Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    height: 32,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: null,
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: whiteColor,
+                        backgroundColor: Colors.grey[300],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Text(
+                        'Dipilih',
+                        style: greyTextStyle.copyWith(
+                          fontSize: 14,
+                          fontWeight: semiBold,
+                        ),
+                      ),
+                    ),
+                  ),
           ],
         ),
       ),

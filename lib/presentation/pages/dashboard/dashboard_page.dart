@@ -96,8 +96,23 @@ class _DashboardPageState extends State<DashboardPage> {
                           );
                         },
                       ),
-                      Column(
+                      Row(
                         children: [
+                          Container(
+                            width: 36,
+                            height: 36,
+                            decoration: BoxDecoration(
+                              color: Colors.white12,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            child: Icon(
+                              Icons.shopping_cart,
+                              color: whiteColor,
+                              size: 24,
+                            ),
+                          ),
+                          horizontalSpace(8),
                           Container(
                             width: 36,
                             height: 36,
