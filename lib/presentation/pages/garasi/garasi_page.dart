@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/motorcycle/motorcycle_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/tipe/tipe_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/variant/variant_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/pages/garasi/garasi_add_page.dart';
 import 'package:panggil_montir_app/presentation/pages/garasi/methods/motorcycle_item.dart';
@@ -62,6 +64,10 @@ class _GarasiPageState extends State<GarasiPage> {
                   margin: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: GestureDetector(
                     onTap: () {
+                      context.read<TipeBloc>().add(const TipeEvent.started());
+                      context
+                          .read<VariantBloc>()
+                          .add(const VariantEvent.started());
                       Navigator.push(
                         context,
                         MaterialPageRoute(

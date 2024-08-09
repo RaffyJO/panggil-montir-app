@@ -8,11 +8,14 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final TextEditingController? controller;
   final TextInputType? textInputType;
+  final int? maxLength;
   final bool isShowTitle;
   final bool isPhoneNumber;
   final bool isBorder;
   final bool autoFocus;
   final bool inputActionNone;
+  final bool isTextCenter;
+  final bool isTextUpperCase;
   final Function(String)? onFieldSubmitted;
   final Function(String)? onFieldChanged;
 
@@ -23,11 +26,14 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     this.textInputType,
     this.hintText = '',
+    this.maxLength,
     this.isShowTitle = true,
     this.isPhoneNumber = false,
     this.isBorder = true,
     this.autoFocus = false,
     this.inputActionNone = false,
+    this.isTextCenter = false,
+    this.isTextUpperCase = false,
     this.onFieldSubmitted,
     this.onFieldChanged,
   });
@@ -60,9 +66,18 @@ class CustomTextField extends StatelessWidget {
             height: 8,
           ),
         TextFormField(
+          maxLength: maxLength,
+          buildCounter: (BuildContext context,
+              {int? currentLength, int? maxLength, bool? isFocused}) {
+            return null; // Menyembunyikan indikator panjang teks
+          },
           textInputAction:
               (inputActionNone) ? TextInputAction.none : TextInputAction.done,
           autofocus: autoFocus,
+          textAlign: (isTextCenter) ? TextAlign.center : TextAlign.start,
+          textCapitalization: (isTextUpperCase)
+              ? TextCapitalization.characters
+              : TextCapitalization.none,
           obscureText: obscureText,
           controller: controller,
           keyboardType: textInputType,

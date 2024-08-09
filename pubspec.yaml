@@ -61,6 +61,7 @@ dependencies:
   google_maps_flutter: ^2.2.8
   location: ^6.0.2
   geocoding: ^3.0.0
+  dropdown_button2: ^2.3.9
 
 dev_dependencies:
   flutter_test:

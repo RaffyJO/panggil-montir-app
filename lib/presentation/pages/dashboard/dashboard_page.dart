@@ -324,7 +324,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 ],
               ),
             ),
-            verticalSpace(8),
+            verticalSpace(12),
           ],
         ),
       ),

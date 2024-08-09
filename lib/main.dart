@@ -13,10 +13,14 @@ import 'package:panggil_montir_app/data/datasources/remote_datasources/transacti
 import 'package:panggil_montir_app/firebase_options.dart';
 import 'package:panggil_montir_app/presentation/blocs/address/address_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/auth/auth_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/brand/brand_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/garage/garage_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/motorcycle/motorcycle_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/order_servis/order_servis_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/production_year/production_year_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/tipe/tipe_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/transaction/transaction_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/variant/variant_bloc.dart';
 import 'package:panggil_montir_app/presentation/pages/address/address_page.dart';
 import 'package:panggil_montir_app/presentation/pages/auth/login_page.dart';
 import 'package:panggil_montir_app/presentation/pages/auth/register_page.dart';
@@ -70,6 +74,20 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => TransactionBloc(TransactionRemoteDatasource())
             ..add(const TransactionEvent.getTransactions()),
+        ),
+        BlocProvider(
+          create: (context) => BrandBloc(MotorcycleRemoteDatasource())
+            ..add(const BrandEvent.getListBrands()),
+        ),
+        BlocProvider(
+          create: (context) => TipeBloc(MotorcycleRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => VariantBloc(MotorcycleRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => ProductionYearBloc(MotorcycleRemoteDatasource())
+            ..add(const ProductionYearEvent.getListProductionYears()),
         ),
       ],
       child: MaterialApp(
