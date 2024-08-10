@@ -69,7 +69,7 @@ Widget userServices(BuildContext context) {
       ),
       GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, '/upcoming');
+          showCustomSnackbar(context, 'Coming soon');
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -91,8 +91,7 @@ Widget userServices(BuildContext context) {
       ),
       GestureDetector(
         onTap: () {
-          // showDialog(
-          //     context: context, builder: (context) => const MoreDialog());
+          showCustomSnackbar(context, 'Coming soon');
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

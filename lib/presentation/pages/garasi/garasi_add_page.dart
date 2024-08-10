@@ -428,7 +428,7 @@ class _GarasiAddPageState extends State<GarasiAddPage> {
                       backgroundColor: Colors.red,
                     ),
                   ),
-                  success: (motorcycle) {
+                  successList: (motorcycle) {
                     Navigator.pop(context);
                   },
                   orElse: () {},
@@ -458,9 +458,6 @@ class _GarasiAddPageState extends State<GarasiAddPage> {
                                     productionYearId: selectedProductionYear,
                                   ),
                                 ),
-                              );
-                          context.read<MotorcycleBloc>().add(
-                                const MotorcycleEvent.getListMotorcycle(),
                               );
                         } else {
                           showCustomSnackbar(

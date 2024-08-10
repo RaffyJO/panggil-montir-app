@@ -77,11 +77,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         Icons.calendar_month_outlined,
                         size: 28,
                       ),
-                      onTap: () async {
-                        if (await Navigator.pushNamed(context, '/pin') ==
-                            true) {
-                          Navigator.pushNamed(context, '/profile-edit-pin');
-                        }
+                      onTap: () {
+                        showCustomSnackbar(context, 'Coming soon');
                       },
                     ),
                     verticalSpace(5),
@@ -120,7 +117,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         size: 28,
                       ),
                       onTap: () {
-                        Navigator.pushNamed(context, '/upcoming');
+                        showCustomSnackbar(context, 'Coming soon');
                       },
                     ),
                     verticalSpace(5),
@@ -131,18 +128,21 @@ class _ProfilePageState extends State<ProfilePage> {
                         size: 28,
                       ),
                       onTap: () {
-                        Navigator.pushNamed(context, '/upcoming');
+                        showCustomSnackbar(context, 'Coming soon');
                       },
                     ),
                     verticalSpace(5),
                     profileItem(
-                        'Ajak teman, dapet point',
-                        const Icon(
-                          Icons.people_outlined,
-                          size: 28,
-                        ), onTap: () {
-                      Navigator.pushNamed(context, '/upcoming');
-                    }, isDivider: false),
+                      'Ajak teman, dapet point',
+                      const Icon(
+                        Icons.people_outlined,
+                        size: 28,
+                      ),
+                      onTap: () {
+                        showCustomSnackbar(context, 'Coming soon');
+                      },
+                      isDivider: false,
+                    ),
                   ],
                 ),
               ),
@@ -174,18 +174,21 @@ class _ProfilePageState extends State<ProfilePage> {
                         size: 28,
                       ),
                       onTap: () {
-                        Navigator.pushNamed(context, '/upcoming');
+                        showCustomSnackbar(context, 'Coming soon');
                       },
                     ),
                     verticalSpace(5),
                     profileItem(
-                        'Ketentuan & privasi',
-                        const Icon(
-                          Icons.info_outline_rounded,
-                          size: 28,
-                        ), onTap: () {
-                      Navigator.pushNamed(context, '/upcoming');
-                    }, isDivider: false),
+                      'Ketentuan & privasi',
+                      const Icon(
+                        Icons.info_outline_rounded,
+                        size: 28,
+                      ),
+                      onTap: () {
+                        showCustomSnackbar(context, 'Coming soon');
+                      },
+                      isDivider: false,
+                    ),
                   ],
                 ),
               ),

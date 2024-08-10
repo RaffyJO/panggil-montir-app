@@ -35,21 +35,24 @@ class MotorcycleBloc extends Bloc<MotorcycleEvent, MotorcycleState> {
 
     // Add motorcycle
     on<_AddMotorcycle>((event, emit) async {
+      List<Motorcycle> motorcycles = [];
+
+      // Mengambil daftar motor dari state saat ini jika ada
+      state.maybeWhen(
+        successList: (list) => motorcycles = List<Motorcycle>.from(list),
+        orElse: () {},
+      );
+
       emit(const _Loading());
+
       final response =
           await _motorcycleRemoteDatasource.addMotorcycle(event.motorcycle);
       response.fold(
         (l) => emit(_Failure(l)),
         (r) {
-          // Check current state
-          if (state is _SuccessList) {
-            final currentState = state as _SuccessList;
-            final updatedMotorcycles =
-                List<Motorcycle>.from(currentState.motorcycles)..add(r);
-            emit(_SuccessList(updatedMotorcycles));
-          } else {
-            emit(_SuccessList([r]));
-          }
+          motorcycles.add(r); // Tambahkan motor baru ke daftar
+          emit(_SuccessList(
+              motorcycles)); // Emit state baru dengan daftar yang diperbarui
         },
       );
     });

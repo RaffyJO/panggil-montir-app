@@ -401,6 +401,9 @@ class _AddressAddPageState extends State<AddressAddPage> {
                                   backgroundColor: Colors.red,
                                 ),
                               ),
+                              successList: (addresses) {
+                                Navigator.pop(context);
+                              },
                               orElse: () {},
                             );
                           },
@@ -422,10 +425,6 @@ class _AddressAddPageState extends State<AddressAddPage> {
                                             ),
                                           ),
                                         );
-                                    context.read<AddressBloc>().add(
-                                          const AddressEvent.getListAddress(),
-                                        );
-                                    Navigator.pop(context);
                                   },
                                   style: ElevatedButton.styleFrom(
                                     foregroundColor: whiteColor,

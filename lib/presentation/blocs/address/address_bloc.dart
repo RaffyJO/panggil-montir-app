@@ -45,20 +45,23 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
 
     // Add address
     on<_AddAddress>((event, emit) async {
+      List<Address> addresses = [];
+
+      // Mengambil daftar address dari state saat ini jika ada
+      state.maybeWhen(
+        successList: (list) => addresses = List<Address>.from(list),
+        orElse: () {},
+      );
+
       emit(const _Loading());
+
       final response = await _addressRemoteDatasource.addAddress(event.address);
       response.fold(
         (l) => emit(_Failure(l)),
         (r) {
-          // Check current state
-          if (state is _SuccessList) {
-            final currentState = state as _SuccessList;
-            final updatedAddresses = List<Address>.from(currentState.addresses)
-              ..add(r);
-            emit(_SuccessList(updatedAddresses));
-          } else {
-            emit(_SuccessList([r]));
-          }
+          addresses.add(r); // Tambahkan address baru ke daftar
+          emit(_SuccessList(
+              addresses)); // Emit state baru dengan daftar yang diperbarui
         },
       );
     });
