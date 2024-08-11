@@ -76,6 +76,28 @@ class MotorcycleRemoteDatasource {
     }
   }
 
+  Future<Either<String, List<Motorcycle>>> changeSelectedMotorcycle(
+      int id) async {
+    final authDataModel = await AuthLocalDataSource().getAuthData();
+    final url = Uri.parse('$baseUrl/api/user/change-selected-motorcycle/$id');
+    final response = await http.put(url, headers: {
+      'Authorization': 'Bearer ${authDataModel?.token}',
+      'Content-Type': 'application/json',
+    });
+
+    if (response.statusCode == 200) {
+      return Right(
+        List<Motorcycle>.from(
+          jsonDecode(response.body)['data'].map(
+            (motorcycle) => Motorcycle.fromJson(motorcycle),
+          ),
+        ).toList(),
+      );
+    } else {
+      return Left(response.body);
+    }
+  }
+
   Future<Either<String, List<Brand>>> getBrands() async {
     final authDataModel = await AuthLocalDataSource().getAuthData();
     final url = Uri.parse('$baseUrl/api/user/get-brands');

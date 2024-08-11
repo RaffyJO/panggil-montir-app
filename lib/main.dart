@@ -21,6 +21,7 @@ import 'package:panggil_montir_app/presentation/blocs/production_year/production
 import 'package:panggil_montir_app/presentation/blocs/tipe/tipe_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/transaction/transaction_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/variant/variant_bloc.dart';
+import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/pages/address/address_page.dart';
 import 'package:panggil_montir_app/presentation/pages/auth/login_page.dart';
 import 'package:panggil_montir_app/presentation/pages/auth/register_page.dart';
@@ -93,7 +94,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'PanggilMontir',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: orangeColor),
           useMaterial3: true,
         ),
         home: FutureBuilder(

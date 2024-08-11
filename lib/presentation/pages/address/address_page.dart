@@ -92,6 +92,13 @@ class _AddressPageState extends State<AddressPage> {
                     data[index].isSelected!,
                     notes: data[index].notes,
                     onTapEdit: () {},
+                    onTapChangeSelected: () async {
+                      context.read<AddressBloc>().add(
+                            AddressEvent.changeSelectedAddress(
+                              data[index].id!,
+                            ),
+                          );
+                    },
                     onTapDelete: () {
                       showDialog(
                         context: context,

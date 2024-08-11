@@ -85,4 +85,25 @@ class AddressRemoteDatasource {
       return Left(jsonDecode(response.body)['message']);
     }
   }
+
+  Future<Either<String, List<Address>>> changeSelectedAddress(int id) async {
+    final authDataModel = await AuthLocalDataSource().getAuthData();
+    final url = Uri.parse('$baseUrl/api/user/change-selected-address/$id');
+    final response = await http.put(url, headers: {
+      'Authorization': 'Bearer ${authDataModel?.token}',
+      'Content-Type': 'application/json',
+    });
+
+    if (response.statusCode == 200) {
+      return Right(
+        List<Address>.from(
+          jsonDecode(response.body)['data'].map(
+            (address) => Address.fromJson(address),
+          ),
+        ).toList(),
+      );
+    } else {
+      return Left(response.body);
+    }
+  }
 }

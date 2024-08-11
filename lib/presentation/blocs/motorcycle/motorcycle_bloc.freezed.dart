@@ -22,6 +22,7 @@ mixin _$MotorcycleEvent {
     required TResult Function() getCurentMotorcycle,
     required TResult Function() getListMotorcycle,
     required TResult Function(MotorcycleCreateModel motorcycle) addMotorcycle,
+    required TResult Function(int id) changeSelectedMotorcycle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$MotorcycleEvent {
     TResult? Function()? getCurentMotorcycle,
     TResult? Function()? getListMotorcycle,
     TResult? Function(MotorcycleCreateModel motorcycle)? addMotorcycle,
+    TResult? Function(int id)? changeSelectedMotorcycle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$MotorcycleEvent {
     TResult Function()? getCurentMotorcycle,
     TResult Function()? getListMotorcycle,
     TResult Function(MotorcycleCreateModel motorcycle)? addMotorcycle,
+    TResult Function(int id)? changeSelectedMotorcycle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,8 @@ mixin _$MotorcycleEvent {
     required TResult Function(_GetCurentMotorcycle value) getCurentMotorcycle,
     required TResult Function(_GetListMotorcycle value) getListMotorcycle,
     required TResult Function(_AddMotorcycle value) addMotorcycle,
+    required TResult Function(_ChangeSelectedMotorcycle value)
+        changeSelectedMotorcycle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +60,8 @@ mixin _$MotorcycleEvent {
     TResult? Function(_GetCurentMotorcycle value)? getCurentMotorcycle,
     TResult? Function(_GetListMotorcycle value)? getListMotorcycle,
     TResult? Function(_AddMotorcycle value)? addMotorcycle,
+    TResult? Function(_ChangeSelectedMotorcycle value)?
+        changeSelectedMotorcycle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +70,7 @@ mixin _$MotorcycleEvent {
     TResult Function(_GetCurentMotorcycle value)? getCurentMotorcycle,
     TResult Function(_GetListMotorcycle value)? getListMotorcycle,
     TResult Function(_AddMotorcycle value)? addMotorcycle,
+    TResult Function(_ChangeSelectedMotorcycle value)? changeSelectedMotorcycle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +136,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() getCurentMotorcycle,
     required TResult Function() getListMotorcycle,
     required TResult Function(MotorcycleCreateModel motorcycle) addMotorcycle,
+    required TResult Function(int id) changeSelectedMotorcycle,
   }) {
     return started();
   }
@@ -139,6 +148,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? getCurentMotorcycle,
     TResult? Function()? getListMotorcycle,
     TResult? Function(MotorcycleCreateModel motorcycle)? addMotorcycle,
+    TResult? Function(int id)? changeSelectedMotorcycle,
   }) {
     return started?.call();
   }
@@ -150,6 +160,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? getCurentMotorcycle,
     TResult Function()? getListMotorcycle,
     TResult Function(MotorcycleCreateModel motorcycle)? addMotorcycle,
+    TResult Function(int id)? changeSelectedMotorcycle,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -165,6 +176,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(_GetCurentMotorcycle value) getCurentMotorcycle,
     required TResult Function(_GetListMotorcycle value) getListMotorcycle,
     required TResult Function(_AddMotorcycle value) addMotorcycle,
+    required TResult Function(_ChangeSelectedMotorcycle value)
+        changeSelectedMotorcycle,
   }) {
     return started(this);
   }
@@ -176,6 +189,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(_GetCurentMotorcycle value)? getCurentMotorcycle,
     TResult? Function(_GetListMotorcycle value)? getListMotorcycle,
     TResult? Function(_AddMotorcycle value)? addMotorcycle,
+    TResult? Function(_ChangeSelectedMotorcycle value)?
+        changeSelectedMotorcycle,
   }) {
     return started?.call(this);
   }
@@ -187,6 +202,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_GetCurentMotorcycle value)? getCurentMotorcycle,
     TResult Function(_GetListMotorcycle value)? getListMotorcycle,
     TResult Function(_AddMotorcycle value)? addMotorcycle,
+    TResult Function(_ChangeSelectedMotorcycle value)? changeSelectedMotorcycle,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -243,6 +259,7 @@ class _$GetCurentMotorcycleImpl implements _GetCurentMotorcycle {
     required TResult Function() getCurentMotorcycle,
     required TResult Function() getListMotorcycle,
     required TResult Function(MotorcycleCreateModel motorcycle) addMotorcycle,
+    required TResult Function(int id) changeSelectedMotorcycle,
   }) {
     return getCurentMotorcycle();
   }
@@ -254,6 +271,7 @@ class _$GetCurentMotorcycleImpl implements _GetCurentMotorcycle {
     TResult? Function()? getCurentMotorcycle,
     TResult? Function()? getListMotorcycle,
     TResult? Function(MotorcycleCreateModel motorcycle)? addMotorcycle,
+    TResult? Function(int id)? changeSelectedMotorcycle,
   }) {
     return getCurentMotorcycle?.call();
   }
@@ -265,6 +283,7 @@ class _$GetCurentMotorcycleImpl implements _GetCurentMotorcycle {
     TResult Function()? getCurentMotorcycle,
     TResult Function()? getListMotorcycle,
     TResult Function(MotorcycleCreateModel motorcycle)? addMotorcycle,
+    TResult Function(int id)? changeSelectedMotorcycle,
     required TResult orElse(),
   }) {
     if (getCurentMotorcycle != null) {
@@ -280,6 +299,8 @@ class _$GetCurentMotorcycleImpl implements _GetCurentMotorcycle {
     required TResult Function(_GetCurentMotorcycle value) getCurentMotorcycle,
     required TResult Function(_GetListMotorcycle value) getListMotorcycle,
     required TResult Function(_AddMotorcycle value) addMotorcycle,
+    required TResult Function(_ChangeSelectedMotorcycle value)
+        changeSelectedMotorcycle,
   }) {
     return getCurentMotorcycle(this);
   }
@@ -291,6 +312,8 @@ class _$GetCurentMotorcycleImpl implements _GetCurentMotorcycle {
     TResult? Function(_GetCurentMotorcycle value)? getCurentMotorcycle,
     TResult? Function(_GetListMotorcycle value)? getListMotorcycle,
     TResult? Function(_AddMotorcycle value)? addMotorcycle,
+    TResult? Function(_ChangeSelectedMotorcycle value)?
+        changeSelectedMotorcycle,
   }) {
     return getCurentMotorcycle?.call(this);
   }
@@ -302,6 +325,7 @@ class _$GetCurentMotorcycleImpl implements _GetCurentMotorcycle {
     TResult Function(_GetCurentMotorcycle value)? getCurentMotorcycle,
     TResult Function(_GetListMotorcycle value)? getListMotorcycle,
     TResult Function(_AddMotorcycle value)? addMotorcycle,
+    TResult Function(_ChangeSelectedMotorcycle value)? changeSelectedMotorcycle,
     required TResult orElse(),
   }) {
     if (getCurentMotorcycle != null) {
@@ -357,6 +381,7 @@ class _$GetListMotorcycleImpl implements _GetListMotorcycle {
     required TResult Function() getCurentMotorcycle,
     required TResult Function() getListMotorcycle,
     required TResult Function(MotorcycleCreateModel motorcycle) addMotorcycle,
+    required TResult Function(int id) changeSelectedMotorcycle,
   }) {
     return getListMotorcycle();
   }
@@ -368,6 +393,7 @@ class _$GetListMotorcycleImpl implements _GetListMotorcycle {
     TResult? Function()? getCurentMotorcycle,
     TResult? Function()? getListMotorcycle,
     TResult? Function(MotorcycleCreateModel motorcycle)? addMotorcycle,
+    TResult? Function(int id)? changeSelectedMotorcycle,
   }) {
     return getListMotorcycle?.call();
   }
@@ -379,6 +405,7 @@ class _$GetListMotorcycleImpl implements _GetListMotorcycle {
     TResult Function()? getCurentMotorcycle,
     TResult Function()? getListMotorcycle,
     TResult Function(MotorcycleCreateModel motorcycle)? addMotorcycle,
+    TResult Function(int id)? changeSelectedMotorcycle,
     required TResult orElse(),
   }) {
     if (getListMotorcycle != null) {
@@ -394,6 +421,8 @@ class _$GetListMotorcycleImpl implements _GetListMotorcycle {
     required TResult Function(_GetCurentMotorcycle value) getCurentMotorcycle,
     required TResult Function(_GetListMotorcycle value) getListMotorcycle,
     required TResult Function(_AddMotorcycle value) addMotorcycle,
+    required TResult Function(_ChangeSelectedMotorcycle value)
+        changeSelectedMotorcycle,
   }) {
     return getListMotorcycle(this);
   }
@@ -405,6 +434,8 @@ class _$GetListMotorcycleImpl implements _GetListMotorcycle {
     TResult? Function(_GetCurentMotorcycle value)? getCurentMotorcycle,
     TResult? Function(_GetListMotorcycle value)? getListMotorcycle,
     TResult? Function(_AddMotorcycle value)? addMotorcycle,
+    TResult? Function(_ChangeSelectedMotorcycle value)?
+        changeSelectedMotorcycle,
   }) {
     return getListMotorcycle?.call(this);
   }
@@ -416,6 +447,7 @@ class _$GetListMotorcycleImpl implements _GetListMotorcycle {
     TResult Function(_GetCurentMotorcycle value)? getCurentMotorcycle,
     TResult Function(_GetListMotorcycle value)? getListMotorcycle,
     TResult Function(_AddMotorcycle value)? addMotorcycle,
+    TResult Function(_ChangeSelectedMotorcycle value)? changeSelectedMotorcycle,
     required TResult orElse(),
   }) {
     if (getListMotorcycle != null) {
@@ -498,6 +530,7 @@ class _$AddMotorcycleImpl implements _AddMotorcycle {
     required TResult Function() getCurentMotorcycle,
     required TResult Function() getListMotorcycle,
     required TResult Function(MotorcycleCreateModel motorcycle) addMotorcycle,
+    required TResult Function(int id) changeSelectedMotorcycle,
   }) {
     return addMotorcycle(motorcycle);
   }
@@ -509,6 +542,7 @@ class _$AddMotorcycleImpl implements _AddMotorcycle {
     TResult? Function()? getCurentMotorcycle,
     TResult? Function()? getListMotorcycle,
     TResult? Function(MotorcycleCreateModel motorcycle)? addMotorcycle,
+    TResult? Function(int id)? changeSelectedMotorcycle,
   }) {
     return addMotorcycle?.call(motorcycle);
   }
@@ -520,6 +554,7 @@ class _$AddMotorcycleImpl implements _AddMotorcycle {
     TResult Function()? getCurentMotorcycle,
     TResult Function()? getListMotorcycle,
     TResult Function(MotorcycleCreateModel motorcycle)? addMotorcycle,
+    TResult Function(int id)? changeSelectedMotorcycle,
     required TResult orElse(),
   }) {
     if (addMotorcycle != null) {
@@ -535,6 +570,8 @@ class _$AddMotorcycleImpl implements _AddMotorcycle {
     required TResult Function(_GetCurentMotorcycle value) getCurentMotorcycle,
     required TResult Function(_GetListMotorcycle value) getListMotorcycle,
     required TResult Function(_AddMotorcycle value) addMotorcycle,
+    required TResult Function(_ChangeSelectedMotorcycle value)
+        changeSelectedMotorcycle,
   }) {
     return addMotorcycle(this);
   }
@@ -546,6 +583,8 @@ class _$AddMotorcycleImpl implements _AddMotorcycle {
     TResult? Function(_GetCurentMotorcycle value)? getCurentMotorcycle,
     TResult? Function(_GetListMotorcycle value)? getListMotorcycle,
     TResult? Function(_AddMotorcycle value)? addMotorcycle,
+    TResult? Function(_ChangeSelectedMotorcycle value)?
+        changeSelectedMotorcycle,
   }) {
     return addMotorcycle?.call(this);
   }
@@ -557,6 +596,7 @@ class _$AddMotorcycleImpl implements _AddMotorcycle {
     TResult Function(_GetCurentMotorcycle value)? getCurentMotorcycle,
     TResult Function(_GetListMotorcycle value)? getListMotorcycle,
     TResult Function(_AddMotorcycle value)? addMotorcycle,
+    TResult Function(_ChangeSelectedMotorcycle value)? changeSelectedMotorcycle,
     required TResult orElse(),
   }) {
     if (addMotorcycle != null) {
@@ -574,6 +614,163 @@ abstract class _AddMotorcycle implements MotorcycleEvent {
   @JsonKey(ignore: true)
   _$$AddMotorcycleImplCopyWith<_$AddMotorcycleImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeSelectedMotorcycleImplCopyWith<$Res> {
+  factory _$$ChangeSelectedMotorcycleImplCopyWith(
+          _$ChangeSelectedMotorcycleImpl value,
+          $Res Function(_$ChangeSelectedMotorcycleImpl) then) =
+      __$$ChangeSelectedMotorcycleImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$ChangeSelectedMotorcycleImplCopyWithImpl<$Res>
+    extends _$MotorcycleEventCopyWithImpl<$Res, _$ChangeSelectedMotorcycleImpl>
+    implements _$$ChangeSelectedMotorcycleImplCopyWith<$Res> {
+  __$$ChangeSelectedMotorcycleImplCopyWithImpl(
+      _$ChangeSelectedMotorcycleImpl _value,
+      $Res Function(_$ChangeSelectedMotorcycleImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ChangeSelectedMotorcycleImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeSelectedMotorcycleImpl implements _ChangeSelectedMotorcycle {
+  const _$ChangeSelectedMotorcycleImpl(this.id);
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'MotorcycleEvent.changeSelectedMotorcycle(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeSelectedMotorcycleImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeSelectedMotorcycleImplCopyWith<_$ChangeSelectedMotorcycleImpl>
+      get copyWith => __$$ChangeSelectedMotorcycleImplCopyWithImpl<
+          _$ChangeSelectedMotorcycleImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getCurentMotorcycle,
+    required TResult Function() getListMotorcycle,
+    required TResult Function(MotorcycleCreateModel motorcycle) addMotorcycle,
+    required TResult Function(int id) changeSelectedMotorcycle,
+  }) {
+    return changeSelectedMotorcycle(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getCurentMotorcycle,
+    TResult? Function()? getListMotorcycle,
+    TResult? Function(MotorcycleCreateModel motorcycle)? addMotorcycle,
+    TResult? Function(int id)? changeSelectedMotorcycle,
+  }) {
+    return changeSelectedMotorcycle?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getCurentMotorcycle,
+    TResult Function()? getListMotorcycle,
+    TResult Function(MotorcycleCreateModel motorcycle)? addMotorcycle,
+    TResult Function(int id)? changeSelectedMotorcycle,
+    required TResult orElse(),
+  }) {
+    if (changeSelectedMotorcycle != null) {
+      return changeSelectedMotorcycle(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetCurentMotorcycle value) getCurentMotorcycle,
+    required TResult Function(_GetListMotorcycle value) getListMotorcycle,
+    required TResult Function(_AddMotorcycle value) addMotorcycle,
+    required TResult Function(_ChangeSelectedMotorcycle value)
+        changeSelectedMotorcycle,
+  }) {
+    return changeSelectedMotorcycle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetCurentMotorcycle value)? getCurentMotorcycle,
+    TResult? Function(_GetListMotorcycle value)? getListMotorcycle,
+    TResult? Function(_AddMotorcycle value)? addMotorcycle,
+    TResult? Function(_ChangeSelectedMotorcycle value)?
+        changeSelectedMotorcycle,
+  }) {
+    return changeSelectedMotorcycle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetCurentMotorcycle value)? getCurentMotorcycle,
+    TResult Function(_GetListMotorcycle value)? getListMotorcycle,
+    TResult Function(_AddMotorcycle value)? addMotorcycle,
+    TResult Function(_ChangeSelectedMotorcycle value)? changeSelectedMotorcycle,
+    required TResult orElse(),
+  }) {
+    if (changeSelectedMotorcycle != null) {
+      return changeSelectedMotorcycle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeSelectedMotorcycle implements MotorcycleEvent {
+  const factory _ChangeSelectedMotorcycle(final int id) =
+      _$ChangeSelectedMotorcycleImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$ChangeSelectedMotorcycleImplCopyWith<_$ChangeSelectedMotorcycleImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

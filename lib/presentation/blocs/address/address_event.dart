@@ -8,4 +8,6 @@ class AddressEvent with _$AddressEvent {
   const factory AddressEvent.deleteAddress(int id) = _DeleteAddress;
   const factory AddressEvent.addAddress(AddressCreateModel address) =
       _AddAddress;
+  const factory AddressEvent.changeSelectedAddress(int id) =
+      _ChangeSelectedAddress;
 }

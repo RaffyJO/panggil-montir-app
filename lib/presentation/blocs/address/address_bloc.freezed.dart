@@ -23,6 +23,7 @@ mixin _$AddressEvent {
     required TResult Function() getListAddress,
     required TResult Function(int id) deleteAddress,
     required TResult Function(AddressCreateModel address) addAddress,
+    required TResult Function(int id) changeSelectedAddress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$AddressEvent {
     TResult? Function()? getListAddress,
     TResult? Function(int id)? deleteAddress,
     TResult? Function(AddressCreateModel address)? addAddress,
+    TResult? Function(int id)? changeSelectedAddress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$AddressEvent {
     TResult Function()? getListAddress,
     TResult Function(int id)? deleteAddress,
     TResult Function(AddressCreateModel address)? addAddress,
+    TResult Function(int id)? changeSelectedAddress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,8 @@ mixin _$AddressEvent {
     required TResult Function(_GetListAddress value) getListAddress,
     required TResult Function(_DeleteAddress value) deleteAddress,
     required TResult Function(_AddAddress value) addAddress,
+    required TResult Function(_ChangeSelectedAddress value)
+        changeSelectedAddress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +65,7 @@ mixin _$AddressEvent {
     TResult? Function(_GetListAddress value)? getListAddress,
     TResult? Function(_DeleteAddress value)? deleteAddress,
     TResult? Function(_AddAddress value)? addAddress,
+    TResult? Function(_ChangeSelectedAddress value)? changeSelectedAddress,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +75,7 @@ mixin _$AddressEvent {
     TResult Function(_GetListAddress value)? getListAddress,
     TResult Function(_DeleteAddress value)? deleteAddress,
     TResult Function(_AddAddress value)? addAddress,
+    TResult Function(_ChangeSelectedAddress value)? changeSelectedAddress,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +142,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() getListAddress,
     required TResult Function(int id) deleteAddress,
     required TResult Function(AddressCreateModel address) addAddress,
+    required TResult Function(int id) changeSelectedAddress,
   }) {
     return started();
   }
@@ -147,6 +155,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? getListAddress,
     TResult? Function(int id)? deleteAddress,
     TResult? Function(AddressCreateModel address)? addAddress,
+    TResult? Function(int id)? changeSelectedAddress,
   }) {
     return started?.call();
   }
@@ -159,6 +168,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? getListAddress,
     TResult Function(int id)? deleteAddress,
     TResult Function(AddressCreateModel address)? addAddress,
+    TResult Function(int id)? changeSelectedAddress,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -175,6 +185,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(_GetListAddress value) getListAddress,
     required TResult Function(_DeleteAddress value) deleteAddress,
     required TResult Function(_AddAddress value) addAddress,
+    required TResult Function(_ChangeSelectedAddress value)
+        changeSelectedAddress,
   }) {
     return started(this);
   }
@@ -187,6 +199,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_GetListAddress value)? getListAddress,
     TResult? Function(_DeleteAddress value)? deleteAddress,
     TResult? Function(_AddAddress value)? addAddress,
+    TResult? Function(_ChangeSelectedAddress value)? changeSelectedAddress,
   }) {
     return started?.call(this);
   }
@@ -199,6 +212,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_GetListAddress value)? getListAddress,
     TResult Function(_DeleteAddress value)? deleteAddress,
     TResult Function(_AddAddress value)? addAddress,
+    TResult Function(_ChangeSelectedAddress value)? changeSelectedAddress,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -255,6 +269,7 @@ class _$GetCurentAddressImpl implements _GetCurentAddress {
     required TResult Function() getListAddress,
     required TResult Function(int id) deleteAddress,
     required TResult Function(AddressCreateModel address) addAddress,
+    required TResult Function(int id) changeSelectedAddress,
   }) {
     return getCurentAddress();
   }
@@ -267,6 +282,7 @@ class _$GetCurentAddressImpl implements _GetCurentAddress {
     TResult? Function()? getListAddress,
     TResult? Function(int id)? deleteAddress,
     TResult? Function(AddressCreateModel address)? addAddress,
+    TResult? Function(int id)? changeSelectedAddress,
   }) {
     return getCurentAddress?.call();
   }
@@ -279,6 +295,7 @@ class _$GetCurentAddressImpl implements _GetCurentAddress {
     TResult Function()? getListAddress,
     TResult Function(int id)? deleteAddress,
     TResult Function(AddressCreateModel address)? addAddress,
+    TResult Function(int id)? changeSelectedAddress,
     required TResult orElse(),
   }) {
     if (getCurentAddress != null) {
@@ -295,6 +312,8 @@ class _$GetCurentAddressImpl implements _GetCurentAddress {
     required TResult Function(_GetListAddress value) getListAddress,
     required TResult Function(_DeleteAddress value) deleteAddress,
     required TResult Function(_AddAddress value) addAddress,
+    required TResult Function(_ChangeSelectedAddress value)
+        changeSelectedAddress,
   }) {
     return getCurentAddress(this);
   }
@@ -307,6 +326,7 @@ class _$GetCurentAddressImpl implements _GetCurentAddress {
     TResult? Function(_GetListAddress value)? getListAddress,
     TResult? Function(_DeleteAddress value)? deleteAddress,
     TResult? Function(_AddAddress value)? addAddress,
+    TResult? Function(_ChangeSelectedAddress value)? changeSelectedAddress,
   }) {
     return getCurentAddress?.call(this);
   }
@@ -319,6 +339,7 @@ class _$GetCurentAddressImpl implements _GetCurentAddress {
     TResult Function(_GetListAddress value)? getListAddress,
     TResult Function(_DeleteAddress value)? deleteAddress,
     TResult Function(_AddAddress value)? addAddress,
+    TResult Function(_ChangeSelectedAddress value)? changeSelectedAddress,
     required TResult orElse(),
   }) {
     if (getCurentAddress != null) {
@@ -375,6 +396,7 @@ class _$GetListAddressImpl implements _GetListAddress {
     required TResult Function() getListAddress,
     required TResult Function(int id) deleteAddress,
     required TResult Function(AddressCreateModel address) addAddress,
+    required TResult Function(int id) changeSelectedAddress,
   }) {
     return getListAddress();
   }
@@ -387,6 +409,7 @@ class _$GetListAddressImpl implements _GetListAddress {
     TResult? Function()? getListAddress,
     TResult? Function(int id)? deleteAddress,
     TResult? Function(AddressCreateModel address)? addAddress,
+    TResult? Function(int id)? changeSelectedAddress,
   }) {
     return getListAddress?.call();
   }
@@ -399,6 +422,7 @@ class _$GetListAddressImpl implements _GetListAddress {
     TResult Function()? getListAddress,
     TResult Function(int id)? deleteAddress,
     TResult Function(AddressCreateModel address)? addAddress,
+    TResult Function(int id)? changeSelectedAddress,
     required TResult orElse(),
   }) {
     if (getListAddress != null) {
@@ -415,6 +439,8 @@ class _$GetListAddressImpl implements _GetListAddress {
     required TResult Function(_GetListAddress value) getListAddress,
     required TResult Function(_DeleteAddress value) deleteAddress,
     required TResult Function(_AddAddress value) addAddress,
+    required TResult Function(_ChangeSelectedAddress value)
+        changeSelectedAddress,
   }) {
     return getListAddress(this);
   }
@@ -427,6 +453,7 @@ class _$GetListAddressImpl implements _GetListAddress {
     TResult? Function(_GetListAddress value)? getListAddress,
     TResult? Function(_DeleteAddress value)? deleteAddress,
     TResult? Function(_AddAddress value)? addAddress,
+    TResult? Function(_ChangeSelectedAddress value)? changeSelectedAddress,
   }) {
     return getListAddress?.call(this);
   }
@@ -439,6 +466,7 @@ class _$GetListAddressImpl implements _GetListAddress {
     TResult Function(_GetListAddress value)? getListAddress,
     TResult Function(_DeleteAddress value)? deleteAddress,
     TResult Function(_AddAddress value)? addAddress,
+    TResult Function(_ChangeSelectedAddress value)? changeSelectedAddress,
     required TResult orElse(),
   }) {
     if (getListAddress != null) {
@@ -521,6 +549,7 @@ class _$DeleteAddressImpl implements _DeleteAddress {
     required TResult Function() getListAddress,
     required TResult Function(int id) deleteAddress,
     required TResult Function(AddressCreateModel address) addAddress,
+    required TResult Function(int id) changeSelectedAddress,
   }) {
     return deleteAddress(id);
   }
@@ -533,6 +562,7 @@ class _$DeleteAddressImpl implements _DeleteAddress {
     TResult? Function()? getListAddress,
     TResult? Function(int id)? deleteAddress,
     TResult? Function(AddressCreateModel address)? addAddress,
+    TResult? Function(int id)? changeSelectedAddress,
   }) {
     return deleteAddress?.call(id);
   }
@@ -545,6 +575,7 @@ class _$DeleteAddressImpl implements _DeleteAddress {
     TResult Function()? getListAddress,
     TResult Function(int id)? deleteAddress,
     TResult Function(AddressCreateModel address)? addAddress,
+    TResult Function(int id)? changeSelectedAddress,
     required TResult orElse(),
   }) {
     if (deleteAddress != null) {
@@ -561,6 +592,8 @@ class _$DeleteAddressImpl implements _DeleteAddress {
     required TResult Function(_GetListAddress value) getListAddress,
     required TResult Function(_DeleteAddress value) deleteAddress,
     required TResult Function(_AddAddress value) addAddress,
+    required TResult Function(_ChangeSelectedAddress value)
+        changeSelectedAddress,
   }) {
     return deleteAddress(this);
   }
@@ -573,6 +606,7 @@ class _$DeleteAddressImpl implements _DeleteAddress {
     TResult? Function(_GetListAddress value)? getListAddress,
     TResult? Function(_DeleteAddress value)? deleteAddress,
     TResult? Function(_AddAddress value)? addAddress,
+    TResult? Function(_ChangeSelectedAddress value)? changeSelectedAddress,
   }) {
     return deleteAddress?.call(this);
   }
@@ -585,6 +619,7 @@ class _$DeleteAddressImpl implements _DeleteAddress {
     TResult Function(_GetListAddress value)? getListAddress,
     TResult Function(_DeleteAddress value)? deleteAddress,
     TResult Function(_AddAddress value)? addAddress,
+    TResult Function(_ChangeSelectedAddress value)? changeSelectedAddress,
     required TResult orElse(),
   }) {
     if (deleteAddress != null) {
@@ -672,6 +707,7 @@ class _$AddAddressImpl implements _AddAddress {
     required TResult Function() getListAddress,
     required TResult Function(int id) deleteAddress,
     required TResult Function(AddressCreateModel address) addAddress,
+    required TResult Function(int id) changeSelectedAddress,
   }) {
     return addAddress(address);
   }
@@ -684,6 +720,7 @@ class _$AddAddressImpl implements _AddAddress {
     TResult? Function()? getListAddress,
     TResult? Function(int id)? deleteAddress,
     TResult? Function(AddressCreateModel address)? addAddress,
+    TResult? Function(int id)? changeSelectedAddress,
   }) {
     return addAddress?.call(address);
   }
@@ -696,6 +733,7 @@ class _$AddAddressImpl implements _AddAddress {
     TResult Function()? getListAddress,
     TResult Function(int id)? deleteAddress,
     TResult Function(AddressCreateModel address)? addAddress,
+    TResult Function(int id)? changeSelectedAddress,
     required TResult orElse(),
   }) {
     if (addAddress != null) {
@@ -712,6 +750,8 @@ class _$AddAddressImpl implements _AddAddress {
     required TResult Function(_GetListAddress value) getListAddress,
     required TResult Function(_DeleteAddress value) deleteAddress,
     required TResult Function(_AddAddress value) addAddress,
+    required TResult Function(_ChangeSelectedAddress value)
+        changeSelectedAddress,
   }) {
     return addAddress(this);
   }
@@ -724,6 +764,7 @@ class _$AddAddressImpl implements _AddAddress {
     TResult? Function(_GetListAddress value)? getListAddress,
     TResult? Function(_DeleteAddress value)? deleteAddress,
     TResult? Function(_AddAddress value)? addAddress,
+    TResult? Function(_ChangeSelectedAddress value)? changeSelectedAddress,
   }) {
     return addAddress?.call(this);
   }
@@ -736,6 +777,7 @@ class _$AddAddressImpl implements _AddAddress {
     TResult Function(_GetListAddress value)? getListAddress,
     TResult Function(_DeleteAddress value)? deleteAddress,
     TResult Function(_AddAddress value)? addAddress,
+    TResult Function(_ChangeSelectedAddress value)? changeSelectedAddress,
     required TResult orElse(),
   }) {
     if (addAddress != null) {
@@ -753,6 +795,167 @@ abstract class _AddAddress implements AddressEvent {
   @JsonKey(ignore: true)
   _$$AddAddressImplCopyWith<_$AddAddressImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeSelectedAddressImplCopyWith<$Res> {
+  factory _$$ChangeSelectedAddressImplCopyWith(
+          _$ChangeSelectedAddressImpl value,
+          $Res Function(_$ChangeSelectedAddressImpl) then) =
+      __$$ChangeSelectedAddressImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$ChangeSelectedAddressImplCopyWithImpl<$Res>
+    extends _$AddressEventCopyWithImpl<$Res, _$ChangeSelectedAddressImpl>
+    implements _$$ChangeSelectedAddressImplCopyWith<$Res> {
+  __$$ChangeSelectedAddressImplCopyWithImpl(_$ChangeSelectedAddressImpl _value,
+      $Res Function(_$ChangeSelectedAddressImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ChangeSelectedAddressImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeSelectedAddressImpl implements _ChangeSelectedAddress {
+  const _$ChangeSelectedAddressImpl(this.id);
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'AddressEvent.changeSelectedAddress(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeSelectedAddressImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeSelectedAddressImplCopyWith<_$ChangeSelectedAddressImpl>
+      get copyWith => __$$ChangeSelectedAddressImplCopyWithImpl<
+          _$ChangeSelectedAddressImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getCurentAddress,
+    required TResult Function() getListAddress,
+    required TResult Function(int id) deleteAddress,
+    required TResult Function(AddressCreateModel address) addAddress,
+    required TResult Function(int id) changeSelectedAddress,
+  }) {
+    return changeSelectedAddress(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getCurentAddress,
+    TResult? Function()? getListAddress,
+    TResult? Function(int id)? deleteAddress,
+    TResult? Function(AddressCreateModel address)? addAddress,
+    TResult? Function(int id)? changeSelectedAddress,
+  }) {
+    return changeSelectedAddress?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getCurentAddress,
+    TResult Function()? getListAddress,
+    TResult Function(int id)? deleteAddress,
+    TResult Function(AddressCreateModel address)? addAddress,
+    TResult Function(int id)? changeSelectedAddress,
+    required TResult orElse(),
+  }) {
+    if (changeSelectedAddress != null) {
+      return changeSelectedAddress(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetCurentAddress value) getCurentAddress,
+    required TResult Function(_GetListAddress value) getListAddress,
+    required TResult Function(_DeleteAddress value) deleteAddress,
+    required TResult Function(_AddAddress value) addAddress,
+    required TResult Function(_ChangeSelectedAddress value)
+        changeSelectedAddress,
+  }) {
+    return changeSelectedAddress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetCurentAddress value)? getCurentAddress,
+    TResult? Function(_GetListAddress value)? getListAddress,
+    TResult? Function(_DeleteAddress value)? deleteAddress,
+    TResult? Function(_AddAddress value)? addAddress,
+    TResult? Function(_ChangeSelectedAddress value)? changeSelectedAddress,
+  }) {
+    return changeSelectedAddress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetCurentAddress value)? getCurentAddress,
+    TResult Function(_GetListAddress value)? getListAddress,
+    TResult Function(_DeleteAddress value)? deleteAddress,
+    TResult Function(_AddAddress value)? addAddress,
+    TResult Function(_ChangeSelectedAddress value)? changeSelectedAddress,
+    required TResult orElse(),
+  }) {
+    if (changeSelectedAddress != null) {
+      return changeSelectedAddress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeSelectedAddress implements AddressEvent {
+  const factory _ChangeSelectedAddress(final int id) =
+      _$ChangeSelectedAddressImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$ChangeSelectedAddressImplCopyWith<_$ChangeSelectedAddressImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

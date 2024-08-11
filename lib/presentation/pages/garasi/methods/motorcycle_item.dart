@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 
-Widget motorcycleItem(String licensePlate, String brand, String type,
-        String variant, String productionYear, int isSelected,
-        {VoidCallback? onTapEdit, VoidCallback? onTapDelete}) =>
+Widget motorcycleItem(
+  String licensePlate,
+  String brand,
+  String type,
+  String variant,
+  String productionYear,
+  int isSelected, {
+  VoidCallback? onTapEdit,
+  VoidCallback? onTapDelete,
+  VoidCallback? onTapChangeSelected,
+}) =>
     Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: Container(
@@ -101,7 +109,7 @@ Widget motorcycleItem(String licensePlate, String brand, String type,
                     height: 32,
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: onTapChangeSelected,
                       style: ElevatedButton.styleFrom(
                         foregroundColor: whiteColor,
                         backgroundColor: orangeColor,

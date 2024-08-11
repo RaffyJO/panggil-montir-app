@@ -99,6 +99,13 @@ class _GarasiPageState extends State<GarasiPage> {
                     data[index].isSelected!,
                     onTapEdit: () {},
                     onTapDelete: () {},
+                    onTapChangeSelected: () async {
+                      context.read<MotorcycleBloc>().add(
+                            MotorcycleEvent.changeSelectedMotorcycle(
+                              data[index].id!,
+                            ),
+                          );
+                    },
                   );
                 },
               ),

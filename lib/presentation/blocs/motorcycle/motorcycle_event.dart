@@ -7,4 +7,6 @@ class MotorcycleEvent with _$MotorcycleEvent {
   const factory MotorcycleEvent.getListMotorcycle() = _GetListMotorcycle;
   const factory MotorcycleEvent.addMotorcycle(
       MotorcycleCreateModel motorcycle) = _AddMotorcycle;
+  const factory MotorcycleEvent.changeSelectedMotorcycle(int id) =
+      _ChangeSelectedMotorcycle;
 }
