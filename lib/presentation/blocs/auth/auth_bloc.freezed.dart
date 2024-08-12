@@ -22,6 +22,7 @@ mixin _$AuthEvent {
     required TResult Function(String email, String password) login,
     required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
+    required TResult Function() loginOrSignUpWithGoogle,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -33,6 +34,7 @@ mixin _$AuthEvent {
     TResult? Function(String email, String password)? login,
     TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
+    TResult? Function()? loginOrSignUpWithGoogle,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -44,6 +46,7 @@ mixin _$AuthEvent {
     TResult Function(String email, String password)? login,
     TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
+    TResult Function()? loginOrSignUpWithGoogle,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -56,6 +59,8 @@ mixin _$AuthEvent {
     required TResult Function(_Login value) login,
     required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
+    required TResult Function(_LoginOrSignUpWithGoogle value)
+        loginOrSignUpWithGoogle,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -67,6 +72,7 @@ mixin _$AuthEvent {
     TResult? Function(_Login value)? login,
     TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
+    TResult? Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -78,6 +84,7 @@ mixin _$AuthEvent {
     TResult Function(_Login value)? login,
     TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
+    TResult Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -145,6 +152,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(String email, String password) login,
     required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
+    required TResult Function() loginOrSignUpWithGoogle,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -159,6 +167,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(String email, String password)? login,
     TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
+    TResult? Function()? loginOrSignUpWithGoogle,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -173,6 +182,7 @@ class _$StartedImpl implements _Started {
     TResult Function(String email, String password)? login,
     TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
+    TResult Function()? loginOrSignUpWithGoogle,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -191,6 +201,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Login value) login,
     required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
+    required TResult Function(_LoginOrSignUpWithGoogle value)
+        loginOrSignUpWithGoogle,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -205,6 +217,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Login value)? login,
     TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
+    TResult? Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -219,6 +232,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_Login value)? login,
     TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
+    TResult Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -312,6 +326,7 @@ class _$LoginImpl implements _Login {
     required TResult Function(String email, String password) login,
     required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
+    required TResult Function() loginOrSignUpWithGoogle,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -326,6 +341,7 @@ class _$LoginImpl implements _Login {
     TResult? Function(String email, String password)? login,
     TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
+    TResult? Function()? loginOrSignUpWithGoogle,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -340,6 +356,7 @@ class _$LoginImpl implements _Login {
     TResult Function(String email, String password)? login,
     TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
+    TResult Function()? loginOrSignUpWithGoogle,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -358,6 +375,8 @@ class _$LoginImpl implements _Login {
     required TResult Function(_Login value) login,
     required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
+    required TResult Function(_LoginOrSignUpWithGoogle value)
+        loginOrSignUpWithGoogle,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -372,6 +391,7 @@ class _$LoginImpl implements _Login {
     TResult? Function(_Login value)? login,
     TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
+    TResult? Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -386,6 +406,7 @@ class _$LoginImpl implements _Login {
     TResult Function(_Login value)? login,
     TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
+    TResult Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -476,6 +497,7 @@ class _$CheckEmailImpl implements _CheckEmail {
     required TResult Function(String email, String password) login,
     required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
+    required TResult Function() loginOrSignUpWithGoogle,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -490,6 +512,7 @@ class _$CheckEmailImpl implements _CheckEmail {
     TResult? Function(String email, String password)? login,
     TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
+    TResult? Function()? loginOrSignUpWithGoogle,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -504,6 +527,7 @@ class _$CheckEmailImpl implements _CheckEmail {
     TResult Function(String email, String password)? login,
     TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
+    TResult Function()? loginOrSignUpWithGoogle,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -522,6 +546,8 @@ class _$CheckEmailImpl implements _CheckEmail {
     required TResult Function(_Login value) login,
     required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
+    required TResult Function(_LoginOrSignUpWithGoogle value)
+        loginOrSignUpWithGoogle,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -536,6 +562,7 @@ class _$CheckEmailImpl implements _CheckEmail {
     TResult? Function(_Login value)? login,
     TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
+    TResult? Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -550,6 +577,7 @@ class _$CheckEmailImpl implements _CheckEmail {
     TResult Function(_Login value)? login,
     TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
+    TResult Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -639,6 +667,7 @@ class _$RegisterImpl implements _Register {
     required TResult Function(String email, String password) login,
     required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
+    required TResult Function() loginOrSignUpWithGoogle,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -653,6 +682,7 @@ class _$RegisterImpl implements _Register {
     TResult? Function(String email, String password)? login,
     TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
+    TResult? Function()? loginOrSignUpWithGoogle,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -667,6 +697,7 @@ class _$RegisterImpl implements _Register {
     TResult Function(String email, String password)? login,
     TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
+    TResult Function()? loginOrSignUpWithGoogle,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -685,6 +716,8 @@ class _$RegisterImpl implements _Register {
     required TResult Function(_Login value) login,
     required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
+    required TResult Function(_LoginOrSignUpWithGoogle value)
+        loginOrSignUpWithGoogle,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -699,6 +732,7 @@ class _$RegisterImpl implements _Register {
     TResult? Function(_Login value)? login,
     TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
+    TResult? Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -713,6 +747,7 @@ class _$RegisterImpl implements _Register {
     TResult Function(_Login value)? login,
     TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
+    TResult Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -732,6 +767,148 @@ abstract class _Register implements AuthEvent {
   @JsonKey(ignore: true)
   _$$RegisterImplCopyWith<_$RegisterImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoginOrSignUpWithGoogleImplCopyWith<$Res> {
+  factory _$$LoginOrSignUpWithGoogleImplCopyWith(
+          _$LoginOrSignUpWithGoogleImpl value,
+          $Res Function(_$LoginOrSignUpWithGoogleImpl) then) =
+      __$$LoginOrSignUpWithGoogleImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoginOrSignUpWithGoogleImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$LoginOrSignUpWithGoogleImpl>
+    implements _$$LoginOrSignUpWithGoogleImplCopyWith<$Res> {
+  __$$LoginOrSignUpWithGoogleImplCopyWithImpl(
+      _$LoginOrSignUpWithGoogleImpl _value,
+      $Res Function(_$LoginOrSignUpWithGoogleImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoginOrSignUpWithGoogleImpl implements _LoginOrSignUpWithGoogle {
+  const _$LoginOrSignUpWithGoogleImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.loginOrSignUpWithGoogle()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoginOrSignUpWithGoogleImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String email, String password) login,
+    required TResult Function(String email) checkEmail,
+    required TResult Function(RegisterModel model) register,
+    required TResult Function() loginOrSignUpWithGoogle,
+    required TResult Function() getCurrentUser,
+    required TResult Function() logout,
+    required TResult Function() checkUserSignIn,
+  }) {
+    return loginOrSignUpWithGoogle();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String email, String password)? login,
+    TResult? Function(String email)? checkEmail,
+    TResult? Function(RegisterModel model)? register,
+    TResult? Function()? loginOrSignUpWithGoogle,
+    TResult? Function()? getCurrentUser,
+    TResult? Function()? logout,
+    TResult? Function()? checkUserSignIn,
+  }) {
+    return loginOrSignUpWithGoogle?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String email, String password)? login,
+    TResult Function(String email)? checkEmail,
+    TResult Function(RegisterModel model)? register,
+    TResult Function()? loginOrSignUpWithGoogle,
+    TResult Function()? getCurrentUser,
+    TResult Function()? logout,
+    TResult Function()? checkUserSignIn,
+    required TResult orElse(),
+  }) {
+    if (loginOrSignUpWithGoogle != null) {
+      return loginOrSignUpWithGoogle();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Login value) login,
+    required TResult Function(_CheckEmail value) checkEmail,
+    required TResult Function(_Register value) register,
+    required TResult Function(_LoginOrSignUpWithGoogle value)
+        loginOrSignUpWithGoogle,
+    required TResult Function(_GetCurrentUser value) getCurrentUser,
+    required TResult Function(_Logout value) logout,
+    required TResult Function(_CheckUserSignIn value) checkUserSignIn,
+  }) {
+    return loginOrSignUpWithGoogle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_CheckEmail value)? checkEmail,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
+    TResult? Function(_GetCurrentUser value)? getCurrentUser,
+    TResult? Function(_Logout value)? logout,
+    TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
+  }) {
+    return loginOrSignUpWithGoogle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Login value)? login,
+    TResult Function(_CheckEmail value)? checkEmail,
+    TResult Function(_Register value)? register,
+    TResult Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
+    TResult Function(_GetCurrentUser value)? getCurrentUser,
+    TResult Function(_Logout value)? logout,
+    TResult Function(_CheckUserSignIn value)? checkUserSignIn,
+    required TResult orElse(),
+  }) {
+    if (loginOrSignUpWithGoogle != null) {
+      return loginOrSignUpWithGoogle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginOrSignUpWithGoogle implements AuthEvent {
+  const factory _LoginOrSignUpWithGoogle() = _$LoginOrSignUpWithGoogleImpl;
 }
 
 /// @nodoc
@@ -776,6 +953,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
     required TResult Function(String email, String password) login,
     required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
+    required TResult Function() loginOrSignUpWithGoogle,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -790,6 +968,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
     TResult? Function(String email, String password)? login,
     TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
+    TResult? Function()? loginOrSignUpWithGoogle,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -804,6 +983,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
     TResult Function(String email, String password)? login,
     TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
+    TResult Function()? loginOrSignUpWithGoogle,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -822,6 +1002,8 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
     required TResult Function(_Login value) login,
     required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
+    required TResult Function(_LoginOrSignUpWithGoogle value)
+        loginOrSignUpWithGoogle,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -836,6 +1018,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
     TResult? Function(_Login value)? login,
     TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
+    TResult? Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -850,6 +1033,7 @@ class _$GetCurrentUserImpl implements _GetCurrentUser {
     TResult Function(_Login value)? login,
     TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
+    TResult Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -908,6 +1092,7 @@ class _$LogoutImpl implements _Logout {
     required TResult Function(String email, String password) login,
     required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
+    required TResult Function() loginOrSignUpWithGoogle,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -922,6 +1107,7 @@ class _$LogoutImpl implements _Logout {
     TResult? Function(String email, String password)? login,
     TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
+    TResult? Function()? loginOrSignUpWithGoogle,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -936,6 +1122,7 @@ class _$LogoutImpl implements _Logout {
     TResult Function(String email, String password)? login,
     TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
+    TResult Function()? loginOrSignUpWithGoogle,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -954,6 +1141,8 @@ class _$LogoutImpl implements _Logout {
     required TResult Function(_Login value) login,
     required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
+    required TResult Function(_LoginOrSignUpWithGoogle value)
+        loginOrSignUpWithGoogle,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -968,6 +1157,7 @@ class _$LogoutImpl implements _Logout {
     TResult? Function(_Login value)? login,
     TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
+    TResult? Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -982,6 +1172,7 @@ class _$LogoutImpl implements _Logout {
     TResult Function(_Login value)? login,
     TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
+    TResult Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -1040,6 +1231,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
     required TResult Function(String email, String password) login,
     required TResult Function(String email) checkEmail,
     required TResult Function(RegisterModel model) register,
+    required TResult Function() loginOrSignUpWithGoogle,
     required TResult Function() getCurrentUser,
     required TResult Function() logout,
     required TResult Function() checkUserSignIn,
@@ -1054,6 +1246,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
     TResult? Function(String email, String password)? login,
     TResult? Function(String email)? checkEmail,
     TResult? Function(RegisterModel model)? register,
+    TResult? Function()? loginOrSignUpWithGoogle,
     TResult? Function()? getCurrentUser,
     TResult? Function()? logout,
     TResult? Function()? checkUserSignIn,
@@ -1068,6 +1261,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
     TResult Function(String email, String password)? login,
     TResult Function(String email)? checkEmail,
     TResult Function(RegisterModel model)? register,
+    TResult Function()? loginOrSignUpWithGoogle,
     TResult Function()? getCurrentUser,
     TResult Function()? logout,
     TResult Function()? checkUserSignIn,
@@ -1086,6 +1280,8 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
     required TResult Function(_Login value) login,
     required TResult Function(_CheckEmail value) checkEmail,
     required TResult Function(_Register value) register,
+    required TResult Function(_LoginOrSignUpWithGoogle value)
+        loginOrSignUpWithGoogle,
     required TResult Function(_GetCurrentUser value) getCurrentUser,
     required TResult Function(_Logout value) logout,
     required TResult Function(_CheckUserSignIn value) checkUserSignIn,
@@ -1100,6 +1296,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
     TResult? Function(_Login value)? login,
     TResult? Function(_CheckEmail value)? checkEmail,
     TResult? Function(_Register value)? register,
+    TResult? Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult? Function(_GetCurrentUser value)? getCurrentUser,
     TResult? Function(_Logout value)? logout,
     TResult? Function(_CheckUserSignIn value)? checkUserSignIn,
@@ -1114,6 +1311,7 @@ class _$CheckUserSignInImpl implements _CheckUserSignIn {
     TResult Function(_Login value)? login,
     TResult Function(_CheckEmail value)? checkEmail,
     TResult Function(_Register value)? register,
+    TResult Function(_LoginOrSignUpWithGoogle value)? loginOrSignUpWithGoogle,
     TResult Function(_GetCurrentUser value)? getCurrentUser,
     TResult Function(_Logout value)? logout,
     TResult Function(_CheckUserSignIn value)? checkUserSignIn,

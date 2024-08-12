@@ -48,6 +48,10 @@ class RegisterPage extends StatelessWidget {
               ),
             );
           },
+          loginSuccess: (data) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/home', (route) => false);
+          },
           error: (message) {
             return showCustomSnackbar(context, message);
           },
@@ -102,30 +106,31 @@ class RegisterPage extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                          onPressed: () {
-                            if (validate()) {
-                              context.read<AuthBloc>().add(
-                                    AuthEvent.checkEmail(emailController.text),
-                                  );
-                            } else {
-                              showCustomSnackbar(context,
-                                  'Mohon lengkapi semua data terlebih dahulu');
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: whiteColor,
-                            backgroundColor: orangeColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                        onPressed: () {
+                          if (validate()) {
+                            context.read<AuthBloc>().add(
+                                  AuthEvent.checkEmail(emailController.text),
+                                );
+                          } else {
+                            showCustomSnackbar(context,
+                                'Mohon lengkapi semua data terlebih dahulu');
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: whiteColor,
+                          backgroundColor: orangeColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Text(
-                            'Daftar',
-                            style: blackTextStyle.copyWith(
-                              fontSize: 14,
-                              fontWeight: semiBold,
-                            ),
-                          )),
+                        ),
+                        child: Text(
+                          'Daftar',
+                          style: blackTextStyle.copyWith(
+                            fontSize: 14,
+                            fontWeight: semiBold,
+                          ),
+                        ),
+                      ),
                     ),
                     verticalSpace(32),
                     Stack(
@@ -158,7 +163,11 @@ class RegisterPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          context.read<AuthBloc>().add(
+                                const AuthEvent.loginOrSignUpWithGoogle(),
+                              );
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -197,7 +206,8 @@ class RegisterPage extends StatelessWidget {
                           ),
                         )
                       ],
-                    )
+                    ),
+                    verticalSpace(24),
                   ],
                 )
               ],

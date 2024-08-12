@@ -35,6 +35,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       );
     });
 
+    on<_LoginOrSignUpWithGoogle>((event, emit) async {
+      emit(const _Loading());
+      final result = await _authRemoteDatasource.loginOrSignUpWithGoogle();
+      result.fold(
+        (l) => emit(_Error(l)),
+        (r) => emit(_SuccessLogin(r)),
+      );
+    });
+
     // Check Email
     on<_CheckEmail>((event, emit) async {
       emit(const _Loading());

@@ -192,7 +192,11 @@ class LoginPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      context.read<AuthBloc>().add(
+                            const AuthEvent.loginOrSignUpWithGoogle(),
+                          );
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,

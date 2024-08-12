@@ -12,7 +12,16 @@
           "package_name": "com.p.panggil_montir_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "712251469553-punt2g2a9mjj9atn9jja49d0buaeu506.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.p.panggil_montir_app",
+            "certificate_hash": "CE:C6:A7:23:6B:72:3F:ED:74:27:0B:9F:04:3D:75:27:27:E5:BF:5F"
+          }
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBNUXfGkVn5Y58q8Rz-9XRmpBTxLVUU830"

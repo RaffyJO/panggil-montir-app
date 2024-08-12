@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:panggil_montir_app/data/dto/register_model.dart';
 import 'package:panggil_montir_app/presentation/extension/values.dart';
@@ -154,6 +155,65 @@ class AuthRemoteDatasource {
       return Right(authResponseModel);
     } else {
       return const Left(null);
+    }
+  }
+
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: [
+      'email',
+      'profile',
+      'https://www.googleapis.com/auth/user.phonenumbers.read',
+      'https://www.googleapis.com/auth/contacts.readonly',
+    ],
+  );
+
+  Future<Either<String, AuthResponseModel>> loginOrSignUpWithGoogle() async {
+    try {
+      print('Attempting to sign in with Google');
+      await _googleSignIn.signOut();
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) {
+        print('User canceled the sign-in');
+        return const Left('User canceled the sign-in');
+      }
+      print('Google sign-in result: $googleUser');
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+      print('Google Auth result: $googleAuth');
+
+      final String? idToken = googleAuth.idToken;
+      final String? accessToken = googleAuth.accessToken;
+      print('ID Token: $idToken');
+      print('Access Token: $accessToken');
+
+      if (idToken == null) {
+        print('Failed to get Google ID token');
+        return const Left('Failed to get Google ID token');
+      }
+
+      // Kirim idToken ke backend Laravel
+      // Lakukan panggilan HTTP ke API backend dengan mengirim idToken
+      final response = await http.post(
+        Uri.parse('$baseUrl/api/user/google-login-or-signup'),
+        body: {
+          'idToken': idToken,
+          'accessToken': accessToken,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final authResponseModel =
+            AuthResponseModel.fromJson(jsonDecode(response.body));
+        await AuthLocalDataSource().saveAuthData(authResponseModel);
+        return Right(authResponseModel);
+      } else {
+        print('Failed to sign in with Google: ${response.body}');
+        return Left(response.body);
+      }
+    } catch (error) {
+      print('Error during Google Sign-In: $error');
+      return Left('Error during Google Sign-In: $error');
     }
   }
 }
