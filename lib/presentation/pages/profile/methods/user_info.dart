@@ -8,6 +8,7 @@ Widget userInfo({
   required String noHp,
   required String profilePicture,
   required String points,
+  required VoidCallback onTap,
 }) {
   return Container(
     padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
@@ -65,9 +66,12 @@ Widget userInfo({
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             horizontalSpace(5),
-            const Icon(
-              Icons.edit_note_outlined,
-              size: 30,
+            GestureDetector(
+              onTap: onTap,
+              child: const Icon(
+                Icons.edit_note_outlined,
+                size: 30,
+              ),
             ),
           ],
         )
