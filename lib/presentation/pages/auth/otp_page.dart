@@ -115,7 +115,26 @@ class _OtpPageState extends State<OtpPage> {
                       ),
                     ),
                   ),
-                  loading: () => const CircularProgressIndicator(),
+                  loading: () => SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: null,
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: whiteColor,
+                        backgroundColor: Colors.grey[300],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: Text(
+                        'Lanjut',
+                        style: greyTextStyle.copyWith(
+                          fontSize: 14,
+                          fontWeight: semiBold,
+                        ),
+                      ),
+                    ),
+                  ),
                 );
               },
             ),

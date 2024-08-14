@@ -7,6 +7,7 @@ import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/profile/methods/profile_item.dart';
 import 'package:panggil_montir_app/presentation/pages/profile/methods/user_info.dart';
+import 'package:panggil_montir_app/presentation/pages/profile/methods/user_info_skeleton.dart';
 import 'package:panggil_montir_app/presentation/pages/profile/profile_edit_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -35,9 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       );
                     },
                     loading: () {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
+                      return userInfoSkeleton();
                     },
                     loginSuccess: (data) {
                       return userInfo(

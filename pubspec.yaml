@@ -64,6 +64,7 @@ dependencies:
   dropdown_button2: ^2.3.9
   google_sign_in: ^6.2.1
   path: ^1.9.0
+  skeletonizer: ^1.4.2
 
 dev_dependencies:
   flutter_test:

@@ -4,6 +4,7 @@ import 'package:panggil_montir_app/presentation/blocs/transaction/transaction_bl
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/history/methods/history_item.dart';
+import 'package:panggil_montir_app/presentation/pages/history/methods/history_item_skeleton.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -67,9 +68,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     );
                   },
                   loading: () {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return const HistoryItemSkeleton();
                   },
                   failure: (message) {
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -142,9 +141,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     );
                   },
                   loading: () {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return const HistoryItemSkeleton();
                   },
                   failure: (message) {
                     ScaffoldMessenger.of(context).showSnackBar(

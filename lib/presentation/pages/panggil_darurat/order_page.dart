@@ -232,7 +232,7 @@ class _OrderPageState extends State<OrderPage> {
                             ),
                             verticalSpace(3),
                             Text(
-                              destinationAddress ?? 'Alamat tidak tersedia',
+                              destinationAddress ?? 'Loading...',
                               maxLines: 3,
                               style: blackTextStyle,
                             ),

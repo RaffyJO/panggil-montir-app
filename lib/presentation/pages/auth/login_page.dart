@@ -129,31 +129,17 @@ class LoginPage extends StatelessWidget {
                         return SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: () {
-                              if (validateEmailPassword()) {
-                                context.read<AuthBloc>().add(
-                                      AuthEvent.login(
-                                        emailController.text,
-                                        passwordController.text,
-                                      ),
-                                    );
-                              } else {
-                                showCustomSnackbar(
-                                  context,
-                                  "Email dan Password tidak boleh kosong",
-                                );
-                              }
-                            },
+                            onPressed: null,
                             style: ElevatedButton.styleFrom(
                               foregroundColor: whiteColor,
-                              backgroundColor: orangeColor,
+                              backgroundColor: Colors.grey[300],
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
                             child: Text(
                               'Masuk',
-                              style: blackTextStyle.copyWith(
+                              style: greyTextStyle.copyWith(
                                   fontSize: 14, fontWeight: semiBold),
                             ),
                           ),

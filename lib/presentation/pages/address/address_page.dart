@@ -6,6 +6,7 @@ import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/address/address_add_page.dart';
 import 'package:panggil_montir_app/presentation/pages/address/methods/address_delete_item.dart';
 import 'package:panggil_montir_app/presentation/pages/address/methods/address_item.dart';
+import 'package:panggil_montir_app/presentation/pages/address/methods/address_item_skeleton.dart';
 
 class AddressPage extends StatefulWidget {
   const AddressPage({super.key});
@@ -17,73 +18,62 @@ class AddressPage extends StatefulWidget {
 class _AddressPageState extends State<AddressPage> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddressBloc, AddressState>(
-      listener: (context, state) {
-        state.maybeWhen(
-          orElse: () => Scaffold(
-            backgroundColor: whiteColor,
-            body: const Center(
-              child: CircularProgressIndicator(),
-            ),
+    return Scaffold(
+      backgroundColor: whiteColor,
+      appBar: AppBar(
+        backgroundColor: whiteColor,
+        title: Text(
+          'Alamat',
+          style: blackTextStyle.copyWith(
+            fontWeight: semiBold,
+            fontSize: 18,
           ),
-          failure: (message) => ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(message),
-              backgroundColor: Colors.red,
-            ),
-          ),
-        );
-      },
-      builder: (context, state) {
-        return state.maybeWhen(
-          orElse: () => Scaffold(
-            backgroundColor: whiteColor,
-            body: const Center(
-              child: CircularProgressIndicator(),
-            ),
-          ),
-          loading: () => Scaffold(
-            backgroundColor: whiteColor,
-            body: const Center(
-              child: CircularProgressIndicator(),
-            ),
-          ),
-          successList: (data) => Scaffold(
-            backgroundColor: whiteColor,
-            appBar: AppBar(
-              backgroundColor: whiteColor,
-              title: Text(
-                'Alamat',
+        ),
+        actions: [
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AddressAddPage(),
+                  ),
+                );
+              },
+              child: Text(
+                'Tambah baru',
                 style: blackTextStyle.copyWith(
                   fontWeight: semiBold,
-                  fontSize: 18,
                 ),
               ),
-              actions: [
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AddressAddPage(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Tambah baru',
-                      style: blackTextStyle.copyWith(
-                        fontWeight: semiBold,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
             ),
-            body: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              child: ListView.builder(
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+        child: BlocConsumer<AddressBloc, AddressState>(
+          listener: (context, state) {
+            state.maybeWhen(
+              orElse: () => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              failure: (message) => ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(message),
+                  backgroundColor: Colors.red,
+                ),
+              ),
+            );
+          },
+          builder: (context, state) {
+            return state.maybeWhen(
+              orElse: () => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              loading: () => const AddressItemSkeleton(),
+              successList: (data) => ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (context, index) {
                   return addressItem(
@@ -178,10 +168,10 @@ class _AddressPageState extends State<AddressPage> {
                   );
                 },
               ),
-            ),
-          ),
-        );
-      },
+            );
+          },
+        ),
+      ),
     );
   }
 }
