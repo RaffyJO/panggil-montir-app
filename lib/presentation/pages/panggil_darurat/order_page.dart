@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:geocoding/geocoding.dart' as geo;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'package:panggil_montir_app/domain/entities/order.dart';
+import 'package:panggil_montir_app/data/dto/order_panggil_darurat_model.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_darurat/find_montir_page.dart';
@@ -24,6 +24,13 @@ class _OrderPageState extends State<OrderPage> {
   double? longitude;
   String? destinationAddress;
   LatLng? selectedLocation;
+  int? selectedKendala;
+  List<Map<String, dynamic>> dataKendala = [
+    {'id': 0, 'title': 'Mogok', 'price': 50000},
+    {'id': 1, 'title': 'Ban Bocor', 'price': 20000},
+    {'id': 2, 'title': 'Rem Blong', 'price': 35000},
+    {'id': 3, 'title': 'Lainnya', 'price': 0},
+  ];
 
   Future<void> getCurrentPosition() async {
     try {
@@ -270,33 +277,29 @@ class _OrderPageState extends State<OrderPage> {
                                   color: whiteColor,
                                   width: MediaQuery.of(context).size.width,
                                   height: 30,
-                                  child: ListView(
+                                  child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
-                                    children: [
-                                      KendalaItem(
-                                        id: 1,
-                                        title: "Mogok",
-                                        price: 250000,
-                                      ),
-                                      horizontalSpace(8),
-                                      KendalaItem(
-                                        id: 2,
-                                        title: "Ban Bocor",
-                                        price: 200000,
-                                      ),
-                                      horizontalSpace(8),
-                                      KendalaItem(
-                                        id: 3,
-                                        title: "Rem Blong",
-                                        price: 300000,
-                                      ),
-                                      horizontalSpace(8),
-                                      KendalaItem(
-                                        id: 4,
-                                        title: "Lainnya",
-                                        price: 0,
-                                      ),
-                                    ],
+                                    itemCount: dataKendala.length,
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, index) {
+                                      return Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 8),
+                                        child: KendalaItem(
+                                          id: dataKendala[index]['id'],
+                                          title: dataKendala[index]['title'],
+                                          price: dataKendala[index]['price'],
+                                          onTap: () {
+                                            setState(() {
+                                              selectedKendala =
+                                                  dataKendala[index]['id'];
+                                            });
+                                          },
+                                          isselected: selectedKendala ==
+                                              dataKendala[index]['id'],
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                                 verticalSpace(10),
@@ -426,44 +429,74 @@ class _OrderPageState extends State<OrderPage> {
                   ),
                 ),
                 verticalSpace(20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: SizedBox(
-                    height: 42,
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FindMontirPage(
-                              order: Order(
-                                address: destinationAddress!,
-                                latitude: latitude.toString(),
-                                longitude: longitude.toString(),
-                                notes: notesController.text,
+                (selectedKendala == null || notesController.text.isEmpty)
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: SizedBox(
+                          height: 42,
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: null,
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: whiteColor,
+                              backgroundColor: Colors.grey[300],
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                            child: Text(
+                              'Cari montir terdekat',
+                              style: greyTextStyle.copyWith(
+                                fontSize: 14,
+                                fontWeight: semiBold,
                               ),
                             ),
                           ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: whiteColor,
-                        backgroundColor: orangeColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: SizedBox(
+                          height: 42,
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              print(selectedKendala);
+                              print(dataKendala[selectedKendala!]['price']);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => FindMontirPage(
+                                    selectedKendala: selectedKendala!,
+                                    order: OrderPanggilDaruratModel(
+                                      serviceFee: dataKendala[selectedKendala!]
+                                          ['price'],
+                                      address: destinationAddress!,
+                                      latitude: latitude.toString(),
+                                      longitude: longitude.toString(),
+                                      notes: notesController.text,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: whiteColor,
+                              backgroundColor: orangeColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                            child: Text(
+                              'Cari montir terdekat',
+                              style: blackTextStyle.copyWith(
+                                fontSize: 14,
+                                fontWeight: semiBold,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                      child: Text(
-                        'Cari montir terdekat',
-                        style: blackTextStyle.copyWith(
-                          fontSize: 14,
-                          fontWeight: semiBold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
                 verticalSpace(10.0),
               ],
             ),

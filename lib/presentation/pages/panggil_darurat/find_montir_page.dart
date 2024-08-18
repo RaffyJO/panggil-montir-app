@@ -1,17 +1,19 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:panggil_montir_app/domain/entities/order.dart';
+import 'package:panggil_montir_app/data/dto/order_panggil_darurat_model.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_darurat/methods/kendala_item.dart';
 
 class FindMontirPage extends StatefulWidget {
-  final Order order;
+  final OrderPanggilDaruratModel order;
+  final int selectedKendala;
 
   const FindMontirPage({
     super.key,
     required this.order,
+    required this.selectedKendala,
   });
 
   @override
@@ -19,6 +21,13 @@ class FindMontirPage extends StatefulWidget {
 }
 
 class _FindMontirPageState extends State<FindMontirPage> {
+  List<Map<String, dynamic>> dataKendala = [
+    {'id': 0, 'title': 'Mogok', 'price': 50000},
+    {'id': 1, 'title': 'Ban Bocor', 'price': 20000},
+    {'id': 2, 'title': 'Rem Blong', 'price': 35000},
+    {'id': 3, 'title': 'Lainnya', 'price': 0},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,28 +123,16 @@ class _FindMontirPageState extends State<FindMontirPage> {
                                     scrollDirection: Axis.horizontal,
                                     children: [
                                       KendalaItem(
-                                        id: 1,
-                                        title: "Mogok",
-                                        price: 250000,
+                                        id: dataKendala[widget.selectedKendala]
+                                            ['id'],
+                                        title:
+                                            dataKendala[widget.selectedKendala]
+                                                ['title'],
+                                        price:
+                                            dataKendala[widget.selectedKendala]
+                                                ['price'],
+                                        isselected: true,
                                       ),
-                                      horizontalSpace(8),
-                                      KendalaItem(
-                                        id: 2,
-                                        title: "Ban Bocor",
-                                        price: 200000,
-                                      ),
-                                      horizontalSpace(8),
-                                      KendalaItem(
-                                        id: 3,
-                                        title: "Rem Blong",
-                                        price: 300000,
-                                      ),
-                                      horizontalSpace(8),
-                                      // KendalaItem(
-                                      //   id: 4,
-                                      //   title: "Lainnya",
-                                      //   price: 0,
-                                      // ),
                                     ],
                                   ),
                                 ),

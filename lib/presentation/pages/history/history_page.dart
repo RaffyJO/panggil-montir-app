@@ -183,15 +183,22 @@ class _HistoryPageState extends State<HistoryPage> {
                         ],
                       );
                     } else {
-                      return ListView.builder(
-                        itemCount: data.length,
-                        itemBuilder: (context, index) {
-                          if (data[index].status != 'cancelled' &&
-                              data[index].status != 'completed') {
-                            return HistoryItem(order: data[index]);
-                          }
-                          return Container();
+                      return RefreshIndicator(
+                        color: blueColor,
+                        onRefresh: () async {
+                          BlocProvider.of<TransactionBloc>(context)
+                              .add(const TransactionEvent.getTransactions());
                         },
+                        child: ListView.builder(
+                          itemCount: data.length,
+                          itemBuilder: (context, index) {
+                            if (data[index].status != 'cancelled' &&
+                                data[index].status != 'completed') {
+                              return HistoryItem(order: data[index]);
+                            }
+                            return Container();
+                          },
+                        ),
                       );
                     }
                   },

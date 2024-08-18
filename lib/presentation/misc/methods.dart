@@ -53,7 +53,7 @@ String formatPrice(int price) {
 String dayOfWeekToNumber(String day) {
   switch (day.toLowerCase()) {
     case 'sunday':
-      return '0';
+      return '7';
     case 'monday':
       return '1';
     case 'tuesday':

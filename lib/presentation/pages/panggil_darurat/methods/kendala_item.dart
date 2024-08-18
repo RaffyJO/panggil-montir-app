@@ -27,11 +27,7 @@ class _KendalaItemState extends State<KendalaItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          widget.isselected = !widget.isselected;
-        });
-      },
+      onTap: widget.onTap,
       child: (widget.isselected == true)
           ? Container(
               height: 20,

@@ -8,32 +8,35 @@ Widget detailItem(String name, Icon icons, String title,
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         children: [
-          Container(
-            width: width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    icons,
-                    horizontalSpace(2),
-                    Text(
-                      title,
-                      style: blackTextStyle.copyWith(
-                        fontWeight: semiBold,
+          GestureDetector(
+            onTap: onTap,
+            child: Container(
+              width: width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      icons,
+                      horizontalSpace(2),
+                      Text(
+                        title,
+                        style: blackTextStyle.copyWith(
+                          fontWeight: semiBold,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Text(
-                  name,
-                  style: blackTextStyle,
-                ),
-              ],
+                    ],
+                  ),
+                  Text(
+                    name,
+                    style: blackTextStyle,
+                  ),
+                ],
+              ),
             ),
           ),
           isDivider
