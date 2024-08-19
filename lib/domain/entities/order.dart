@@ -37,7 +37,7 @@ class Order with _$Order {
         id: json['order']['id'],
         code: json['order']['code'],
         issue: json['order']['issue'],
-        notes: json['notes'],
+        notes: json['order']['notes'],
         serviceFee: json['order']['service_fee'],
         deliveryFee: (json['order']['delivery_fee'] ?? 0).toInt(),
         orderDate: (json['order']['order_date']),

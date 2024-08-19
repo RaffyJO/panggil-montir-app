@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart' as geo;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:panggil_montir_app/data/dto/order_panggil_darurat_model.dart';
+import 'package:panggil_montir_app/presentation/blocs/order_darurat/order_darurat_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_darurat/find_montir_page.dart';
@@ -454,48 +456,101 @@ class _OrderPageState extends State<OrderPage> {
                           ),
                         ),
                       )
-                    : Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: SizedBox(
-                          height: 42,
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              print(selectedKendala);
-                              print(dataKendala[selectedKendala!]['price']);
-                              Navigator.push(
+                    : BlocConsumer<OrderDaruratBloc, OrderDaruratState>(
+                        listener: (context, state) {
+                          state.maybeWhen(
+                            orElse: () {},
+                            success: (order) {
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => FindMontirPage(
                                     selectedKendala: selectedKendala!,
-                                    order: OrderPanggilDaruratModel(
-                                      serviceFee: dataKendala[selectedKendala!]
-                                          ['price'],
-                                      address: destinationAddress!,
-                                      latitude: latitude.toString(),
-                                      longitude: longitude.toString(),
-                                      notes: notesController.text,
-                                    ),
                                   ),
                                 ),
                               );
                             },
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor: whiteColor,
-                              backgroundColor: orangeColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16),
+                            failure: (message) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(message),
+                                  backgroundColor: Colors.red,
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        builder: (context, state) {
+                          return state.maybeWhen(
+                            loading: () => Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                              child: SizedBox(
+                                height: 42,
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  onPressed: null,
+                                  style: ElevatedButton.styleFrom(
+                                    foregroundColor: whiteColor,
+                                    backgroundColor: Colors.grey[300],
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    'Cari montir terdekat',
+                                    style: greyTextStyle.copyWith(
+                                      fontSize: 14,
+                                      fontWeight: semiBold,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
-                            child: Text(
-                              'Cari montir terdekat',
-                              style: blackTextStyle.copyWith(
-                                fontSize: 14,
-                                fontWeight: semiBold,
+                            orElse: () => Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                              child: SizedBox(
+                                height: 42,
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  onPressed: () async {
+                                    context.read<OrderDaruratBloc>().add(
+                                          OrderDaruratEvent.findMontir(
+                                            OrderPanggilDaruratModel(
+                                              serviceFee:
+                                                  dataKendala[selectedKendala!]
+                                                      ['price'],
+                                              issue:
+                                                  dataKendala[selectedKendala!]
+                                                      ['title'],
+                                              address: destinationAddress!,
+                                              latitude: latitude.toString(),
+                                              longitude: longitude.toString(),
+                                              notes: notesController.text,
+                                            ),
+                                          ),
+                                        );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    foregroundColor: whiteColor,
+                                    backgroundColor: orangeColor,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    'Cari montir terdekat',
+                                    style: blackTextStyle.copyWith(
+                                      fontSize: 14,
+                                      fontWeight: semiBold,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
+                          );
+                        },
                       ),
                 verticalSpace(10.0),
               ],

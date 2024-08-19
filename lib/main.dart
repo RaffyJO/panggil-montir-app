@@ -8,6 +8,7 @@ import 'package:panggil_montir_app/data/datasources/remote_datasources/address_r
 import 'package:panggil_montir_app/data/datasources/remote_datasources/auth_remote_datasource.dart';
 import 'package:panggil_montir_app/data/datasources/remote_datasources/garage_remote_datasource.dart';
 import 'package:panggil_montir_app/data/datasources/remote_datasources/motorcycle_remote_datasource.dart';
+import 'package:panggil_montir_app/data/datasources/remote_datasources/panggil_darurat/order_darurat_remote_datasource.dart';
 import 'package:panggil_montir_app/data/datasources/remote_datasources/panggil_servis/order_remote_datasource.dart';
 import 'package:panggil_montir_app/data/datasources/remote_datasources/transaction_remote_datasource.dart';
 import 'package:panggil_montir_app/firebase_options.dart';
@@ -16,6 +17,7 @@ import 'package:panggil_montir_app/presentation/blocs/auth/auth_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/brand/brand_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/garage/garage_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/motorcycle/motorcycle_bloc.dart';
+import 'package:panggil_montir_app/presentation/blocs/order_darurat/order_darurat_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/order_servis/order_servis_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/production_year/production_year_bloc.dart';
 import 'package:panggil_montir_app/presentation/blocs/tipe/tipe_bloc.dart';
@@ -89,6 +91,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ProductionYearBloc(MotorcycleRemoteDatasource())
             ..add(const ProductionYearEvent.getListProductionYears()),
+        ),
+        BlocProvider(
+          create: (context) => OrderDaruratBloc(OrderDaruratRemoteDatasource()),
         ),
       ],
       child: MaterialApp(
