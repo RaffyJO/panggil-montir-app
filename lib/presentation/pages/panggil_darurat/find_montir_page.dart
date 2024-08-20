@@ -59,7 +59,7 @@ class _FindMontirPageState extends State<FindMontirPage> {
             listener: (context, state) {
               state.maybeWhen(
                 success: (data) {
-                  if (data.status == 'ongoing') {
+                  if (data.montir!.name != '') {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -68,6 +68,11 @@ class _FindMontirPageState extends State<FindMontirPage> {
                     );
                   }
                 },
+                initial: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/home', (route) => false);
+                },
+                failure: (message) => showCustomSnackbar(context, message),
                 orElse: () {},
               );
             },
@@ -214,7 +219,11 @@ class _FindMontirPageState extends State<FindMontirPage> {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.pop(context);
+                              context.read<OrderDaruratBloc>().add(
+                                    OrderDaruratEvent.cancelOrder(
+                                      data.code!,
+                                    ),
+                                  );
                             },
                             style: ElevatedButton.styleFrom(
                               foregroundColor: whiteColor,

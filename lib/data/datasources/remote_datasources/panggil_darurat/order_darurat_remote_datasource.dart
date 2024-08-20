@@ -57,4 +57,22 @@ class OrderDaruratRemoteDatasource {
       return Left(response.body);
     }
   }
+
+  Future<Either<String, void>> cancelOrder(String orderCode) async {
+    final authDataModel = await AuthLocalDataSource().getAuthData();
+    final url = Uri.parse('$baseUrl/api/user/cancel-order-darurat/$orderCode');
+    final response = await http.put(
+      url,
+      headers: {
+        'Authorization': 'Bearer ${authDataModel?.token}',
+        'Content-Type': 'application/json',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return const Right(null);
+    } else {
+      return Left(response.body);
+    }
+  }
 }

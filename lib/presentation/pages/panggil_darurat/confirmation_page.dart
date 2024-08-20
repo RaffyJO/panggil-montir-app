@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geocoding/geocoding.dart' as geo;
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
+import 'package:panggil_montir_app/domain/entities/direction.dart';
 import 'package:panggil_montir_app/presentation/blocs/order_darurat/order_darurat_bloc.dart';
+import 'package:panggil_montir_app/presentation/extension/values.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 
@@ -12,10 +17,174 @@ class ConfirmationPage extends StatefulWidget {
 }
 
 class _ConfirmationPageState extends State<ConfirmationPage> {
+  late GoogleMapController mapController;
+  final Set<Marker> markers = {};
+  final Set<Polyline> polylines = <Polyline>{};
+  final Location location = Location();
+  BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
+  String? userAddress;
+  String? montirAddress;
+  Map<String, String> addressMap = {
+    'userLatitude': '',
+    'userLongitude': '',
+    'montirLatitude': '',
+    'montirLongitude': '',
+  };
+
+  @override
+  void initState() {
+    super.initState();
+
+    final orderState = context.read<OrderDaruratBloc>().state;
+
+    orderState.maybeWhen(
+      orElse: () => 'No data',
+      success: (data) => {
+        addressMap['userLatitude'] = data.latitude!,
+        addressMap['userLongitude'] = data.longitude!,
+        addressMap['montirLatitude'] = data.montir!.latitude!,
+        addressMap['montirLongitude'] = data.montir!.longitude!,
+      },
+    );
+
+    Future.microtask(() async {
+      addCustomIcon();
+      await setupLocation();
+      setInitialMarkers();
+      await setPolylines(
+        LatLng(double.parse(addressMap['montirLatitude']!),
+            double.parse(addressMap['montirLongitude']!)),
+        LatLng(double.parse(addressMap['userLatitude']!),
+            double.parse(addressMap['userLongitude']!)),
+      );
+      setState(() {});
+    });
+  }
+
+  Future<void> setupLocation() async {
+    bool serviceEnabled;
+    PermissionStatus permissionGranted;
+
+    serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        debugPrint('location service is not available');
+        return;
+      }
+    }
+
+    permissionGranted = await location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted == PermissionStatus.denied) {
+        debugPrint('Location permission is denied');
+        return;
+      }
+    }
+  }
+
+  Future<String> getAddressFromLatLong(double lat, double lng) async {
+    try {
+      List<geo.Placemark> placemarks =
+          await geo.placemarkFromCoordinates(lat, lng);
+      geo.Placemark place = placemarks[0];
+      return "${place.street}, ${place.subLocality}, ${place.locality}, ${place.subAdministrativeArea}, ${place.administrativeArea}";
+    } catch (e) {
+      debugPrint('Failed to get address: $e');
+      return 'Failed to get address: $e';
+    }
+  }
+
+  void addCustomIcon() {
+    BitmapDescriptor.asset(
+      const ImageConfiguration(size: Size(32, 32)),
+      'assets/icons/icon-location-montir.png',
+    ).then(
+      (icon) {
+        setState(() {
+          markerIcon = icon;
+        });
+      },
+    );
+  }
+
+  void setInitialMarkers() {
+    setState(() {
+      markers.add(Marker(
+        markerId: const MarkerId('source'),
+        position: LatLng(double.parse(addressMap['montirLatitude']!),
+            double.parse(addressMap['montirLongitude']!)),
+        icon: markerIcon,
+      ));
+      markers.add(Marker(
+        markerId: const MarkerId('destination'),
+        position: LatLng(double.parse(addressMap['userLatitude']!),
+            double.parse(addressMap['userLongitude']!)),
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange),
+      ));
+    });
+  }
+
+  Future<void> setPolylines(LatLng origin, LatLng destination) async {
+    final result = await Direction.getDirections(
+      googleMapsApiKey: apiKeyGmaps,
+      origin: origin,
+      destination: destination,
+    );
+
+    final polylineCoordinates = <LatLng>[];
+    if (result != null && result.polylinePoints.isNotEmpty) {
+      polylineCoordinates.addAll(result.polylinePoints);
+    }
+
+    final polyline = Polyline(
+      polylineId: const PolylineId('default-polyline'),
+      color: blueColor,
+      width: 6,
+      points: polylineCoordinates,
+    );
+
+    setState(() {
+      polylines.add(polyline);
+    });
+
+    mapController.animateCamera(
+      CameraUpdate.newLatLngBounds(result!.bounds, 100),
+    );
+  }
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+    setState(() {
+      markers.clear();
+      setInitialMarkers();
+    });
+  }
+
+  @override
+  void dispose() {
+    mapController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: whiteColor,
+      backgroundColor: whiteColor,
+      body: GoogleMap(
+        initialCameraPosition: CameraPosition(
+          target: LatLng(double.parse(addressMap['montirLatitude']!),
+              double.parse(addressMap['montirLongitude']!)),
+          zoom: 8,
+        ),
+        markers: markers,
+        zoomControlsEnabled: false,
+        mapToolbarEnabled: false,
+        myLocationButtonEnabled: false,
+        polylines: polylines,
+        onMapCreated: _onMapCreated,
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: ClipRRect(
         borderRadius: const BorderRadius.vertical(top: Radius.circular(25.0)),
@@ -70,12 +239,12 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                                   ),
                                 ),
                                 Text(
-                                  data.montir!.name.toString(),
+                                  data.montir!.name!,
                                   style: blackTextStyle.copyWith(
                                     fontWeight: semiBold,
                                   ),
                                 ),
-                                verticalSpace(4),
+                                verticalSpace(6),
                                 Row(
                                   children: [
                                     Container(
@@ -151,11 +320,11 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Service tambal ban',
+                                  'Service ${data.issue}',
                                   style: blackTextStyle,
                                 ),
                                 Text(
-                                  'Rp20.000',
+                                  formatCurrency(data.serviceFee!),
                                   style: blackTextStyle,
                                 ),
                               ],
@@ -168,7 +337,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                                   style: blackTextStyle,
                                 ),
                                 Text(
-                                  'Rp5.000',
+                                  formatCurrency(data.deliveryFee!),
                                   style: blackTextStyle,
                                 ),
                               ],
@@ -181,7 +350,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                                   style: blackTextStyle,
                                 ),
                                 Text(
-                                  'Rp2.000',
+                                  formatCurrency(data.applicationFee!),
                                   style: blackTextStyle,
                                 ),
                               ],
@@ -197,7 +366,9 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                                   ),
                                 ),
                                 Text(
-                                  'Rp27.000',
+                                  formatCurrency(data.serviceFee! +
+                                      data.deliveryFee! +
+                                      data.applicationFee!),
                                   style: blackTextStyle.copyWith(
                                     fontWeight: semiBold,
                                   ),

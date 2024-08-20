@@ -25,6 +25,7 @@ mixin _$Order {
   String? get issue => throw _privateConstructorUsedError;
   String? get notes => throw _privateConstructorUsedError;
   int? get serviceFee => throw _privateConstructorUsedError;
+  int? get applicationFee => throw _privateConstructorUsedError;
   int? get deliveryFee => throw _privateConstructorUsedError;
   String? get orderDate => throw _privateConstructorUsedError;
   String? get bookedDate => throw _privateConstructorUsedError;
@@ -56,6 +57,7 @@ abstract class $OrderCopyWith<$Res> {
       String? issue,
       String? notes,
       int? serviceFee,
+      int? applicationFee,
       int? deliveryFee,
       String? orderDate,
       String? bookedDate,
@@ -96,6 +98,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? issue = freezed,
     Object? notes = freezed,
     Object? serviceFee = freezed,
+    Object? applicationFee = freezed,
     Object? deliveryFee = freezed,
     Object? orderDate = freezed,
     Object? bookedDate = freezed,
@@ -131,6 +134,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
       serviceFee: freezed == serviceFee
           ? _value.serviceFee
           : serviceFee // ignore: cast_nullable_to_non_nullable
+              as int?,
+      applicationFee: freezed == applicationFee
+          ? _value.applicationFee
+          : applicationFee // ignore: cast_nullable_to_non_nullable
               as int?,
       deliveryFee: freezed == deliveryFee
           ? _value.deliveryFee
@@ -265,6 +272,7 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       String? issue,
       String? notes,
       int? serviceFee,
+      int? applicationFee,
       int? deliveryFee,
       String? orderDate,
       String? bookedDate,
@@ -308,6 +316,7 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? issue = freezed,
     Object? notes = freezed,
     Object? serviceFee = freezed,
+    Object? applicationFee = freezed,
     Object? deliveryFee = freezed,
     Object? orderDate = freezed,
     Object? bookedDate = freezed,
@@ -343,6 +352,10 @@ class __$$OrderImplCopyWithImpl<$Res>
       serviceFee: freezed == serviceFee
           ? _value.serviceFee
           : serviceFee // ignore: cast_nullable_to_non_nullable
+              as int?,
+      applicationFee: freezed == applicationFee
+          ? _value.applicationFee
+          : applicationFee // ignore: cast_nullable_to_non_nullable
               as int?,
       deliveryFee: freezed == deliveryFee
           ? _value.deliveryFee
@@ -413,6 +426,7 @@ class _$OrderImpl implements _Order {
       this.issue,
       this.notes,
       this.serviceFee,
+      this.applicationFee,
       this.deliveryFee,
       this.orderDate,
       this.bookedDate,
@@ -442,6 +456,8 @@ class _$OrderImpl implements _Order {
   final String? notes;
   @override
   final int? serviceFee;
+  @override
+  final int? applicationFee;
   @override
   final int? deliveryFee;
   @override
@@ -480,7 +496,7 @@ class _$OrderImpl implements _Order {
 
   @override
   String toString() {
-    return 'Order(id: $id, code: $code, issue: $issue, notes: $notes, serviceFee: $serviceFee, deliveryFee: $deliveryFee, orderDate: $orderDate, bookedDate: $bookedDate, completedDate: $completedDate, address: $address, latitude: $latitude, longitude: $longitude, status: $status, orderType: $orderType, garage: $garage, motorcycle: $motorcycle, montir: $montir, paymentMethod: $paymentMethod, services: $services)';
+    return 'Order(id: $id, code: $code, issue: $issue, notes: $notes, serviceFee: $serviceFee, applicationFee: $applicationFee, deliveryFee: $deliveryFee, orderDate: $orderDate, bookedDate: $bookedDate, completedDate: $completedDate, address: $address, latitude: $latitude, longitude: $longitude, status: $status, orderType: $orderType, garage: $garage, motorcycle: $motorcycle, montir: $montir, paymentMethod: $paymentMethod, services: $services)';
   }
 
   @override
@@ -494,6 +510,8 @@ class _$OrderImpl implements _Order {
             (identical(other.notes, notes) || other.notes == notes) &&
             (identical(other.serviceFee, serviceFee) ||
                 other.serviceFee == serviceFee) &&
+            (identical(other.applicationFee, applicationFee) ||
+                other.applicationFee == applicationFee) &&
             (identical(other.deliveryFee, deliveryFee) ||
                 other.deliveryFee == deliveryFee) &&
             (identical(other.orderDate, orderDate) ||
@@ -528,6 +546,7 @@ class _$OrderImpl implements _Order {
         issue,
         notes,
         serviceFee,
+        applicationFee,
         deliveryFee,
         orderDate,
         bookedDate,
@@ -565,6 +584,7 @@ abstract class _Order implements Order {
       final String? issue,
       final String? notes,
       final int? serviceFee,
+      final int? applicationFee,
       final int? deliveryFee,
       final String? orderDate,
       final String? bookedDate,
@@ -592,6 +612,8 @@ abstract class _Order implements Order {
   String? get notes;
   @override
   int? get serviceFee;
+  @override
+  int? get applicationFee;
   @override
   int? get deliveryFee;
   @override

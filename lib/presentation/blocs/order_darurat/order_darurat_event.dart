@@ -7,4 +7,5 @@ class OrderDaruratEvent with _$OrderDaruratEvent {
       _FindMontir;
   const factory OrderDaruratEvent.getCurrentOrder(String orderCode) =
       _GetCurrentOrder;
+  const factory OrderDaruratEvent.cancelOrder(String orderCode) = _CancelOrder;
 }

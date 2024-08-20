@@ -219,33 +219,39 @@ class HistoryItem extends StatelessWidget {
                         child: Row(
                           children: [
                             (order.status == 'completed')
-                                ? Container(
-                                    decoration: BoxDecoration(
-                                      color: whiteColor,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Image.network(
-                                      'https://i.ytimg.com/vi/sN-Cjxt3C70/maxresdefault.jpg',
-                                      width: 72,
-                                      height: 72,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )
-                                : Container(
-                                    decoration: BoxDecoration(
-                                      color: whiteColor,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: ColorFiltered(
-                                      colorFilter: const ColorFilter.mode(
-                                        Colors.white,
-                                        BlendMode.saturation,
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: whiteColor,
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                       child: Image.network(
                                         'https://i.ytimg.com/vi/sN-Cjxt3C70/maxresdefault.jpg',
                                         width: 72,
                                         height: 72,
                                         fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  )
+                                : ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: whiteColor,
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: ColorFiltered(
+                                        colorFilter: const ColorFilter.mode(
+                                          Colors.white,
+                                          BlendMode.saturation,
+                                        ),
+                                        child: Image.network(
+                                          'https://i.ytimg.com/vi/sN-Cjxt3C70/maxresdefault.jpg',
+                                          width: 72,
+                                          height: 72,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   ),

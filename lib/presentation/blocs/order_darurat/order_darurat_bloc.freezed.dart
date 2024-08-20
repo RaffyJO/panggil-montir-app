@@ -21,6 +21,7 @@ mixin _$OrderDaruratEvent {
     required TResult Function() started,
     required TResult Function(OrderPanggilDaruratModel order) findMontir,
     required TResult Function(String orderCode) getCurrentOrder,
+    required TResult Function(String orderCode) cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$OrderDaruratEvent {
     TResult? Function()? started,
     TResult? Function(OrderPanggilDaruratModel order)? findMontir,
     TResult? Function(String orderCode)? getCurrentOrder,
+    TResult? Function(String orderCode)? cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$OrderDaruratEvent {
     TResult Function()? started,
     TResult Function(OrderPanggilDaruratModel order)? findMontir,
     TResult Function(String orderCode)? getCurrentOrder,
+    TResult Function(String orderCode)? cancelOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$OrderDaruratEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_FindMontir value) findMontir,
     required TResult Function(_GetCurrentOrder value) getCurrentOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$OrderDaruratEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_FindMontir value)? findMontir,
     TResult? Function(_GetCurrentOrder value)? getCurrentOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$OrderDaruratEvent {
     TResult Function(_Started value)? started,
     TResult Function(_FindMontir value)? findMontir,
     TResult Function(_GetCurrentOrder value)? getCurrentOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() started,
     required TResult Function(OrderPanggilDaruratModel order) findMontir,
     required TResult Function(String orderCode) getCurrentOrder,
+    required TResult Function(String orderCode) cancelOrder,
   }) {
     return started();
   }
@@ -131,6 +138,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? started,
     TResult? Function(OrderPanggilDaruratModel order)? findMontir,
     TResult? Function(String orderCode)? getCurrentOrder,
+    TResult? Function(String orderCode)? cancelOrder,
   }) {
     return started?.call();
   }
@@ -141,6 +149,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? started,
     TResult Function(OrderPanggilDaruratModel order)? findMontir,
     TResult Function(String orderCode)? getCurrentOrder,
+    TResult Function(String orderCode)? cancelOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -155,6 +164,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_FindMontir value) findMontir,
     required TResult Function(_GetCurrentOrder value) getCurrentOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
   }) {
     return started(this);
   }
@@ -165,6 +175,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_FindMontir value)? findMontir,
     TResult? Function(_GetCurrentOrder value)? getCurrentOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
   }) {
     return started?.call(this);
   }
@@ -175,6 +186,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_FindMontir value)? findMontir,
     TResult Function(_GetCurrentOrder value)? getCurrentOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -255,6 +267,7 @@ class _$FindMontirImpl implements _FindMontir {
     required TResult Function() started,
     required TResult Function(OrderPanggilDaruratModel order) findMontir,
     required TResult Function(String orderCode) getCurrentOrder,
+    required TResult Function(String orderCode) cancelOrder,
   }) {
     return findMontir(order);
   }
@@ -265,6 +278,7 @@ class _$FindMontirImpl implements _FindMontir {
     TResult? Function()? started,
     TResult? Function(OrderPanggilDaruratModel order)? findMontir,
     TResult? Function(String orderCode)? getCurrentOrder,
+    TResult? Function(String orderCode)? cancelOrder,
   }) {
     return findMontir?.call(order);
   }
@@ -275,6 +289,7 @@ class _$FindMontirImpl implements _FindMontir {
     TResult Function()? started,
     TResult Function(OrderPanggilDaruratModel order)? findMontir,
     TResult Function(String orderCode)? getCurrentOrder,
+    TResult Function(String orderCode)? cancelOrder,
     required TResult orElse(),
   }) {
     if (findMontir != null) {
@@ -289,6 +304,7 @@ class _$FindMontirImpl implements _FindMontir {
     required TResult Function(_Started value) started,
     required TResult Function(_FindMontir value) findMontir,
     required TResult Function(_GetCurrentOrder value) getCurrentOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
   }) {
     return findMontir(this);
   }
@@ -299,6 +315,7 @@ class _$FindMontirImpl implements _FindMontir {
     TResult? Function(_Started value)? started,
     TResult? Function(_FindMontir value)? findMontir,
     TResult? Function(_GetCurrentOrder value)? getCurrentOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
   }) {
     return findMontir?.call(this);
   }
@@ -309,6 +326,7 @@ class _$FindMontirImpl implements _FindMontir {
     TResult Function(_Started value)? started,
     TResult Function(_FindMontir value)? findMontir,
     TResult Function(_GetCurrentOrder value)? getCurrentOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
   }) {
     if (findMontir != null) {
@@ -397,6 +415,7 @@ class _$GetCurrentOrderImpl implements _GetCurrentOrder {
     required TResult Function() started,
     required TResult Function(OrderPanggilDaruratModel order) findMontir,
     required TResult Function(String orderCode) getCurrentOrder,
+    required TResult Function(String orderCode) cancelOrder,
   }) {
     return getCurrentOrder(orderCode);
   }
@@ -407,6 +426,7 @@ class _$GetCurrentOrderImpl implements _GetCurrentOrder {
     TResult? Function()? started,
     TResult? Function(OrderPanggilDaruratModel order)? findMontir,
     TResult? Function(String orderCode)? getCurrentOrder,
+    TResult? Function(String orderCode)? cancelOrder,
   }) {
     return getCurrentOrder?.call(orderCode);
   }
@@ -417,6 +437,7 @@ class _$GetCurrentOrderImpl implements _GetCurrentOrder {
     TResult Function()? started,
     TResult Function(OrderPanggilDaruratModel order)? findMontir,
     TResult Function(String orderCode)? getCurrentOrder,
+    TResult Function(String orderCode)? cancelOrder,
     required TResult orElse(),
   }) {
     if (getCurrentOrder != null) {
@@ -431,6 +452,7 @@ class _$GetCurrentOrderImpl implements _GetCurrentOrder {
     required TResult Function(_Started value) started,
     required TResult Function(_FindMontir value) findMontir,
     required TResult Function(_GetCurrentOrder value) getCurrentOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
   }) {
     return getCurrentOrder(this);
   }
@@ -441,6 +463,7 @@ class _$GetCurrentOrderImpl implements _GetCurrentOrder {
     TResult? Function(_Started value)? started,
     TResult? Function(_FindMontir value)? findMontir,
     TResult? Function(_GetCurrentOrder value)? getCurrentOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
   }) {
     return getCurrentOrder?.call(this);
   }
@@ -451,6 +474,7 @@ class _$GetCurrentOrderImpl implements _GetCurrentOrder {
     TResult Function(_Started value)? started,
     TResult Function(_FindMontir value)? findMontir,
     TResult Function(_GetCurrentOrder value)? getCurrentOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
     required TResult orElse(),
   }) {
     if (getCurrentOrder != null) {
@@ -467,6 +491,152 @@ abstract class _GetCurrentOrder implements OrderDaruratEvent {
   String get orderCode;
   @JsonKey(ignore: true)
   _$$GetCurrentOrderImplCopyWith<_$GetCurrentOrderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CancelOrderImplCopyWith<$Res> {
+  factory _$$CancelOrderImplCopyWith(
+          _$CancelOrderImpl value, $Res Function(_$CancelOrderImpl) then) =
+      __$$CancelOrderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String orderCode});
+}
+
+/// @nodoc
+class __$$CancelOrderImplCopyWithImpl<$Res>
+    extends _$OrderDaruratEventCopyWithImpl<$Res, _$CancelOrderImpl>
+    implements _$$CancelOrderImplCopyWith<$Res> {
+  __$$CancelOrderImplCopyWithImpl(
+      _$CancelOrderImpl _value, $Res Function(_$CancelOrderImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderCode = null,
+  }) {
+    return _then(_$CancelOrderImpl(
+      null == orderCode
+          ? _value.orderCode
+          : orderCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CancelOrderImpl implements _CancelOrder {
+  const _$CancelOrderImpl(this.orderCode);
+
+  @override
+  final String orderCode;
+
+  @override
+  String toString() {
+    return 'OrderDaruratEvent.cancelOrder(orderCode: $orderCode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CancelOrderImpl &&
+            (identical(other.orderCode, orderCode) ||
+                other.orderCode == orderCode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderCode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CancelOrderImplCopyWith<_$CancelOrderImpl> get copyWith =>
+      __$$CancelOrderImplCopyWithImpl<_$CancelOrderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(OrderPanggilDaruratModel order) findMontir,
+    required TResult Function(String orderCode) getCurrentOrder,
+    required TResult Function(String orderCode) cancelOrder,
+  }) {
+    return cancelOrder(orderCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(OrderPanggilDaruratModel order)? findMontir,
+    TResult? Function(String orderCode)? getCurrentOrder,
+    TResult? Function(String orderCode)? cancelOrder,
+  }) {
+    return cancelOrder?.call(orderCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(OrderPanggilDaruratModel order)? findMontir,
+    TResult Function(String orderCode)? getCurrentOrder,
+    TResult Function(String orderCode)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (cancelOrder != null) {
+      return cancelOrder(orderCode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_FindMontir value) findMontir,
+    required TResult Function(_GetCurrentOrder value) getCurrentOrder,
+    required TResult Function(_CancelOrder value) cancelOrder,
+  }) {
+    return cancelOrder(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_FindMontir value)? findMontir,
+    TResult? Function(_GetCurrentOrder value)? getCurrentOrder,
+    TResult? Function(_CancelOrder value)? cancelOrder,
+  }) {
+    return cancelOrder?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_FindMontir value)? findMontir,
+    TResult Function(_GetCurrentOrder value)? getCurrentOrder,
+    TResult Function(_CancelOrder value)? cancelOrder,
+    required TResult orElse(),
+  }) {
+    if (cancelOrder != null) {
+      return cancelOrder(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CancelOrder implements OrderDaruratEvent {
+  const factory _CancelOrder(final String orderCode) = _$CancelOrderImpl;
+
+  String get orderCode;
+  @JsonKey(ignore: true)
+  _$$CancelOrderImplCopyWith<_$CancelOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

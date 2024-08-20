@@ -25,6 +25,17 @@ class OrderDaruratBloc extends Bloc<OrderDaruratEvent, OrderDaruratState> {
         _startPolling(r.code!); // Mulai polling setelah mendapatkan data
       });
     });
+
+    // Event: cancel order
+    on<_CancelOrder>((event, emit) async {
+      emit(const _Loading());
+      final response =
+          await _orderDaruratRemoteDatasource.cancelOrder(event.orderCode);
+      response.fold(
+        (l) => emit(_Failure(l)),
+        (r) => emit(const _Initial()),
+      );
+    });
   }
 
   void _startPolling(String orderCode) {
@@ -35,7 +46,7 @@ class OrderDaruratBloc extends Bloc<OrderDaruratEvent, OrderDaruratState> {
       response.fold(
         (l) => emit(OrderDaruratState.failure(l)), // Tangani error jika ada
         (r) {
-          if (r.status == 'ongoing') {
+          if (r.montir!.name != "") {
             _pollingTimer
                 ?.cancel(); // Hentikan polling jika status berubah menjadi ongoing
             emit(OrderDaruratState.success(
