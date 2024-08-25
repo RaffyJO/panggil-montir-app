@@ -54,19 +54,12 @@ class _ListBengkelState extends State<ListBengkel> {
           onRefresh: () async {
             context.read<GarageBloc>().add(const GarageEvent.garageRefresh());
           },
-          child: BlocBuilder<GarageBloc, GarageState>(
-            builder: (context, state) {
-              return state.when(
-                initial: () {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                },
-                loading: () {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                },
+          child: BlocConsumer<GarageBloc, GarageState>(
+            listener: (context, state) {
+              state.maybeWhen(
+                orElse: () => const Center(
+                  child: Text('No data'),
+                ),
                 failure: (message) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -74,6 +67,17 @@ class _ListBengkelState extends State<ListBengkel> {
                       backgroundColor: Colors.red,
                     ),
                   );
+                },
+              );
+            },
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+                loading: () {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );

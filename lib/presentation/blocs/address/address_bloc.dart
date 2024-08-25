@@ -35,11 +35,25 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
 
     // Delete address
     on<_DeleteAddress>((event, emit) async {
+      List<Address> addresses = [];
+
+      // Mengambil daftar address dari state saat ini jika ada
+      state.maybeWhen(
+        successList: (list) => addresses = List<Address>.from(list),
+        orElse: () {},
+      );
+
       emit(const _Loading());
       final response = await _addressRemoteDatasource.deleteAddress(event.id);
       response.fold(
-        (l) => emit(_Failure(l)),
-        (r) => emit(const _SuccessList([])),
+        (l) {
+          emit(_Failure(l));
+          emit(_SuccessList(addresses));
+        },
+        (r) {
+          addresses.removeWhere((element) => element.id == event.id);
+          emit(_SuccessList(addresses));
+        },
       );
     });
 

@@ -10,7 +10,7 @@
 .svn/
 migrate_working_dir/
 
-values.dart
+/lib/presentation/extension/
 
 # IntelliJ related
 *.iml

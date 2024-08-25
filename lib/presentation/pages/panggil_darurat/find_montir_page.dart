@@ -79,6 +79,7 @@ class _FindMontirPageState extends State<FindMontirPage> {
             builder: (context, state) {
               return state.maybeWhen(
                 orElse: () => const Text('No data'),
+                loading: () => const Center(child: CircularProgressIndicator()),
                 success: (data) => Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
