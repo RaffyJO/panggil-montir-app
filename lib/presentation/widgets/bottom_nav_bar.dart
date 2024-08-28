@@ -22,10 +22,11 @@ class BottomNavBar extends StatelessWidget {
         height: 60,
         decoration: BoxDecoration(color: whiteColor, boxShadow: [
           BoxShadow(
-              color: greyColor.withOpacity(0.1),
-              spreadRadius: 0,
-              blurRadius: 5,
-              offset: const Offset(0, -2))
+            color: greyColor.withOpacity(0.1),
+            spreadRadius: 0,
+            blurRadius: 5,
+            offset: const Offset(0, -2),
+          )
         ]),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

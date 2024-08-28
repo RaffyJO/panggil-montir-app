@@ -205,7 +205,14 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
           ),
           child: BlocConsumer<OrderDaruratBloc, OrderDaruratState>(
             listener: (context, state) {
-              // TODO: implement listener
+              state.maybeWhen(
+                initial: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/home', (route) => false);
+                },
+                failure: (message) => showCustomSnackbar(context, message),
+                orElse: () {},
+              );
             },
             builder: (context, state) {
               return state.maybeWhen(
@@ -414,7 +421,11 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                                   (1 / 3),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  // Navigator.pop(context);
+                                  context.read<OrderDaruratBloc>().add(
+                                        OrderDaruratEvent.cancelOrder(
+                                          data.code!,
+                                        ),
+                                      );
                                 },
                                 style: ElevatedButton.styleFrom(
                                   foregroundColor: whiteColor,

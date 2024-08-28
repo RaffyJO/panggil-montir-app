@@ -26,7 +26,7 @@ class HistoryItem extends StatelessWidget {
             : Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const DetailOrderServis(),
+                  builder: (context) => DetailOrderServis(order: order),
                 ),
               );
       },
@@ -66,7 +66,8 @@ class HistoryItem extends StatelessWidget {
                       Expanded(
                         child: Row(
                           children: [
-                            (order.status == 'completed')
+                            (order.status == 'completed' ||
+                                    order.status == 'ongoing')
                                 ? Image.asset(
                                     'assets/icons/icon-darurat.png',
                                     width: 72,
@@ -95,46 +96,60 @@ class HistoryItem extends StatelessWidget {
                                     maxLines: 2,
                                   ),
                                   verticalSpace(4),
-                                  (order.status == 'completed')
-                                      ? Row(
-                                          children: [
-                                            Image.asset(
-                                              'assets/icons/icon-success.png',
-                                              width: 20,
-                                            ),
-                                            horizontalSpace(2),
-                                            Expanded(
-                                              child: Text(
-                                                'Servis selesai',
-                                                style: blackTextStyle.copyWith(
-                                                  fontWeight: semiBold,
-                                                  fontSize: 13,
+                                  (order.status != 'ongoing')
+                                      ? (order.status == 'completed')
+                                          ? Row(
+                                              children: [
+                                                Image.asset(
+                                                  'assets/icons/icon-success.png',
+                                                  width: 20,
                                                 ),
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 1,
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      : Row(
-                                          children: [
-                                            Image.asset(
-                                              'assets/icons/icon-canceled.png',
-                                              width: 20,
-                                            ),
-                                            horizontalSpace(2),
-                                            Expanded(
-                                              child: Text(
-                                                'Servis dibatalkan',
-                                                style: blackTextStyle.copyWith(
-                                                  fontWeight: semiBold,
-                                                  fontSize: 13,
+                                                horizontalSpace(2),
+                                                Expanded(
+                                                  child: Text(
+                                                    'Servis selesai',
+                                                    style:
+                                                        blackTextStyle.copyWith(
+                                                      fontWeight: semiBold,
+                                                      fontSize: 13,
+                                                    ),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    maxLines: 1,
+                                                  ),
                                                 ),
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 1,
-                                              ),
-                                            ),
-                                          ],
+                                              ],
+                                            )
+                                          : Row(
+                                              children: [
+                                                Image.asset(
+                                                  'assets/icons/icon-canceled.png',
+                                                  width: 20,
+                                                ),
+                                                horizontalSpace(2),
+                                                Expanded(
+                                                  child: Text(
+                                                    'Servis dibatalkan',
+                                                    style:
+                                                        blackTextStyle.copyWith(
+                                                      fontWeight: semiBold,
+                                                      fontSize: 13,
+                                                    ),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    maxLines: 1,
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                      : Text(
+                                          'Servis sedang berlangsung',
+                                          style: blackTextStyle.copyWith(
+                                            fontWeight: semiBold,
+                                            fontSize: 13,
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
                                         ),
                                 ],
                               ),
@@ -143,47 +158,69 @@ class HistoryItem extends StatelessWidget {
                         ),
                       ),
                       horizontalSpace(4),
-                      (order.status == 'completed')
-                          ? Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  formatCurrency(
-                                    order.serviceFee! + order.deliveryFee!,
-                                  ),
-                                  style: blackTextStyle.copyWith(
-                                    fontWeight: semiBold,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                                verticalSpace(8),
-                                Container(
-                                  height: 36,
-                                  decoration: BoxDecoration(
-                                    color: blueColor,
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(16),
-                                  ),
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      "Pesan lagi",
-                                      style: whiteTextStyle.copyWith(
+                      (order.status != 'ongoing')
+                          ? (order.status == 'completed')
+                              ? Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      formatCurrency(
+                                        order.serviceFee! + order.deliveryFee!,
+                                      ),
+                                      style: blackTextStyle.copyWith(
                                         fontWeight: semiBold,
                                         fontSize: 13,
                                       ),
                                     ),
-                                  ),
-                                ),
-                              ],
-                            )
+                                    verticalSpace(8),
+                                    Container(
+                                      height: 36,
+                                      decoration: BoxDecoration(
+                                        color: blueColor,
+                                        shape: BoxShape.rectangle,
+                                        borderRadius: BorderRadius.circular(16),
+                                      ),
+                                      child: TextButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          "Pesan lagi",
+                                          style: whiteTextStyle.copyWith(
+                                            fontWeight: semiBold,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              : Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      formatCurrency(0),
+                                      style: blackTextStyle.copyWith(
+                                        fontWeight: semiBold,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                    verticalSpace(8),
+                                    Container(
+                                      height: 36,
+                                    ),
+                                  ],
+                                )
                           : Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  formatCurrency(0),
+                                  formatCurrency(order.serviceFee! +
+                                      order.deliveryFee! +
+                                      order.applicationFee!),
                                   style: blackTextStyle.copyWith(
                                     fontWeight: semiBold,
                                     fontSize: 13,
@@ -218,7 +255,8 @@ class HistoryItem extends StatelessWidget {
                       Expanded(
                         child: Row(
                           children: [
-                            (order.status == 'completed')
+                            (order.status == 'completed' ||
+                                    order.status == 'ongoing')
                                 ? ClipRRect(
                                     borderRadius: BorderRadius.circular(8),
                                     child: Container(
@@ -269,46 +307,60 @@ class HistoryItem extends StatelessWidget {
                                     maxLines: 2,
                                   ),
                                   verticalSpace(4),
-                                  (order.status == 'completed')
-                                      ? Row(
-                                          children: [
-                                            Image.asset(
-                                              'assets/icons/icon-success.png',
-                                              width: 20,
-                                            ),
-                                            horizontalSpace(2),
-                                            Expanded(
-                                              child: Text(
-                                                'Servis selesai',
-                                                style: blackTextStyle.copyWith(
-                                                  fontWeight: semiBold,
-                                                  fontSize: 13,
+                                  (order.status != 'ongoing')
+                                      ? (order.status == 'completed')
+                                          ? Row(
+                                              children: [
+                                                Image.asset(
+                                                  'assets/icons/icon-success.png',
+                                                  width: 20,
                                                 ),
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 1,
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      : Row(
-                                          children: [
-                                            Image.asset(
-                                              'assets/icons/icon-canceled.png',
-                                              width: 20,
-                                            ),
-                                            horizontalSpace(2),
-                                            Expanded(
-                                              child: Text(
-                                                'Servis dibatalkan',
-                                                style: blackTextStyle.copyWith(
-                                                  fontWeight: semiBold,
-                                                  fontSize: 13,
+                                                horizontalSpace(2),
+                                                Expanded(
+                                                  child: Text(
+                                                    'Servis selesai',
+                                                    style:
+                                                        blackTextStyle.copyWith(
+                                                      fontWeight: semiBold,
+                                                      fontSize: 13,
+                                                    ),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    maxLines: 1,
+                                                  ),
                                                 ),
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 1,
-                                              ),
-                                            ),
-                                          ],
+                                              ],
+                                            )
+                                          : Row(
+                                              children: [
+                                                Image.asset(
+                                                  'assets/icons/icon-canceled.png',
+                                                  width: 20,
+                                                ),
+                                                horizontalSpace(2),
+                                                Expanded(
+                                                  child: Text(
+                                                    'Servis dibatalkan',
+                                                    style:
+                                                        blackTextStyle.copyWith(
+                                                      fontWeight: semiBold,
+                                                      fontSize: 13,
+                                                    ),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    maxLines: 1,
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                      : Text(
+                                          'Servis sedang berlangsung',
+                                          style: blackTextStyle.copyWith(
+                                            fontWeight: semiBold,
+                                            fontSize: 13,
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
                                         ),
                                 ],
                               ),
@@ -317,45 +369,65 @@ class HistoryItem extends StatelessWidget {
                         ),
                       ),
                       horizontalSpace(4),
-                      (order.status == 'completed')
-                          ? Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  formatCurrency(order.serviceFee!),
-                                  style: blackTextStyle.copyWith(
-                                    fontWeight: semiBold,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                                verticalSpace(8),
-                                Container(
-                                  height: 36,
-                                  decoration: BoxDecoration(
-                                    color: blueColor,
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(16),
-                                  ),
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      "Pesan lagi",
-                                      style: whiteTextStyle.copyWith(
+                      (order.status != 'ongoing')
+                          ? (order.status == 'completed')
+                              ? Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      formatCurrency(order.serviceFee!),
+                                      style: blackTextStyle.copyWith(
                                         fontWeight: semiBold,
                                         fontSize: 13,
                                       ),
                                     ),
-                                  ),
-                                ),
-                              ],
-                            )
+                                    verticalSpace(8),
+                                    Container(
+                                      height: 36,
+                                      decoration: BoxDecoration(
+                                        color: blueColor,
+                                        shape: BoxShape.rectangle,
+                                        borderRadius: BorderRadius.circular(16),
+                                      ),
+                                      child: TextButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          "Pesan lagi",
+                                          style: whiteTextStyle.copyWith(
+                                            fontWeight: semiBold,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              : Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      formatCurrency(0),
+                                      style: blackTextStyle.copyWith(
+                                        fontWeight: semiBold,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                    verticalSpace(8),
+                                    Container(
+                                      height: 36,
+                                    ),
+                                  ],
+                                )
                           : Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  formatCurrency(0),
+                                  formatCurrency(order.serviceFee!),
                                   style: blackTextStyle.copyWith(
                                     fontWeight: semiBold,
                                     fontSize: 13,

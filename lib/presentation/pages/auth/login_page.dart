@@ -43,8 +43,10 @@ class LoginPage extends StatelessWidget {
                 ),
                 Text(
                   "Masuk dengan email dan password untuk melanjutkan",
-                  style:
-                      greyTextStyle.copyWith(fontWeight: medium, fontSize: 14),
+                  style: greyTextStyle.copyWith(
+                    fontWeight: medium,
+                    fontSize: 14,
+                  ),
                 ),
                 verticalSpace(24),
                 CustomTextField(
@@ -66,7 +68,9 @@ class LoginPage extends StatelessWidget {
                     onTap: () {},
                     child: Text(
                       'Lupa password?',
-                      style: orangeTextStyle.copyWith(fontWeight: semiBold),
+                      style: orangeTextStyle.copyWith(
+                        fontWeight: semiBold,
+                      ),
                     ),
                   ),
                 ),
@@ -120,7 +124,9 @@ class LoginPage extends StatelessWidget {
                             child: Text(
                               'Masuk',
                               style: blackTextStyle.copyWith(
-                                  fontSize: 14, fontWeight: semiBold),
+                                fontSize: 14,
+                                fontWeight: semiBold,
+                              ),
                             ),
                           ),
                         );
@@ -140,7 +146,9 @@ class LoginPage extends StatelessWidget {
                             child: Text(
                               'Masuk',
                               style: greyTextStyle.copyWith(
-                                  fontSize: 14, fontWeight: semiBold),
+                                fontSize: 14,
+                                fontWeight: semiBold,
+                              ),
                             ),
                           ),
                         );

@@ -103,20 +103,18 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: FutureBuilder(
-            future: AuthLocalDataSource().getAuthData(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Scaffold(
-                  body: Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                );
-              }
-              if (snapshot.hasData) {
-                return const SplashPage();
-              }
-              return const SplashPage();
-            }),
+          future: AuthLocalDataSource().getAuthData(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+            return const SplashPage();
+          },
+        ),
         debugShowCheckedModeBanner: false,
         routes: {
           '/base': (context) => const SplashPage(),

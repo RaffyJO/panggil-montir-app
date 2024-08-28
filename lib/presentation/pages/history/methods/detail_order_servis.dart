@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:panggil_montir_app/domain/entities/order.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 
 class DetailOrderServis extends StatelessWidget {
-  const DetailOrderServis({super.key});
+  final Order order;
+
+  const DetailOrderServis({
+    super.key,
+    required this.order,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +68,7 @@ class DetailOrderServis extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  'Rabu, 29 Mei, 16:29',
+                  formatDateTime(order.orderDate!),
                   style: blackTextStyle.copyWith(
                     fontSize: 13,
                   ),
@@ -81,7 +87,7 @@ class DetailOrderServis extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Pesanan PS-HDIJVGUSNO',
+                  'Pesanan ${order.code!}',
                   style: blackTextStyle.copyWith(
                     fontSize: 13,
                   ),
@@ -289,7 +295,7 @@ class DetailOrderServis extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                'Bengkel TK Motor Bekasi Utara Teluk Pucung',
+                                order.garage!.address!,
                                 style: blackTextStyle.copyWith(
                                   fontSize: 14,
                                   fontWeight: semiBold,
@@ -334,7 +340,7 @@ class DetailOrderServis extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                'Jl. Borobudur Agung Tim. VII No.35, Mojolangu, Kec. Lowokwaru, Kota Malang, Jawa Timur 65142',
+                                order.address!,
                                 style: blackTextStyle.copyWith(
                                   fontSize: 14,
                                   fontWeight: semiBold,
