@@ -26,7 +26,7 @@ class OrderServisRemoteDatasource {
     if (response.statusCode == 201) {
       return const Right(null);
     } else {
-      return Left(response.body);
+      return Left(jsonDecode(response.body)['message']);
     }
   }
 }

@@ -7,12 +7,23 @@ import 'package:panggil_montir_app/domain/entities/garage.dart';
 import 'package:panggil_montir_app/presentation/extension/values.dart';
 
 class GarageRemoteDatasource {
-  Future<Either<String, List<Garage>>> getGarages(int page) async {
+  Future<Either<String, List<Garage>>> getGarages(
+      int page, String latitude, String longitude) async {
     final authDataModel = await AuthLocalDataSource().getAuthData();
     final url = Uri.parse('$baseUrl/api/user/get-garages?page=$page');
-    final response = await http.get(url, headers: {
-      'Authorization': 'Bearer ${authDataModel?.token}',
-    });
+    final response = await http.post(
+      url,
+      headers: {
+        'Authorization': 'Bearer ${authDataModel?.token}',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(
+        {
+          'latitude': latitude,
+          'longitude': longitude,
+        },
+      ),
+    );
 
     if (response.statusCode == 200) {
       return Right(

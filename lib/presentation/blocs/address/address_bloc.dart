@@ -16,7 +16,8 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
     // Get current address
     on<_GetCurentAddress>((event, emit) async {
       emit(const _Loading());
-      final response = await _addressRemoteDatasource.getCurrentAddress();
+      final response =
+          await _addressRemoteDatasource.getCurrentAddress(event.address);
       response.fold(
         (l) => emit(_Failure(l)),
         (r) => emit(_Success(r)),

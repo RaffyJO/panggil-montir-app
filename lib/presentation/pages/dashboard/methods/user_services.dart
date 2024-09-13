@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:panggil_montir_app/presentation/blocs/address/address_bloc.dart';
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_darurat/order_page.dart';
@@ -12,9 +10,6 @@ Widget userServices(BuildContext context) {
     children: [
       GestureDetector(
         onTap: () {
-          context
-              .read<AddressBloc>()
-              .add(const AddressEvent.getCurentAddress());
           Navigator.push(
             context,
             MaterialPageRoute(

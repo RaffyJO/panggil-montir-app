@@ -10,7 +10,9 @@ import 'package:panggil_montir_app/presentation/blocs/order_servis/order_servis_
 import 'package:panggil_montir_app/presentation/misc/constants.dart';
 import 'package:panggil_montir_app/presentation/misc/methods.dart';
 import 'package:panggil_montir_app/presentation/pages/address/address_page.dart';
+import 'package:panggil_montir_app/presentation/pages/garasi/garasi_page.dart';
 import 'package:panggil_montir_app/presentation/pages/panggil_service/booking_detail/methods/detail_layanan.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class BookingDetail extends StatefulWidget {
   final Garage garage;
@@ -29,9 +31,14 @@ class _BookingDetailState extends State<BookingDetail> {
   DateTime? selectedDate;
   TextEditingController detailIssueController = TextEditingController();
   TextEditingController notesController = TextEditingController();
+  bool hasMotorcycle = false;
+  bool hasAddress = false;
 
   bool validate() {
-    if (selectedDate != null && detailIssueController.text.isNotEmpty) {
+    if (selectedDate != null &&
+        detailIssueController.text.isNotEmpty &&
+        hasMotorcycle &&
+        hasAddress) {
       return true;
     }
     return false;
@@ -39,7 +46,10 @@ class _BookingDetailState extends State<BookingDetail> {
 
   @override
   void initState() {
-    context.read<AddressBloc>().add(const AddressEvent.getCurentAddress());
+    context.read<AddressBloc>().add(const AddressEvent.getListAddress());
+    context
+        .read<MotorcycleBloc>()
+        .add(const MotorcycleEvent.getListMotorcycle());
     super.initState();
   }
 
@@ -147,12 +157,7 @@ class _BookingDetailState extends State<BookingDetail> {
                     builder: (context, state) {
                       return state.maybeWhen(
                         orElse: () => const Text('No data'),
-                        loading: () => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        failure: (message) => Text(message),
-                        success: (data) => GestureDetector(
-                          onTap: () {},
+                        loading: () => Skeletonizer(
                           child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 12),
                             padding: const EdgeInsets.only(left: 12, right: 8),
@@ -180,7 +185,7 @@ class _BookingDetailState extends State<BookingDetail> {
                                       width: MediaQuery.of(context).size.width -
                                           120,
                                       child: Text(
-                                        "Motor ${data.type}, ${data.licensePlate}, ${data.productionYear}",
+                                        "Motor Vario, B 3435 BOD, 2022",
                                         style: blackTextStyle,
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 1,
@@ -196,6 +201,132 @@ class _BookingDetailState extends State<BookingDetail> {
                             ),
                           ),
                         ),
+                        failure: (message) => Text(message),
+                        successList: (data) {
+                          final selectedData =
+                              data.where((item) => item.isSelected == 1);
+
+                          if (selectedData.isNotEmpty) {
+                            hasMotorcycle = true;
+                          }
+                          return selectedData.isNotEmpty
+                              ? GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const GarasiPage(),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 12),
+                                    padding: const EdgeInsets.only(
+                                        left: 12, right: 8),
+                                    height: 52,
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: greyColor,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.motorcycle_outlined,
+                                              color: blueColor,
+                                              size: 28,
+                                            ),
+                                            horizontalSpace(8),
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width -
+                                                  120,
+                                              child: Text(
+                                                "Motor ${selectedData.first.type!.name}, ${selectedData.first.licensePlate}, ${selectedData.first.productionYear!.year}",
+                                                style: blackTextStyle,
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 1,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward_ios_rounded,
+                                          color: blueColor,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              : GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const GarasiPage(),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 12),
+                                    padding: const EdgeInsets.only(
+                                        left: 12, right: 8),
+                                    height: 52,
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: greyColor,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.motorcycle_outlined,
+                                              color: blueColor,
+                                              size: 28,
+                                            ),
+                                            horizontalSpace(8),
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width -
+                                                  120,
+                                              child: Text(
+                                                "Tambah motor dulu yuk!",
+                                                style: blackTextStyle,
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 1,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward_ios_rounded,
+                                          color: blueColor,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                        },
                       );
                     },
                   ),
@@ -213,22 +344,7 @@ class _BookingDetailState extends State<BookingDetail> {
                     builder: (context, state) {
                       return state.maybeWhen(
                         orElse: () => const Text('No data'),
-                        loading: () => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        failure: (message) => Text(message),
-                        success: (data) => GestureDetector(
-                          onTap: () {
-                            context.read<AddressBloc>().add(
-                                  const AddressEvent.getListAddress(),
-                                );
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const AddressPage(),
-                              ),
-                            );
-                          },
+                        loading: () => Skeletonizer(
                           child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 12),
                             padding: const EdgeInsets.only(left: 12, right: 8),
@@ -256,7 +372,7 @@ class _BookingDetailState extends State<BookingDetail> {
                                       width: MediaQuery.of(context).size.width -
                                           120,
                                       child: Text(
-                                        data.description!,
+                                        'Jl Perjuangan No. 12, Kebon Jeruk',
                                         style: blackTextStyle,
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 1,
@@ -272,6 +388,133 @@ class _BookingDetailState extends State<BookingDetail> {
                             ),
                           ),
                         ),
+                        failure: (message) => Text(message),
+                        successList: (data) {
+                          // Filter the list to only include items where isSelected is 1
+                          final selectedData =
+                              data.where((item) => item.isSelected == 1);
+
+                          if (selectedData.isNotEmpty) {
+                            hasAddress = true;
+                          }
+                          return selectedData.isNotEmpty
+                              ? GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const AddressPage(),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 12),
+                                    padding: const EdgeInsets.only(
+                                        left: 12, right: 8),
+                                    height: 52,
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: greyColor,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.location_on,
+                                              color: blueColor,
+                                              size: 24,
+                                            ),
+                                            horizontalSpace(8),
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width -
+                                                  120,
+                                              child: Text(
+                                                selectedData.first.description!,
+                                                style: blackTextStyle,
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 1,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward_ios_rounded,
+                                          color: blueColor,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              : GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const AddressPage(),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 12),
+                                    padding: const EdgeInsets.only(
+                                        left: 12, right: 8),
+                                    height: 52,
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: greyColor,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.location_on,
+                                              color: blueColor,
+                                              size: 24,
+                                            ),
+                                            horizontalSpace(8),
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width -
+                                                  120,
+                                              child: Text(
+                                                'Tambah alamat dulu yuk!',
+                                                style: blackTextStyle,
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 1,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Icon(
+                                          Icons.arrow_forward_ios_rounded,
+                                          color: blueColor,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                        },
                       );
                     },
                   ),

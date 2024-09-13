@@ -19,7 +19,7 @@ mixin _$GarageEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getGarages,
+    required TResult Function(String latitude, String longitude) getGarages,
     required TResult Function() garageFetched,
     required TResult Function() garageRefresh,
   }) =>
@@ -27,7 +27,7 @@ mixin _$GarageEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getGarages,
+    TResult? Function(String latitude, String longitude)? getGarages,
     TResult? Function()? garageFetched,
     TResult? Function()? garageRefresh,
   }) =>
@@ -35,7 +35,7 @@ mixin _$GarageEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getGarages,
+    TResult Function(String latitude, String longitude)? getGarages,
     TResult Function()? garageFetched,
     TResult Function()? garageRefresh,
     required TResult orElse(),
@@ -125,7 +125,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getGarages,
+    required TResult Function(String latitude, String longitude) getGarages,
     required TResult Function() garageFetched,
     required TResult Function() garageRefresh,
   }) {
@@ -136,7 +136,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getGarages,
+    TResult? Function(String latitude, String longitude)? getGarages,
     TResult? Function()? garageFetched,
     TResult? Function()? garageRefresh,
   }) {
@@ -147,7 +147,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getGarages,
+    TResult Function(String latitude, String longitude)? getGarages,
     TResult Function()? garageFetched,
     TResult Function()? garageRefresh,
     required TResult orElse(),
@@ -205,6 +205,8 @@ abstract class _$$GetGaragesImplCopyWith<$Res> {
   factory _$$GetGaragesImplCopyWith(
           _$GetGaragesImpl value, $Res Function(_$GetGaragesImpl) then) =
       __$$GetGaragesImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String latitude, String longitude});
 }
 
 /// @nodoc
@@ -214,60 +216,94 @@ class __$$GetGaragesImplCopyWithImpl<$Res>
   __$$GetGaragesImplCopyWithImpl(
       _$GetGaragesImpl _value, $Res Function(_$GetGaragesImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? latitude = null,
+    Object? longitude = null,
+  }) {
+    return _then(_$GetGaragesImpl(
+      null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetGaragesImpl implements _GetGarages {
-  const _$GetGaragesImpl();
+  const _$GetGaragesImpl(this.latitude, this.longitude);
+
+  @override
+  final String latitude;
+  @override
+  final String longitude;
 
   @override
   String toString() {
-    return 'GarageEvent.getGarages()';
+    return 'GarageEvent.getGarages(latitude: $latitude, longitude: $longitude)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetGaragesImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetGaragesImpl &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, latitude, longitude);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetGaragesImplCopyWith<_$GetGaragesImpl> get copyWith =>
+      __$$GetGaragesImplCopyWithImpl<_$GetGaragesImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getGarages,
+    required TResult Function(String latitude, String longitude) getGarages,
     required TResult Function() garageFetched,
     required TResult Function() garageRefresh,
   }) {
-    return getGarages();
+    return getGarages(latitude, longitude);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getGarages,
+    TResult? Function(String latitude, String longitude)? getGarages,
     TResult? Function()? garageFetched,
     TResult? Function()? garageRefresh,
   }) {
-    return getGarages?.call();
+    return getGarages?.call(latitude, longitude);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getGarages,
+    TResult Function(String latitude, String longitude)? getGarages,
     TResult Function()? garageFetched,
     TResult Function()? garageRefresh,
     required TResult orElse(),
   }) {
     if (getGarages != null) {
-      return getGarages();
+      return getGarages(latitude, longitude);
     }
     return orElse();
   }
@@ -311,7 +347,14 @@ class _$GetGaragesImpl implements _GetGarages {
 }
 
 abstract class _GetGarages implements GarageEvent {
-  const factory _GetGarages() = _$GetGaragesImpl;
+  const factory _GetGarages(final String latitude, final String longitude) =
+      _$GetGaragesImpl;
+
+  String get latitude;
+  String get longitude;
+  @JsonKey(ignore: true)
+  _$$GetGaragesImplCopyWith<_$GetGaragesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -353,7 +396,7 @@ class _$GarageFetchedImpl implements _GarageFetched {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getGarages,
+    required TResult Function(String latitude, String longitude) getGarages,
     required TResult Function() garageFetched,
     required TResult Function() garageRefresh,
   }) {
@@ -364,7 +407,7 @@ class _$GarageFetchedImpl implements _GarageFetched {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getGarages,
+    TResult? Function(String latitude, String longitude)? getGarages,
     TResult? Function()? garageFetched,
     TResult? Function()? garageRefresh,
   }) {
@@ -375,7 +418,7 @@ class _$GarageFetchedImpl implements _GarageFetched {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getGarages,
+    TResult Function(String latitude, String longitude)? getGarages,
     TResult Function()? garageFetched,
     TResult Function()? garageRefresh,
     required TResult orElse(),
@@ -467,7 +510,7 @@ class _$GarageRefreshImpl implements _GarageRefresh {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getGarages,
+    required TResult Function(String latitude, String longitude) getGarages,
     required TResult Function() garageFetched,
     required TResult Function() garageRefresh,
   }) {
@@ -478,7 +521,7 @@ class _$GarageRefreshImpl implements _GarageRefresh {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? getGarages,
+    TResult? Function(String latitude, String longitude)? getGarages,
     TResult? Function()? garageFetched,
     TResult? Function()? garageRefresh,
   }) {
@@ -489,7 +532,7 @@ class _$GarageRefreshImpl implements _GarageRefresh {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getGarages,
+    TResult Function(String latitude, String longitude)? getGarages,
     TResult Function()? garageFetched,
     TResult Function()? garageRefresh,
     required TResult orElse(),

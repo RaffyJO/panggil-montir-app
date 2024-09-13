@@ -8,13 +8,20 @@ import 'package:panggil_montir_app/domain/entities/address.dart';
 import 'package:panggil_montir_app/presentation/extension/values.dart';
 
 class AddressRemoteDatasource {
-  Future<Either<String, Address>> getCurrentAddress() async {
+  Future<Either<String, Address>> getCurrentAddress(
+      AddressCreateModel address) async {
     final authDataModel = await AuthLocalDataSource().getAuthData();
     final url = Uri.parse('$baseUrl/api/user/get-current-address');
-    final response = await http.get(url, headers: {
-      'Authorization': 'Bearer ${authDataModel?.token}',
-      'Content-Type': 'application/json',
-    });
+    final response = await http.post(
+      url,
+      headers: {
+        'Authorization': 'Bearer ${authDataModel?.token}',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(
+        address.toJson(),
+      ),
+    );
 
     if (response.statusCode == 200) {
       return Right(

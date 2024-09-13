@@ -18,21 +18,21 @@ class GarageBloc extends Bloc<GarageEvent, GarageState> {
           emit(const GarageState.initial());
         },
         getGarages: (e) async {
-          if (state is _Success && (state as _Success).hasReachedMax) return;
-          await _fetchGarages(emit);
+          // if (state is _Success && (state as _Success).hasReachedMax) return;
+          await _fetchGarages(emit, event);
         },
         garageFetched: (e) async {
-          await _fetchGarages(emit);
+          await _fetchGarages(emit, event);
         },
         garageRefresh: (e) async {
           emit(const GarageState.initial());
-          await _fetchGarages(emit, isRefresh: true);
+          await _fetchGarages(emit, event, isRefresh: true);
         },
       );
     });
   }
 
-  Future<void> _fetchGarages(Emitter<GarageState> emit,
+  Future<void> _fetchGarages(Emitter<GarageState> emit, event,
       {bool isRefresh = false}) async {
     try {
       final currentState = state;
@@ -42,7 +42,9 @@ class GarageBloc extends Bloc<GarageEvent, GarageState> {
 
       if (!isRefresh) emit(const GarageState.loading());
 
-      final result = await _garageRemoteDatasource.getGarages(currentPage);
+      final result = await _garageRemoteDatasource.getGarages(
+          currentPage, event.latitude, event.longitude);
+      print('test');
 
       result.fold(
         (failure) => emit(GarageState.failure(failure)),

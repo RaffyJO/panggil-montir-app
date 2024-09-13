@@ -60,8 +60,7 @@ class MyApp extends StatelessWidget {
             ..add(const AuthEvent.getCurrentUser()),
         ),
         BlocProvider(
-          create: (context) => GarageBloc(GarageRemoteDatasource())
-            ..add(const GarageEvent.getGarages()),
+          create: (context) => GarageBloc(GarageRemoteDatasource()),
         ),
         BlocProvider(
           create: (context) => AddressBloc(AddressRemoteDatasource())

@@ -305,7 +305,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                           ],
                         ),
                       ),
-                      verticalSpace(4),
+                      verticalSpace(2),
                       Divider(
                         color: greyColor,
                         thickness: 0.5,
@@ -385,7 +385,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                           ],
                         ),
                       ),
-                      verticalSpace(16),
+                      verticalSpace(12),
                       Row(
                         children: [
                           Padding(
@@ -450,7 +450,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                           ),
                         ],
                       ),
-                      verticalSpace(10.0),
+                      verticalSpace(8),
                     ],
                   ),
                 ),
